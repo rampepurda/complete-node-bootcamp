@@ -1,7 +1,7 @@
 @import "./breakpoints";
 
 $cols: 1 2 3 4 5 6 7 8 9 10 11 12;
-$colors: black blue darkblue darkmagenta darkred deeppink dodgerblue gold gray green orange red silver yellow;
+$colors: black blue darkblue darkmagenta darkred deeppink dodgerblue gold gray green orange red silver white yellow;
 $display-values: block flex inline inline-block inline-flex;
 
 @each $i in $cols {
