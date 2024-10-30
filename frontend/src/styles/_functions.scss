@@ -1,0 +1,89 @@
+@import "./breakpoints";
+
+$cols: 1 2 3 4 5 6 7 8 9 10 11 12;
+$colors: black blue darkblue darkmagenta darkred deeppink dodgerblue gold gray green orange red silver yellow;
+$display-values: block flex inline inline-block inline-flex;
+
+@each $i in $cols {
+  .cols {
+    display: flex;
+  }
+
+  @media #{$screen-md} {
+    .cols {
+      display: block;
+    }
+
+    .col-m-#{$i} {
+      flex-basis: (8.33% * $i) !important;
+    }
+  }
+
+  .col-#{$i} {
+    flex-basis: (8.33% * $i);
+    padding: .5rem;
+
+    &.has-br {
+      border-right: 1px solid $grayLighter;
+    }
+  }
+
+  @if $i == 9 {
+    .col-9 {
+      padding: 1rem;
+    }
+  }
+
+  .width-is-#{$i} {
+    width: (8.33% * $i);
+  }
+
+  @media #{$screen} {
+    .width-is-m-#{$i} {
+      width: (8.33% * $i);
+    }
+  }
+}
+
+@each $color in $colors {
+  .color-is-#{$color} {
+    color: $color;
+  }
+
+  .bg-color-is-#{$color} {
+    background-color: $color;
+  }
+
+  // isDARK_MODE
+  @if $color == darkmagenta {
+    .isDark {
+      .color-is-darkmagenta {
+        color: $red;
+      }
+    }
+  }
+
+  @if $color == grayDarker {
+    .isDark {
+      // Pagination
+      nav {
+        ul.Pagination_card__jawKB,
+        ul.Pagination_card__jawKB li {
+          border-color: transparentize($white, .5)
+        }
+      }
+    }
+  }
+}
+
+@each $display in $display-values {
+   .display-#{$display} {
+     display: $display!important;
+   };
+}
+
+@function size($num) {
+  @return $num;
+}
+
+

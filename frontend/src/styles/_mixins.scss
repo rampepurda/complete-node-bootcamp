@@ -1,0 +1,14 @@
+// Margin & Padding
+@mixin has-padding($padding) {
+  padding: $padding;
+}
+
+@mixin fontSize($size, $weight) {
+  font-size: $size;
+  font-weight: $weight;
+}
+
+@mixin Size($size) {
+  width: $size;
+  height: $size;
+}

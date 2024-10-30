@@ -1,0 +1,10 @@
+@import "../styles/variables";
+
+$screen: 'screen and (max-width: 900px)';
+$screen-sm: 'screen and (max-width: 576px)';
+$screen-md: 'screen and (max-width: 900px)';
+$screen-lg: 'screen and (max-width: 1224px)';
+$screen-xl: 'screen and (max-width: 1824px)';
+
+@media #{$screen-md} {
+}
