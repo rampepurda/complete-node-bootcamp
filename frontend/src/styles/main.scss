@@ -19,7 +19,7 @@ body {
 }
 
 main {
-  margin: $spacer-8 $spacer-3 0 $spacer-3;
+  margin: $spacer-5 $spacer-3 0 $spacer-3;
   min-height: 100vh;
 }
 
@@ -123,7 +123,7 @@ code {
 }
 
 a {
-  //color: $darkmagenta;
+  color: $blueLighter;
   font-size: 1.2rem;
 }
 
@@ -171,6 +171,15 @@ a {
     &:hover {
       background-color:$blueDark;
     }
+  }
+
+  &-link {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+    color: $black;
+    text-align: left;
   }
 }
 
@@ -241,6 +250,15 @@ figure {
 
   h3 {
     margin-top: 0;
+  }
+}
+
+.display {
+  margin: 0;
+
+  &-flex {
+    display: flex;
+    justify-content: center;
   }
 }
 
