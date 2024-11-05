@@ -1,19 +1,22 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
-import fs from 'fs'
-
 export default function ReadingWritingFilePageSec2() {
   return (
     <>
       <h2>Section 2: Reading and Writing Files</h2>
-      <h4>
-        Node Module: <em>File System (FS)</em>
-      </h4>
-      <p>
-        const fs = <strong>require('fs')</strong>
-      </p>
-      <mark>fs.readFileSync</mark>
-      <mark>fs.writeFileSync</mark>
+      <div>
+        <mark>fs.readFileSync</mark>
+        <mark>fs.writeFileSync</mark>
+      </div>
+      <ul className="hasTypeDisc">
+        <li>
+          <label>Node Module:</label>
+          <h4>
+            <em>File System (FS)</em>
+          </h4>
+          <code>
+            const fs = <strong>require('fs')</strong>
+          </code>
+        </li>
+      </ul>
 
       <div className="hasOutline">
         <ul>

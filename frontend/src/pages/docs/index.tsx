@@ -3,8 +3,17 @@ import { SubNav } from '../../Components'
 import React from 'react'
 import { navigation } from '../../configuration'
 
+export type NavT = {
+  title: string
+  subNavigation?:
+    | {
+        title: string
+        link: string
+      }[]
+    | undefined
+}
 export default function DocsPage() {
-  const subNavData = navigation.subDocs
+  const subNavData: NavT[] = navigation.subDocs
 
   return (
     <div className="cols">
@@ -12,7 +21,7 @@ export default function DocsPage() {
         <ul>
           {subNavData.map((item, idx: number) => {
             return (
-              <SubNav key={idx} id={idx} title={item.title} subNavigation={[item.subNavigation]} />
+              <SubNav key={idx} id={idx} title={item.title} subNavigation={item.subNavigation} />
             )
           })}
         </ul>

@@ -16,6 +16,14 @@ export const router = createBrowserRouter([
         path: 'Section2/reading-and-writing-files',
         element: <RouteSection.ReadingWritingFilePageSec2 />,
       },
+      {
+        path: 'Section2/creating-simple-web-server',
+        element: <RouteSection.CreatingSimpleWebServerPageSec2 />,
+      },
+      {
+        path: 'Section2/routing',
+        element: <RouteSection.RoutingPageSec2 />,
+      },
     ],
   },
 ])

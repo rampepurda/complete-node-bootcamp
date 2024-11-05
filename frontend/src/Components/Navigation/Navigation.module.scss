@@ -7,7 +7,7 @@
   margin: 0;
 
   li {
-    padding: .4rem;
+    padding: .4rem .4rem 0 .4rem;
   }
 }
 
@@ -22,6 +22,10 @@
 
 .isSubNavOpen {
   display: block;
+}
+
+.isLink {
+  @include fontSize(1.35rem,normal);
 }
 
 

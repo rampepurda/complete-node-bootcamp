@@ -64,7 +64,7 @@ ul {
 
   li {
     @include fontSize(1.3rem, normal);
-    padding: .6rem 1rem;
+    padding: .5rem 1rem;
 
     a {
       text-decoration: none;
@@ -118,7 +118,7 @@ hr {
 
 code {
   display: block;
-  margin: $spacer-5 0;
+  margin: $spacer-2 0;
   font-size: 1.4rem;
 }
 
