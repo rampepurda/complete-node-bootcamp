@@ -13,7 +13,7 @@ export const navigation = {
     {
       title: 'Section 2: Introduction to Node.js and NPM',
       subNavigation: {
-        title: 'Reading and Writing Files',
+        title: 'Reading and Writing Files (sync, async)',
         link: 'Section2/reading-and-writing-files',
       },
     },
