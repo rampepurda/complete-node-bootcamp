@@ -125,6 +125,10 @@ code {
 a {
   color: $blueLighter;
   font-size: 1.2rem;
+
+  &.active {
+    @include fontSize(1.2rem, bolder);
+  }
 }
 
 .btn {

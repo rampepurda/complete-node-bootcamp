@@ -24,8 +24,12 @@ export const navigation = {
           link: 'Section2/creating-simple-web-server',
         },
         {
-          title: 'Routing',
+          title: 'Routing & Building Simple Api',
           link: 'Section2/routing',
+        },
+        {
+          title: 'Template Products',
+          link: 'Section2/templateProducts',
         },
       ],
     },

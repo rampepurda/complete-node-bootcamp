@@ -1,6 +1,6 @@
 import classes from './Navigation.module.scss'
 import React, { PropsWithChildren, useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, NavLink } from 'react-router-dom'
 import { Button } from '../UI'
 import classNames from 'classnames'
 
@@ -46,7 +46,7 @@ export const SubNav = ({ id, title, link, subNavigation }: PropsWithChildren<Pro
             {subNavigation?.map((item, idx: number) => {
               return (
                 <li key={idx}>
-                  <Link to={item.link}>{item.title}</Link>
+                  <NavLink to={item.link}>{item.title}</NavLink>
                 </li>
               )
             })}

@@ -24,6 +24,10 @@ export const router = createBrowserRouter([
         path: 'Section2/routing',
         element: <RouteSection.RoutingPageSec2 />,
       },
+      {
+        path: 'Section2/templateProducts',
+        element: <RouteSection.TemplateProductsPageSec2 />,
+      },
     ],
   },
 ])

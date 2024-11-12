@@ -1,5 +1,3 @@
-import http from 'http'
-
 export default function CreatingSimpleWebServerPageSec2() {
   return (
     <>
