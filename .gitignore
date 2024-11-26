@@ -25,4 +25,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # NodeJS
-/backend/
+/backend/1-node-farm/
+/backend/2-how-node-works/
+/backend/3-asynchronous-JS/
+/backend/data/

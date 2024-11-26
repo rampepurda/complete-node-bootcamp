@@ -12,3 +12,8 @@
   width: $size;
   height: $size;
 }
+
+@mixin Display($display, $alignContent) {
+  display: $display;
+  align-content: $alignContent;
+}

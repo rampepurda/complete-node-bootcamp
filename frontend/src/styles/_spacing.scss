@@ -9,6 +9,7 @@ RESULT:
 // ("lightest": 100, "light": 300, "medium": 500, "bold": 700)
  */
 
+$padding-size: 1 2 3 4 5 6 7 8 9 10;
 $spacers: (
   0: 0,
   1: 4px,
@@ -38,16 +39,11 @@ $spacer-10: map-get($spacers, 10);
 $spacer-11: map-get($spacers, 11);
 $spacer-12: map-get($spacers, 12);
 
-$padding-size: 1 2 3 4 5 6 7 8 9 10;
-@each $size in $padding-size {
-  .hasVerticalPadding-#{$size} {
-    padding: (1px * $size);
-  }
 
-  ul.hasVerticalPadding-#{$size} {
-    li{
-      padding: (1px * $size);
-    }
+@each $size in $padding-size {
+  .hasVerticalPadding-#{$size},
+  .hasVerticalPadding-#{$size} li {
+    padding: (1px * $size) 0;
   }
 }
 
