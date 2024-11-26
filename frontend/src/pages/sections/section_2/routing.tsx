@@ -1,5 +1,3 @@
-import fs from 'fs'
-
 export default function RoutingPageSec2() {
   return (
     <>

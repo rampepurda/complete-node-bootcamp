@@ -28,7 +28,7 @@ export const navigation = {
           link: 'Section2/routing',
         },
         {
-          title: 'Template Products',
+          title: 'Templating and creating Own Modules',
           link: 'Section2/templateProducts',
         },
       ],
