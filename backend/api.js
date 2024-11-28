@@ -1,7 +1,7 @@
 const fs = require("fs");
 const http = require("http");
 const url = require("url");
-const replaceTempOverview = require("./modules/replaceTemOverview");
+const replaceTempOverview = require("./modules/replaceTempOverview");
 
 const templateOverview = fs.readFileSync(
   `${__dirname}/1-node-farm/final/templates/template-overview.html`,

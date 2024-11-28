@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom'
 import RootLayout from '../pages/RootLayout'
-import * as RouteSection from '../pages/sections/routes'
+import * as RouteSection1 from '../pages/sections/section_1/routes'
+import * as RouteSection2 from '../pages/sections/section_2/routes'
 
 export const router = createBrowserRouter([
   {
@@ -9,24 +10,28 @@ export const router = createBrowserRouter([
     id: 'root',
     children: [
       {
-        path: 'Section1',
-        element: <RouteSection.SectionOnePage />,
+        path: 'section1',
+        element: <RouteSection1.IntroPage />,
       },
       {
-        path: 'Section2/reading-and-writing-files',
-        element: <RouteSection.ReadingWritingFilePageSec2 />,
+        path: 'section2/reading-and-writing-files',
+        element: <RouteSection2.ReadingWritingFilePage />,
       },
       {
-        path: 'Section2/creating-simple-web-server',
-        element: <RouteSection.CreatingSimpleWebServerPageSec2 />,
+        path: 'section2/creating-simple-web-server',
+        element: <RouteSection2.CreatingSimpleWebServerPage />,
       },
       {
-        path: 'Section2/routing',
-        element: <RouteSection.RoutingPageSec2 />,
+        path: 'section2/routing',
+        element: <RouteSection2.RoutingPage />,
       },
       {
-        path: 'Section2/templateProducts',
-        element: <RouteSection.TemplateProductsPageSec2 />,
+        path: 'section2/templateProducts',
+        element: <RouteSection2.TempProductsPage />,
+      },
+      {
+        path: 'section2/packageJSON',
+        element: <RouteSection2.PackageJSONPage />,
       },
     ],
   },

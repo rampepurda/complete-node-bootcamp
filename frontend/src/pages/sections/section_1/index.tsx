@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-export default function SectionOnePage() {
+export default function IntroPage() {
   return (
     <>
       <h2>Section 1: Intro</h2>

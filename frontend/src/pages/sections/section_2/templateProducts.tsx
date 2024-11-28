@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query'
 const products: ProductInt[] = dataMock.products
 const url: string = 'http://localhost:4040/api'
 
-export default function TemplateProductsPageSec2() {
+export default function TempProductsPage() {
   const productsQuery = useQuery({
     queryKey: ['products'],
     queryFn: async (): Promise<Response> => await fetch(url),

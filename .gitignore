@@ -29,3 +29,4 @@ yarn-error.log*
 /backend/2-how-node-works/
 /backend/3-asynchronous-JS/
 /backend/data/
+/backend/node_modules/
