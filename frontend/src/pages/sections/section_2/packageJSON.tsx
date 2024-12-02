@@ -45,6 +45,18 @@ export default function PackageJSONPage() {
           <strong>npm start</strong>
         </li>
       </ul>
+
+      <h3>Short cuts and Commands(remark)</h3>
+      <ul className="hasVerticalPadding-3 hasTypeDisc">
+        <li>
+          npm <strong>uninstall</strong> express
+        </li>
+        <li>
+          version: "<strong>^</strong>3.1.7" // show higher version if available
+          <br />
+          version: "<strong>*</strong>3.1.7" // automatically update to higher version
+        </li>
+      </ul>
     </>
   )
 }

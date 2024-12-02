@@ -1,8 +1,8 @@
 const fs = require("fs");
 const http = require("http");
 const url = require("url");
+const slugify = require("slugify");
 const replaceTempOverview = require("./modules/replaceTempOverview");
-
 const templateOverview = fs.readFileSync(
   `${__dirname}/1-node-farm/final/templates/template-overview.html`,
   "utf-8",
@@ -17,6 +17,8 @@ const templateProduct = fs.readFileSync(
 );
 const data = fs.readFileSync(`${__dirname}/data/data.json`, "utf-8");
 const productData = JSON.parse(data);
+
+console.log(productData.map((i) => slugify(i.productName, { lower: true })));
 
 const server = http.createServer((req, res) => {
   const pathName = req.url;
