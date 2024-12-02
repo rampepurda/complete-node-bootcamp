@@ -1,4 +1,4 @@
-export default function CreatingSimpleWebServerPageSec2() {
+export default function CreatingSimpleWebServerPage() {
   return (
     <>
       <h2>Section 2: Creating Simple Web Server</h2>

@@ -4,7 +4,7 @@ import classNames from 'classnames'
 type Props = {
   className?: string
   OnClick?: MouseEventHandler<HTMLButtonElement>
-  title: string
+  title?: string
   rest: Record<string, any>
 }
 /**

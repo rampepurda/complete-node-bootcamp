@@ -1,4 +1,4 @@
-export default function ReadingWritingFilePageSec2() {
+export default function ReadingWritingFilePage() {
   return (
     <>
       <h2>Section 2: Reading and Writing Files</h2>

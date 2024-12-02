@@ -8,7 +8,7 @@ export const navigation = {
       subNavigation: [
         {
           title: 'Intro',
-          link: 'Section1',
+          link: 'section1',
         },
       ],
     },
@@ -17,19 +17,23 @@ export const navigation = {
       subNavigation: [
         {
           title: 'Reading and Writing Files (sync, async)',
-          link: 'Section2/reading-and-writing-files',
+          link: 'section2/reading-and-writing-files',
         },
         {
           title: 'Creating a Simple Web Server',
-          link: 'Section2/creating-simple-web-server',
+          link: 'section2/creating-simple-web-server',
         },
         {
           title: 'Routing & Building Simple Api',
-          link: 'Section2/routing',
+          link: 'section2/routing',
         },
         {
           title: 'Templating and creating Own Modules',
-          link: 'Section2/templateProducts',
+          link: 'section2/templateProducts',
+        },
+        {
+          title: 'npm, package.json about',
+          link: 'section2/packageJSON',
         },
       ],
     },

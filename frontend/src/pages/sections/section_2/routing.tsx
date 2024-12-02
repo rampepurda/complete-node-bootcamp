@@ -1,4 +1,4 @@
-export default function RoutingPageSec2() {
+export default function RoutingPage() {
   return (
     <>
       <h2>Section 2: Routing & Building Simple Api</h2>
