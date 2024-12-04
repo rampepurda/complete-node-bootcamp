@@ -1,18 +1,20 @@
-import React, { PropsWithChildren } from 'react'
-import { ProductInt } from '../../types'
+import React, { HTMLAttributes, PropsWithChildren } from 'react'
+import { HTMLTagT, ProductInt } from '../../types'
 
-type Props = {
+interface PropsInt extends HTMLAttributes<HTMLBodyElement> {
+  tagAttr: HTMLTagT
   classes?: string
   product: ProductInt
 }
 
-export const Product = ({ product, classes, children }: PropsWithChildren<Props>) => {
+export const Product = ({ product, classes, tagAttr, children }: PropsWithChildren<PropsInt>) => {
+  const HTMLAttr = tagAttr
   return (
-    <div className={classes}>
+    <HTMLAttr className={classes}>
       <h4>{product.productName}</h4>
       <h4>{product.image}</h4>
       <h4>{product.price}</h4>
       {children}
-    </div>
+    </HTMLAttr>
   )
 }

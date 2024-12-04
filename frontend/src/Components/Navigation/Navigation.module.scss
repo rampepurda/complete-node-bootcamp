@@ -24,8 +24,15 @@
   display: block;
 }
 
-.isLink {
-  @include fontSize(1.35rem,normal);
+a {
+  &.isLink {
+    @include fontSize(1.35rem,400);
+    color: $black;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
 }
 
 

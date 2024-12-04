@@ -2,6 +2,7 @@ import { createBrowserRouter } from 'react-router-dom'
 import RootLayout from '../pages/RootLayout'
 import * as RouteSection1 from '../pages/sections/section_1/routes'
 import * as RouteSection2 from '../pages/sections/section_2/routes'
+import * as RouteSection3 from '../pages/sections/section_3/routes'
 
 export const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ export const router = createBrowserRouter([
       {
         path: 'section2/packageJSON',
         element: <RouteSection2.PackageJSONPage />,
+      },
+      {
+        path: 'section3/backendDevIntro',
+        element: <RouteSection3.IntroBackendDevPage />,
       },
     ],
   },

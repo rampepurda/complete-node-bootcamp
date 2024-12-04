@@ -2,7 +2,7 @@ export const navAriaLabel = {
   isMain: 'primary',
 }
 export const navigation = {
-  subDocs: [
+  sideBarSections: [
     {
       title: 'Section 1: Welcome',
       subNavigation: [
@@ -36,6 +36,10 @@ export const navigation = {
           link: 'section2/packageJSON',
         },
       ],
+    },
+    {
+      title: 'Section 3: Introduction to Backend Web Development',
+      link: 'section3/backendDevIntro',
     },
   ],
 }
