@@ -1,10 +1,11 @@
-import { Link, Outlet } from 'react-router-dom'
-import { SubNav } from '../../Components'
+import { Outlet } from 'react-router-dom'
+import { SideBarNav } from '../../Components'
 import React from 'react'
 import { navigation } from '../../configuration'
 
-export type NavT = {
+type SideBarNavT = {
   title: string
+  link?: string | undefined
   subNavigation?:
     | {
         title: string
@@ -13,15 +14,22 @@ export type NavT = {
     | undefined
 }
 export default function DocsPage() {
-  const subNavData: NavT[] = navigation.subDocs
+  const sideBarSectionsData: SideBarNavT[] = navigation.sideBarSections
 
   return (
     <div className="cols">
       <div className="col-4">
         <ul>
-          {subNavData.map((item, idx: number) => {
+          {sideBarSectionsData.map((item, idx: number) => {
             return (
-              <SubNav key={idx} id={idx} title={item.title} subNavigation={item.subNavigation} />
+              <li key={idx}>
+                <SideBarNav
+                  id={idx}
+                  title={item.title}
+                  link={item.link}
+                  subNavigation={item.subNavigation}
+                />
+              </li>
             )
           })}
         </ul>

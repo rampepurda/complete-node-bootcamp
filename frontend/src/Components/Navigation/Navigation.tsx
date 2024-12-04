@@ -4,7 +4,7 @@ import { Link, NavLink } from 'react-router-dom'
 import { Button } from '../UI'
 import classNames from 'classnames'
 
-type PropsSubNav = {
+type SideBarNavT = {
   id: number
   title: string
   link?: string | undefined
@@ -16,7 +16,7 @@ type PropsSubNav = {
     | undefined
 }
 
-export const SubNav = ({ id, title, link, subNavigation }: PropsWithChildren<PropsSubNav>) => {
+export const SideBarNav = ({ id, title, link, subNavigation }: PropsWithChildren<SideBarNavT>) => {
   const [isSubNavOpen, setIsSubNavOpen] = useState<number | null>(null)
   const handleOpenSubNav = (idx: number) => {
     if (isSubNavOpen === idx) {
@@ -26,8 +26,8 @@ export const SubNav = ({ id, title, link, subNavigation }: PropsWithChildren<Pro
   }
 
   return (
-    <li>
-      {subNavigation?.length !== 0 ? (
+    <>
+      {subNavigation?.length !== 0 && subNavigation !== undefined ? (
         <>
           <Button
             className={classNames('btn btn-link', classes.title)}
@@ -57,6 +57,6 @@ export const SubNav = ({ id, title, link, subNavigation }: PropsWithChildren<Pro
           {title}
         </Link>
       )}
-    </li>
+    </>
   )
 }
