@@ -1,11 +1,13 @@
 import classes from './Navigation.module.scss'
-import React, { PropsWithChildren, useState } from 'react'
+import React, { HTMLAttributes, PropsWithChildren, useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
 import { Button } from '../UI'
 import classNames from 'classnames'
+import { HTMLTagT } from '../../types'
 
-type SideBarNavT = {
-  id: number
+interface PropsInt extends HTMLAttributes<HTMLBodyElement> {
+  tagAttr: HTMLTagT
+  Id: number
   title: string
   link?: string | undefined
   subNavigation?:
@@ -16,7 +18,13 @@ type SideBarNavT = {
     | undefined
 }
 
-export const SideBarNav = ({ id, title, link, subNavigation }: PropsWithChildren<SideBarNavT>) => {
+export const SideBarNav = ({
+  tagAttr,
+  Id,
+  title,
+  link,
+  subNavigation,
+}: PropsWithChildren<PropsInt>) => {
   const [isSubNavOpen, setIsSubNavOpen] = useState<number | null>(null)
   const handleOpenSubNav = (idx: number) => {
     if (isSubNavOpen === idx) {
@@ -24,14 +32,15 @@ export const SideBarNav = ({ id, title, link, subNavigation }: PropsWithChildren
     }
     setIsSubNavOpen(idx)
   }
+  const HTMLAttribute = tagAttr
 
   return (
-    <>
+    <HTMLAttribute>
       {subNavigation?.length !== 0 && subNavigation !== undefined ? (
         <>
           <Button
             className={classNames('btn btn-link', classes.title)}
-            OnClick={() => handleOpenSubNav(id)}
+            OnClick={() => handleOpenSubNav(Id)}
             title={title}
             rest={{ type: 'button' }}
           />
@@ -57,6 +66,6 @@ export const SideBarNav = ({ id, title, link, subNavigation }: PropsWithChildren
           {title}
         </Link>
       )}
-    </>
+    </HTMLAttribute>
   )
 }

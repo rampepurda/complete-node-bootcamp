@@ -20,16 +20,16 @@ export default function DocsPage() {
     <div className="cols">
       <div className="col-4">
         <ul>
-          {sideBarSectionsData.map((item, idx: number) => {
+          {sideBarSectionsData.map((item, idx) => {
             return (
-              <li key={idx}>
-                <SideBarNav
-                  id={idx}
-                  title={item.title}
-                  link={item.link}
-                  subNavigation={item.subNavigation}
-                />
-              </li>
+              <SideBarNav
+                key={idx}
+                tagAttr={'li'}
+                Id={idx}
+                title={item.title}
+                link={item.link}
+                subNavigation={item.subNavigation}
+              />
             )
           })}
         </ul>
