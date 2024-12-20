@@ -1,6 +1,6 @@
 import classes from './Navigation.module.scss'
 import React, { HTMLAttributes, PropsWithChildren, useState } from 'react'
-import { Link, NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router-dom'
 import { Button } from '../UI'
 import classNames from 'classnames'
 import { HTMLTagT } from '../../types'
@@ -62,9 +62,9 @@ export const SideBarNav = ({
           </ul>
         </>
       ) : (
-        <Link className={classes.isLink} to={`${link}`}>
+        <NavLink className={classes.isLink} to={`${link}`}>
           {title}
-        </Link>
+        </NavLink>
       )}
     </HTMLAttribute>
   )
