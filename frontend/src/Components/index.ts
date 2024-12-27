@@ -1,4 +1,4 @@
 export * from './UI'
-export * from './Header'
-export * from './Navigation'
-export * from './Product'
+export * from './Header/Header'
+export * from './Navigation/Navigation'
+export * from './Product/Product'

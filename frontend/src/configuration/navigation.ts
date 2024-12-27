@@ -41,5 +41,15 @@ export const navigation = {
       title: 'Section 3: Introduction to Backend Web Development',
       link: 'section3/backendDevIntro',
     },
+    {
+      title: 'Section 6: Node Express',
+      link: 'section6/backendDevIntro',
+      subNavigation: [
+        {
+          title: 'Intro',
+          link: 'section6/node_express_intro',
+        },
+      ],
+    },
   ],
 }

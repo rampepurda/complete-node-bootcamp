@@ -4,11 +4,12 @@
   "description": "Help to understand how Node.js works, accordingly to Udemy Tutorial: Complete Node Bootcamp",
   "main": "api.js",
   "scripts": {
-    "start": "nodemon api.js"
+    "start": "nodemon app.js"
   },
   "author": "micTom",
   "license": "ISC",
   "dependencies": {
+    "express": "^4.21.2",
     "slugify": "^1.6.6"
   },
   "devDependencies": {
