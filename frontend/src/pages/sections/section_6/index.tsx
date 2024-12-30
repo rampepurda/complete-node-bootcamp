@@ -34,7 +34,7 @@ export default function IntroPage() {
           </Link>
         </li>
         <li>
-          <h4>Express i</h4>
+          <h4>Express i/add</h4>
           npm i express | yarn add express
         </li>
       </ul>
