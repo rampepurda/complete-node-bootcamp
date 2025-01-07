@@ -1,3 +1,8 @@
+/**
+ * Slugify - read more or refreshment
+ * 'https://www.npmjs.com/package/slugify'
+ */
+
 const fs = require("fs");
 const http = require("http");
 const url = require("url");

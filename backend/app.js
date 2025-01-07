@@ -1,8 +1,7 @@
 const express = require("express");
 const app = express();
 const routerProducts = require("./routes/products");
-const fs = require("node:fs/promises");
-const { getAll } = require("./dataEvent/event");
+const { json } = require("express");
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -10,7 +9,7 @@ app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Headers", "Content-Type,Authorization");
   next();
 });
-
+app.use(json());
 app.use(routerProducts);
 
 const port = process.env.PORT || 4040;
