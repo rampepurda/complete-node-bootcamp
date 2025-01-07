@@ -30,3 +30,6 @@ yarn-error.log*
 /backend/3-asynchronous-JS/
 /backend/data/
 /backend/node_modules/
+
+# Environment
+/frontend/env/.env.dev

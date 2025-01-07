@@ -1,18 +1,4 @@
-import { Product } from '../../../Components'
-import { ProductInt } from '../../../types'
-import { dataMock } from '../../../__mock__/mock_data'
-import { useQuery } from '@tanstack/react-query'
-
-const products: ProductInt[] = dataMock.products
-const url: string = 'http://localhost:4040/api'
-
 export default function TempProductsPage() {
-  const productsQuery = useQuery({
-    queryKey: ['products'],
-    queryFn: async (): Promise<Response> => await fetch(url),
-  })
-  console.log(productsQuery.data)
-
   return (
     <>
       <h2>Section 2: Templating & Creating Own Modules</h2>
