@@ -9,5 +9,14 @@ async function getAll() {
 
   return storedData;
 }
+async function deleteProduct(id) {
+  const storedData = await readData();
+  const updatedData = storedData.products.filter(
+    (product) => product.id !== id.toString(),
+  );
+
+  await writeData({ products: updatedData });
+}
 
 exports.getAll = getAll;
+exports.deleteProduct = deleteProduct;

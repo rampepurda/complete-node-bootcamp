@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom'
-import { useQuery } from '@tanstack/react-query'
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { environment } from '../../../configuration/environment'
 import { ProductInt } from '../../../types'
-import { PostProductForm, Product } from '../../../Components'
+import { Button, PostProductForm, Product } from '../../../Components'
 
 export default function IntroPage() {
+  const queryClient = useQueryClient()
   const { data, error, isLoading } = useQuery<{ products: ProductInt[] | undefined }>({
     queryKey: ['products'],
     queryFn: async () => {
@@ -15,7 +16,27 @@ export default function IntroPage() {
       }
     },
   })
+  const deleteProductMutation = useMutation({
+    mutationKey: ['product'],
+    mutationFn: async (id: string | number) => {
+      try {
+        const response = await fetch(`${environment.localURL}/${id}`, {
+          method: 'DELETE',
+        })
 
+        if (response.ok) {
+          const data = await response.json()
+
+          alert(data.message)
+        }
+      } catch (err) {
+        alert(err)
+      }
+    },
+    onSettled: async () => {
+      return await queryClient.invalidateQueries({ queryKey: ['products'] })
+    },
+  })
   return (
     <>
       <h2>Node Express - Intro</h2>
@@ -47,7 +68,16 @@ export default function IntroPage() {
       {(isLoading && <h3>Loading wait</h3>) || (error && <h3>Ops, something happened</h3>)}
       {data?.products &&
         data.products.map((product: ProductInt) => (
-          <Product tagElement={'section'} product={product} key={product.id} />
+          <Product tagElement={'section'} product={product} key={product.id}>
+            <Button
+              className="btn btn-remove"
+              OnClick={() => deleteProductMutation.mutate(`${product.id}`)}
+              rest={{ type: 'button' }}
+            >
+              {deleteProductMutation.isPending ? 'Deleting' : 'Delete'}
+            </Button>
+            <hr />
+          </Product>
         ))}
     </>
   )

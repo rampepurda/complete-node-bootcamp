@@ -1,6 +1,6 @@
 const express = require("express");
 const { v4: generateId } = require("uuid");
-const { getAll } = require("../dataEvent/event");
+const { getAll, deleteProduct } = require("../dataEvent/event");
 const { writeData } = require("../util/getData");
 const router = express.Router();
 
@@ -29,6 +29,12 @@ router.post("/products", async (req, res) => {
     message: "Data successfully posted",
     newProduct: newProduct,
   });
+});
+
+router.delete("/products/:id", async (req, res) => {
+  await deleteProduct(req.params.id);
+
+  res.json({ message: "Deleted successfully" });
 });
 
 module.exports = router;
