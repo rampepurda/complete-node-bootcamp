@@ -14,7 +14,7 @@ router.get("/products", async (req, res) => {
 
 router.post("/products", async (req, res) => {
   const dataForm = req.body;
-  const realDataForm = {
+  const newProduct = {
     productName: dataForm.productName,
     from: dataForm.from,
     description: dataForm.description,
@@ -22,11 +22,12 @@ router.post("/products", async (req, res) => {
   };
   const storedData = await getAll();
 
-  storedData.products.unshift(realDataForm);
+  storedData.products.unshift(newProduct);
   await writeData(storedData);
 
   res.json({
     message: "Data successfully posted",
+    newProduct: newProduct,
   });
 });
 
