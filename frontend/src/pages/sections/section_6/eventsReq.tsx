@@ -11,10 +11,12 @@ export default function EventsRequestPage() {
   }>({
     queryKey: ['products'],
     queryFn: async () => {
-      const response = await fetch(`${environment.localURL}`, { method: 'GET' })
-
-      if (response.ok) {
-        return response.json()
+      try {
+        return await fetch(`${environment.localURL}`, { method: 'GET' }).then((response) =>
+          response.json()
+        )
+      } catch (err: any) {
+        alert(err)
       }
     },
   })
@@ -45,7 +47,6 @@ export default function EventsRequestPage() {
 
       <PostProductForm />
 
-      {data?.productsTotal === 0 && <h3>No products</h3>}
       {(isLoading && <h3>Loading wait</h3>) || (error && <h3>Ops, something happened</h3>)}
       {data?.products && (
         <>
