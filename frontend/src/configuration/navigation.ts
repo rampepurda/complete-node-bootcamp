@@ -49,6 +49,10 @@ export const navigation = {
           title: 'Intro',
           link: 'section6/node_express_intro',
         },
+        {
+          title: 'GET, POST, DELETE, PATCH',
+          link: 'section6/eventsReq',
+        },
       ],
     },
   ],
