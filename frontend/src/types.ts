@@ -3,12 +3,12 @@ import { HTMLAttributes } from 'react'
 export interface ProductInt {
   id: string | number
   productName: string
-  image: string
+  image?: string
   from: string
-  nutrients: string
-  quantity: string
+  nutrients?: string
+  quantity?: string
   price: string
-  organic: boolean
+  organic?: boolean
   description: string
 }
 

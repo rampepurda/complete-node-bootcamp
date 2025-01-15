@@ -1,3 +1,5 @@
-import IntroPage from './index'
+import IntroPage from './intro'
+import EventsRequestPage from './eventsReq'
+import { ProductDetailPage } from './ProductDetailPage'
 
-export { IntroPage }
+export { IntroPage, EventsRequestPage, ProductDetailPage }

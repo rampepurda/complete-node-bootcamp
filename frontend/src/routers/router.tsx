@@ -44,6 +44,14 @@ export const router = createBrowserRouter(
           path: 'section6/node_express_intro',
           element: <RouteSection6.IntroPage />,
         },
+        {
+          path: 'section6/eventsReq',
+          element: <RouteSection6.EventsRequestPage />,
+        },
+        {
+          path: 'section6/eventsReq/:productName',
+          element: <RouteSection6.ProductDetailPage />,
+        },
       ],
     },
   ],
