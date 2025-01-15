@@ -45,6 +45,10 @@ export default function EventsRequestPage() {
     <>
       <h2>Node Express - Intro</h2>
 
+      <h5 className="hasOutline">
+        ApiServer - set Number simple trick: const num = req.param.id * 1
+      </h5>
+
       <PostProductForm />
 
       {(isLoading && <h3>Loading wait</h3>) || (error && <h3>Ops, something happened</h3>)}
