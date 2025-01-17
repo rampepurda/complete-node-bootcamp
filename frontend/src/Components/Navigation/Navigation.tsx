@@ -4,6 +4,7 @@ import { NavLink } from 'react-router-dom'
 import { Button } from '../UI'
 import classNames from 'classnames'
 import { HTMLTagT } from '../../types'
+import { useTranslation } from 'react-i18next'
 
 interface PropsInt extends HTMLAttributes<HTMLBodyElement> {
   tagAttr: HTMLTagT
@@ -25,6 +26,7 @@ export const SideBarNav = ({
   link,
   subNavigation,
 }: PropsWithChildren<PropsInt>) => {
+  const { t } = useTranslation()
   const [isSubNavOpen, setIsSubNavOpen] = useState<number | null>(null)
   const handleOpenSubNav = (idx: number) => {
     if (isSubNavOpen === idx) {
@@ -41,7 +43,7 @@ export const SideBarNav = ({
           <Button
             className={classNames('btn btn-link', classes.title)}
             OnClick={() => handleOpenSubNav(Id)}
-            title={title}
+            title={t(`${title}`)}
             rest={{ type: 'button' }}
           />
 
@@ -55,7 +57,7 @@ export const SideBarNav = ({
             {subNavigation?.map((item, idx: number) => {
               return (
                 <li key={idx}>
-                  <NavLink to={item.link}>{item.title}</NavLink>
+                  <NavLink to={item.link}>{t(`${item.title}`)}</NavLink>
                 </li>
               )
             })}
@@ -63,7 +65,7 @@ export const SideBarNav = ({
         </>
       ) : (
         <NavLink className={classes.isLink} to={`${link}`}>
-          {title}
+          {t(`${title}`)}
         </NavLink>
       )}
     </HTMLAttribute>

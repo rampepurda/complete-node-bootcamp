@@ -1,0 +1,31 @@
+{
+  "title": "Welcome to react using react-i18next fully type-safe {{demoTxt}}",
+  "sections": {
+    "section1": {
+      "title": "Section 1: Welcome",
+      "subNav": {
+        "title":"Intro"
+      }
+    },
+    "section2": {
+      "title": "Section 2: Introduction to Node.js and NPM",
+      "subNav": {
+          "title":"Reading and Writing Files (sync, async)",
+          "title2":"Creating a Simple Web Server",
+          "title3":"Routing & Building Simple Api",
+          "title4":"Templating and creating Own Modules",
+          "title5":"npm, package.json about"
+      }
+    },
+    "section3": {
+      "title": "Section 3: Introduction to Backend Web Development"
+    },
+    "section6": {
+      "title": "Section 6: Node Express",
+      "subNav": {
+        "title":"Intro",
+        "title2":"GET, POST, DELETE, PATCH"
+      }
+    }
+  }
+}
