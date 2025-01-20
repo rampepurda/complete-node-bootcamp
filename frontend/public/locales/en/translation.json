@@ -10,11 +10,11 @@
     "section2": {
       "title": "Section 2: Introduction to Node.js and NPM",
       "subNav": {
-          "title":"Reading and Writing Files (sync, async)",
-          "title2":"Creating a Simple Web Server",
-          "title3":"Routing & Building Simple Api",
-          "title4":"Templating and creating Own Modules",
-          "title5":"npm, package.json about"
+        "title":"Reading and Writing Files (sync, async)",
+        "title2":"Creating a Simple Web Server",
+        "title3":"Routing & Building Simple Api",
+        "title4":"Templating and creating Own Modules",
+        "title5":"npm, package.json about"
       }
     },
     "section3": {
