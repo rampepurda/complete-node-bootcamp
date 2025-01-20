@@ -1,0 +1,31 @@
+{
+  "title": "Vítejte {{demoTxt}}",
+  "sections": {
+    "section1": {
+      "title": "Kapitola  1: Vítejte v NodeJS",
+      "subNav": {
+        "title":"Představení"
+      }
+    },
+    "section2": {
+      "title": "Section 2: Představení Node.js a NPM",
+      "subNav": {
+        "title":"Načítání a zapisování (sync, async)",
+        "title2":"Jak vytvořit  Web Server",
+        "title3":"Routing & Building základní Api",
+        "title4":"Templating a tvorba Own Modules",
+        "title5":"npm, package.json about"
+      }
+    },
+    "section3": {
+      "title": "Kapitola 3: Představení Backend-u Web Development"
+    },
+    "section6": {
+      "title": "Kapitola 6: Node Express",
+      "subNav": {
+        "title":"Představení",
+        "title2":"GET, POST, DELETE, PATCH"
+      }
+    }
+  }
+}

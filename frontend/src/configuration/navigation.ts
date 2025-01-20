@@ -4,53 +4,53 @@ export const navAriaLabel = {
 export const navigation = {
   sideBarSections: [
     {
-      title: 'Section 1: Welcome',
+      title: 'sections.section1.title',
       subNavigation: [
         {
-          title: 'Intro',
+          title: 'sections.section1.subNav.title',
           link: 'section1',
         },
       ],
     },
     {
-      title: 'Section 2: Introduction to Node.js and NPM',
+      title: 'sections.section2.title',
       subNavigation: [
         {
-          title: 'Reading and Writing Files (sync, async)',
+          title: 'sections.section2.subNav.title',
           link: 'section2/reading-and-writing-files',
         },
         {
-          title: 'Creating a Simple Web Server',
+          title: 'sections.section2.subNav.title2',
           link: 'section2/creating-simple-web-server',
         },
         {
-          title: 'Routing & Building Simple Api',
+          title: 'sections.section2.subNav.title3',
           link: 'section2/routing',
         },
         {
-          title: 'Templating and creating Own Modules',
+          title: 'sections.section2.subNav.title4',
           link: 'section2/templateProducts',
         },
         {
-          title: 'npm, package.json about',
+          title: 'sections.section2.subNav.title5',
           link: 'section2/packageJSON',
         },
       ],
     },
     {
-      title: 'Section 3: Introduction to Backend Web Development',
+      title: 'sections.section3.title',
       link: 'section3/backendDevIntro',
     },
     {
-      title: 'Section 6: Node Express',
+      title: 'sections.section6.title',
       link: 'section6/backendDevIntro',
       subNavigation: [
         {
-          title: 'Intro',
+          title: 'sections.section6.subNav.title',
           link: 'section6/node_express_intro',
         },
         {
-          title: 'GET, POST, DELETE, PATCH',
+          title: 'sections.section6.subNav.title2',
           link: 'section6/eventsReq',
         },
       ],
