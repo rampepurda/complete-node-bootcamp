@@ -21,8 +21,13 @@ export const LngSwitcher = () => {
           {i18next.resolvedLanguage !== lng && (
             <Button
               className={classes.btn}
-              rest={{ type: 'button', disabled: i18next.resolvedLanguage === lng }}
-              OnClick={(ev) => i18next.changeLanguage(lng)}
+              OnClick={() => i18next.changeLanguage(lng)}
+              rest={{
+                type: 'button',
+                disabled: i18next.resolvedLanguage === lng,
+                lang: i18next.resolvedLanguage,
+              }}
+              ariaLabel={`${t('ariaLabel.lang')}`}
             >
               {lng}
             </Button>

@@ -27,5 +27,8 @@
         "title2":"GET, POST, DELETE, PATCH"
       }
     }
+  },
+  "ariaLabel": {
+    "lang": "Switch to Czech"
   }
 }
