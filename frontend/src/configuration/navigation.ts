@@ -51,7 +51,7 @@ export const navigation = {
         },
         {
           title: 'sections.section6.subNav.title2',
-          link: 'section6/eventsReq',
+          link: 'section6/node_routers',
         },
       ],
     },

@@ -1,5 +1,5 @@
 import IntroPage from './intro'
-import EventsRequestPage from './eventsReq'
+import NodeRoutersPage from './node_routers'
 import { ProductDetailPage } from './ProductDetailPage'
 
-export { IntroPage, EventsRequestPage, ProductDetailPage }
+export { IntroPage, NodeRoutersPage, ProductDetailPage }

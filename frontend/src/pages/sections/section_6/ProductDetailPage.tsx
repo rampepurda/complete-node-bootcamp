@@ -7,7 +7,7 @@ import { ProductInt } from '../../../types'
 export const ProductDetailPage = () => {
   const params = useParams()
   const title = params.productName
-  const { data, error, isError, isPending, isLoading } = useQuery({
+  const { data, isLoading } = useQuery({
     queryKey: [`product${title}`],
     queryFn: async (): Promise<{ product: ProductInt } | undefined> => {
       const response = await fetch(`${environment.localURL}/${title}`, { method: 'GET' })
@@ -20,11 +20,17 @@ export const ProductDetailPage = () => {
 
   return (
     <>
-      <h2>Product detail</h2>
+      {isLoading ? (
+        <h3>Loading, wait</h3>
+      ) : (
+        <>
+          <h2>Product detail</h2>
 
-      <Product tagElement={'div'} product={data?.product} isDetail={true}>
-        <Link to="/section6/eventsReq">Back to index</Link>
-      </Product>
+          <Product tagElement={'div'} product={data?.product} isDetail={true}>
+            <Link to="/section6/node_routers">Back to index</Link>
+          </Product>
+        </>
+      )}
     </>
   )
 }

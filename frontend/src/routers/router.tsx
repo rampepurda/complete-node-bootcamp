@@ -45,11 +45,11 @@ export const router = createBrowserRouter(
           element: <RouteSection6.IntroPage />,
         },
         {
-          path: 'section6/eventsReq',
-          element: <RouteSection6.EventsRequestPage />,
+          path: 'section6/node_routers',
+          element: <RouteSection6.NodeRoutersPage />,
         },
         {
-          path: 'section6/eventsReq/:productName',
+          path: 'section6/node_routers/:productName',
           element: <RouteSection6.ProductDetailPage />,
         },
       ],
