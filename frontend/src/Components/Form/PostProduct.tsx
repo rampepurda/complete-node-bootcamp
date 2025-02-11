@@ -34,8 +34,18 @@ export const PostProductForm = () => {
     event.currentTarget.reset()
   }
 
+  const handleActionSubmit = async (formData: FormData) => {
+    const postsData = {
+      productName: formData.get('productName'),
+      from: formData.get('from'),
+      description: formData.get('description'),
+    }
+
+    productMutation.mutate(postsData)
+  }
+
   return (
-    <form className="width-is-5" name="products" method="post" onSubmit={handleSubmit}>
+    <form className="width-is-5" name="products" method="post" action={handleActionSubmit}>
       <input id="product" type="text" name="productName" placeholder="product" required />
       <input id="from" type="text" name="from" placeholder="from" required />
       <input id="description" type="text" name="description" placeholder="description" required />
