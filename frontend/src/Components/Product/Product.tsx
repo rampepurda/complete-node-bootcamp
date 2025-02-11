@@ -39,7 +39,7 @@ export const Product = ({
         </>
       ) : (
         <div>
-          <Link to={`/section6/eventsReq/${product?.productName}`}>See detail</Link>
+          <Link to={`/section6/node_routers/${product?.productName}`}>See detail</Link>
         </div>
       )}
 

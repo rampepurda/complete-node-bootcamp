@@ -3,14 +3,18 @@ import { environment } from '../../../configuration/environment'
 import { ProductInt } from '../../../types'
 import { Button, PostProductForm, Product } from '../../../Components'
 
-export default function EventsRequestPage() {
+export default function NodeRoutersPage() {
   const queryClient = useQueryClient()
-  const { data, error, isLoading } = useQuery<{
-    products: ProductInt[] | undefined
-    productsTotal: number
-  }>({
+  const { data, error, isLoading } = useQuery({
     queryKey: ['products'],
-    queryFn: async () => {
+    queryFn: async (): Promise<
+      | {
+          products: ProductInt[] | undefined
+          message: string
+          productsTotal: number
+        }
+      | undefined
+    > => {
       try {
         return await fetch(`${environment.localURL}`, { method: 'GET' }).then((response) =>
           response.json()
@@ -41,9 +45,10 @@ export default function EventsRequestPage() {
       return await queryClient.invalidateQueries({ queryKey: ['products'] })
     },
   })
+
   return (
     <>
-      <h2>Node Express - Intro</h2>
+      <h2>Node Express - routers(GET, POST, DELETE, PATCH, PUT)</h2>
 
       <h5 className="hasOutline">
         ApiServer - set Number simple trick: const num = req.param.id * 1
@@ -57,7 +62,7 @@ export default function EventsRequestPage() {
           <h4>
             Products total: <mark>{data.productsTotal}</mark>
           </h4>
-          {data.products.map((product: ProductInt) => (
+          {data?.products.map((product: ProductInt) => (
             <Product tagElement={'section'} product={product} key={product.id}>
               <Button
                 className="btn btn-remove"
