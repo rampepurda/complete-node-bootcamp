@@ -8,7 +8,7 @@ export const PostProductForm = () => {
     mutationKey: ['product'],
     mutationFn: async (dataForm: Record<string, any>) => {
       try {
-        const response = await fetch(`${environment.localURL}`, {
+        const response = await fetch(`${environment.localProductsURL}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(dataForm),

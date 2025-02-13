@@ -10,7 +10,7 @@ export const ProductDetailPage = () => {
   const { data, isLoading } = useQuery({
     queryKey: [`product${title}`],
     queryFn: async (): Promise<{ product: ProductInt } | undefined> => {
-      const response = await fetch(`${environment.localURL}/${title}`, { method: 'GET' })
+      const response = await fetch(`${environment.localProductsURL}/${title}`, { method: 'GET' })
 
       if (response.ok) {
         return response.json()

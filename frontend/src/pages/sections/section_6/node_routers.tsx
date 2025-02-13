@@ -16,7 +16,7 @@ export default function NodeRoutersPage() {
       | undefined
     > => {
       try {
-        return await fetch(`${environment.localURL}`, { method: 'GET' }).then((response) =>
+        return await fetch(`${environment.localProductsURL}`, { method: 'GET' }).then((response) =>
           response.json()
         )
       } catch (err: any) {
@@ -28,7 +28,7 @@ export default function NodeRoutersPage() {
     mutationKey: ['product'],
     mutationFn: async (id: string | number) => {
       try {
-        const response = await fetch(`${environment.localURL}/${id}`, {
+        const response = await fetch(`${environment.localProductsURL}/${id}`, {
           method: 'DELETE',
         })
 

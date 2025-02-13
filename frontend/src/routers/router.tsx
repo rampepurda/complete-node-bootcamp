@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom'
 import RootLayout from '../pages/RootLayout'
+import ReactPlayerPage from '../reactPlayer'
 import * as RouteSection1 from '../pages/sections/section_1/routes'
 import * as RouteSection2 from '../pages/sections/section_2/routes'
 import * as RouteSection3 from '../pages/sections/section_3/routes'
@@ -12,6 +13,10 @@ export const router = createBrowserRouter(
       element: <RootLayout />,
       id: 'root',
       children: [
+        {
+          path: 'reactPlayer',
+          element: <ReactPlayerPage />,
+        },
         {
           path: 'section1',
           element: <RouteSection1.IntroPage />,
