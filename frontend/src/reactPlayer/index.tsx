@@ -31,8 +31,6 @@ export default function ReactPlayerPage() {
     },
   }
 
-  console.log(data?.playlist)
-
   return (
     <div style={styles.cover}>
       <Link to="/" style={{ textDecoration: 'none' }}>

@@ -1,13 +1,13 @@
-import React, { FormEvent, useEffect, useState } from 'react'
+import React, { FormEvent, useState } from 'react'
 import ReactPlayer from 'react-player'
 import { PlaylistT } from '../../types'
 import { useMutation } from '@tanstack/react-query'
 import { environment } from '../../configuration/environment'
+import { Button } from '../../Components'
 
 export const Playlist = ({ url, title, id, isCompleted }: PlaylistT) => {
   const [isCompleteD, setIsCompleted] = useState<boolean>(false)
   const [toggleEditForm, setToggleEditForm] = useState<boolean>(false)
-  const [isChecked, setIsChecked] = useState<boolean>(false)
   const isVideoCompletedMutation = useMutation({
     mutationKey: [],
     mutationFn: async (arg: { id: string | number; onEnded: string }) => {
@@ -47,30 +47,16 @@ export const Playlist = ({ url, title, id, isCompleted }: PlaylistT) => {
       )}
 
       <div>
-        <button
-          className="btn btn-edit"
-          type="button"
-          onClick={() => setToggleEditForm(!toggleEditForm)}
-        >
-          {toggleEditForm ? 'Close' : 'Edit'}
-        </button>
+        <Button
+          classesName={'btn btn-edit'}
+          OnClick={() => setToggleEditForm(!toggleEditForm)}
+          rest={{ type: 'button' }}
+          title={toggleEditForm ? 'Close' : 'Edit'}
+        />
 
         {toggleEditForm && (
           <form method="patch" onSubmit={handleSubmitStatus} aria-expanded={toggleEditForm}>
             <input name="title" type="text" placeholder="change title" required={true} />
-            <label htmlFor="checkVideo">
-              Is video completed:
-              <input
-                id="checkVideo"
-                className="width-is-1"
-                name="isCompleted"
-                type="checkbox"
-                checked={isChecked}
-                onChange={() => setIsChecked(!isChecked)}
-                aria-label={isChecked ? 'is completed' : 'not completed'}
-              />
-            </label>
-
             <button className="btn btn-submit" type="submit">
               Submit
             </button>

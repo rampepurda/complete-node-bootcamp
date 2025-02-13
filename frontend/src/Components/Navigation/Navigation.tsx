@@ -41,7 +41,7 @@ export const SideBarNav = ({
       {subNavigation?.length !== 0 && subNavigation !== undefined ? (
         <>
           <Button
-            className={classNames('btn btn-link', classes.title)}
+            classesName={classNames('btn btn-link', classes.title)}
             OnClick={() => handleOpenSubNav(Id)}
             title={t(`${title}`)}
             rest={{ type: 'button' }}

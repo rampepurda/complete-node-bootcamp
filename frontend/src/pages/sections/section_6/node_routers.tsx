@@ -65,7 +65,7 @@ export default function NodeRoutersPage() {
           {data?.products.map((product: ProductInt) => (
             <Product tagElement={'section'} product={product} key={product.id}>
               <Button
-                className="btn btn-remove"
+                classesName={'btn btn-remove'}
                 OnClick={() => deleteProductMutation.mutate(`${product.id}`)}
                 rest={{ type: 'button' }}
               >
