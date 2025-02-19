@@ -5,7 +5,7 @@ import Backend from 'i18next-http-backend'
 //import en from './en/common.json'
 //import cz from './cz/common.json'
 
-/*
+/**
   Tutorial URL:
   - https://www.youtube.com/watch?v=SA_9i4TtxLQ
 
@@ -16,7 +16,7 @@ import Backend from 'i18next-http-backend'
    - backend plugin: yarn add i18next-http-backend
    - use(Backend)
    - thanks of 'Backend' we can remove resource and create dedicated json file for example
-    under public/locales/en/translation.json file.
+    under public/locales/en/translation.json file. (Name: 'translation.json' it is a must)
    - resources can be deleted now
    - lazyLoading (need to use)
 

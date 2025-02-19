@@ -10,6 +10,16 @@ async function getAll() {
   return storedData;
 }
 
+async function replacePlaylist(id, data) {
+  const storedData = await readData()
+  const index = storedData.playlist.findIndex((item) => item.id === id.toString())
+
+
+  storedData.playlist[index] = { ...data, id }
+  console.log(storedData)
+  await writeData(storedData)
+}
+
 async function getProduct(title) {
   const storedData = await readData();
   const product = storedData.products.find(
@@ -33,9 +43,10 @@ async function deleteProduct(id) {
     (product) => product.id !== id,
   );
 
-  await writeData({ products: updatedData });
+  await writeData({ playlist: storedData.playlist, products: updatedData });
 }
 
 exports.getAll = getAll;
 exports.getProduct = getProduct;
 exports.deleteProduct = deleteProduct;
+exports.replacePlaylist = replacePlaylist;

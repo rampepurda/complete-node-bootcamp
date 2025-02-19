@@ -3,7 +3,7 @@ import { environment } from '../../../configuration/environment'
 import { ProductInt } from '../../../types'
 import { Button, PostProductForm, Product } from '../../../Components'
 
-export default function NodeRoutersPage() {
+export default function ApiRoutesMethodsPage() {
   const queryClient = useQueryClient()
   const { data, error, isLoading } = useQuery({
     queryKey: ['products'],
@@ -16,7 +16,7 @@ export default function NodeRoutersPage() {
       | undefined
     > => {
       try {
-        return await fetch(`${environment.localURL}`, { method: 'GET' }).then((response) =>
+        return await fetch(`${environment.localProductsURL}`, { method: 'GET' }).then((response) =>
           response.json()
         )
       } catch (err: any) {
@@ -28,7 +28,7 @@ export default function NodeRoutersPage() {
     mutationKey: ['product'],
     mutationFn: async (id: string | number) => {
       try {
-        const response = await fetch(`${environment.localURL}/${id}`, {
+        const response = await fetch(`${environment.localProductsURL}/${id}`, {
           method: 'DELETE',
         })
 
@@ -65,7 +65,7 @@ export default function NodeRoutersPage() {
           {data?.products.map((product: ProductInt) => (
             <Product tagElement={'section'} product={product} key={product.id}>
               <Button
-                className="btn btn-remove"
+                classesName={'btn btn-remove'}
                 OnClick={() => deleteProductMutation.mutate(`${product.id}`)}
                 rest={{ type: 'button' }}
               >

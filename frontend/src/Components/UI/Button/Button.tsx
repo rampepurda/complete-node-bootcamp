@@ -2,10 +2,9 @@ import React, { MouseEventHandler, PropsWithChildren } from 'react'
 import classNames from 'classnames'
 
 type Props = {
-  className?: string
+  classesName?: string
   OnClick?: MouseEventHandler<HTMLButtonElement>
   title?: string
-  ariaLabel?: string
   rest: Record<string, any>
 }
 /**
@@ -14,19 +13,13 @@ type Props = {
 
 export const Button = ({
   children,
-  className,
+  classesName,
   OnClick,
   title,
-  ariaLabel,
   rest,
 }: PropsWithChildren<Props>) => {
   return (
-    <button
-      className={classNames('btn', className)}
-      onClick={OnClick}
-      aria-label={ariaLabel}
-      {...rest}
-    >
+    <button className={classNames('btn', classesName)} onClick={OnClick} {...rest}>
       {title}
       {children}
     </button>

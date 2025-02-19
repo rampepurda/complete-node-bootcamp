@@ -177,6 +177,14 @@ a {
     }
   }
 
+  &-edit {
+    background-color: $orange;
+
+    &:hover {
+      background-color:$orange;
+    }
+  }
+
   &-link {
     margin: 0;
     border: 0;

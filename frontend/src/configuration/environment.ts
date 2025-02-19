@@ -1,3 +1,4 @@
 export const environment = {
-  localURL: process.env.REACT_APP_LOCAL_URL,
+  localProductsURL: process.env.REACT_APP_LOCAL_PRODUCTS_URL,
+  localPlaylistURL: process.env.REACT_APP_LOCAL_PLAYLIST_URL,
 }

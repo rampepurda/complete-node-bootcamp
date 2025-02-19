@@ -1,5 +1,5 @@
 import IntroPage from './intro'
-import NodeRoutersPage from './node_routers'
+import ApiRoutesMethodsPage from './api_routes_methods'
 import { ProductDetailPage } from './ProductDetailPage'
 
-export { IntroPage, NodeRoutersPage, ProductDetailPage }
+export { IntroPage, ApiRoutesMethodsPage, ProductDetailPage }
