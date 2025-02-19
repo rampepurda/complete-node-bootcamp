@@ -1,5 +1,4 @@
 import classes from './Header.module.scss'
-import React from 'react'
 import { LngSwitcher } from '../../Components/index'
 import { Link } from 'react-router-dom'
 import classNames from 'classnames'

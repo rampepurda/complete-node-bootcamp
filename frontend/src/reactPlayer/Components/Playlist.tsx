@@ -3,10 +3,10 @@ import ReactPlayer from 'react-player'
 import { PlaylistT } from '../../types'
 import { useMutation } from '@tanstack/react-query'
 import { environment } from '../../configuration/environment'
-import { Button } from '../../Components'
+import { Button, Loader } from '../../Components'
 
-export const Playlist = ({ url, title, id }: PlaylistT) => {
-  const [isCompleteD, setIsCompleted] = useState<boolean>(false)
+export const Playlist = ({ url, title, id, isCompleted }: PlaylistT) => {
+  const [onEnded, setOnEnded] = useState<boolean>(false)
   const [toggleEditForm, setToggleEditForm] = useState<boolean>(false)
 
   /**
@@ -26,7 +26,7 @@ export const Playlist = ({ url, title, id }: PlaylistT) => {
    *     return isVideoCompletedMutation.mutate({ id, isCompleted: 'true' })
    *   }
    */
-  const patchPlaylistMutation = useMutation({
+  const patchPlaylistTitleMutation = useMutation({
     mutationKey: [`video${id}`],
     mutationFn: async (arg: { id: string | number; dataForm: Record<string, any> }) => {
       await fetch(`${environment.localPlaylistURL}/${arg.id}`, {
@@ -40,14 +40,18 @@ export const Playlist = ({ url, title, id }: PlaylistT) => {
   const handleSubmitStatus = async (event: FormEvent<HTMLFormElement>) => {
     const data = new FormData(event.currentTarget)
     const formData = Object.fromEntries(data)
+    const finalData = {
+      formData,
+      isCompleted: true,
+    }
 
-    patchPlaylistMutation.mutate({ id, dataForm: formData })
+    patchPlaylistTitleMutation.mutate({ id, dataForm: finalData })
   }
 
   return (
     <div className="hasOutline width-is-7">
       <h2>{title}</h2>
-      {isCompleteD ? (
+      {isCompleted ? (
         <p className="color-is-green">video is Completed</p>
       ) : (
         <p className="color-is-red">video is not Completed</p>
@@ -71,7 +75,12 @@ export const Playlist = ({ url, title, id }: PlaylistT) => {
         )}
       </div>
 
-      <ReactPlayer url={`${url}`} controls={true} onEnded={() => setIsCompleted(true)} />
+      <ReactPlayer
+        url={`${url}`}
+        controls={true}
+        fallback={<Loader />}
+        onEnded={() => setOnEnded(true)}
+      />
     </div>
   )
 }

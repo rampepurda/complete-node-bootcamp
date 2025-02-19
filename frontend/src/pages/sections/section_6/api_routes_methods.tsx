@@ -3,7 +3,7 @@ import { environment } from '../../../configuration/environment'
 import { ProductInt } from '../../../types'
 import { Button, PostProductForm, Product } from '../../../Components'
 
-export default function NodeRoutersPage() {
+export default function ApiRoutesMethodsPage() {
   const queryClient = useQueryClient()
   const { data, error, isLoading } = useQuery({
     queryKey: ['products'],

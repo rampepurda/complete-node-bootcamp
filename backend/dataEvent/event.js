@@ -43,7 +43,7 @@ async function deleteProduct(id) {
     (product) => product.id !== id,
   );
 
-  await writeData({ products: updatedData });
+  await writeData({ playlist: storedData.playlist, products: updatedData });
 }
 
 exports.getAll = getAll;

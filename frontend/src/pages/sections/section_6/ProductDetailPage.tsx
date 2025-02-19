@@ -27,7 +27,7 @@ export const ProductDetailPage = () => {
           <h2>Product detail</h2>
 
           <Product tagElement={'div'} product={data?.product} isDetail={true}>
-            <Link to="/section6/node_routers">Back to index</Link>
+            <Link to="/section6/api_routes_methods">Back to index</Link>
           </Product>
         </>
       )}

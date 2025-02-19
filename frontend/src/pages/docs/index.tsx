@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router-dom'
 import { SideBarNav } from '../../Components'
 import React from 'react'
 import { navigation } from '../../configuration'
@@ -14,6 +14,7 @@ type SideBarNavT = {
     | undefined
 }
 export default function DocsPage() {
+  const { pathname } = useLocation()
   const sideBarSectionsData: SideBarNavT[] = navigation.sideBarSections
 
   return (
@@ -36,6 +37,23 @@ export default function DocsPage() {
       </div>
 
       <div className="col-8">
+        {pathname === '/' && (
+          <section className="hasOutline">
+            <h2>Project dependencies:</h2>
+            <ul className="hasTypeDisc">
+              <li>
+                <strong>"react":</strong> "^19.0.0",
+              </li>
+              <li>
+                <strong>"react-router-dom":</strong> "7",
+              </li>
+              <li>
+                <strong>"typescript":</strong> "^5.7.3",
+              </li>
+            </ul>
+          </section>
+        )}
+
         <Outlet />
       </div>
     </div>

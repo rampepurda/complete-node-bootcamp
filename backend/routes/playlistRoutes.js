@@ -25,7 +25,7 @@ router.patch('/playlist/:id', async (req, res, next) => {
     await replacePlaylist(req.params.id, {
       title,
       url: selectedPlaylist.url,
-      isCompleted
+      isCompleted,
     })
 
     res.json({ message: 'Status was updated.' })

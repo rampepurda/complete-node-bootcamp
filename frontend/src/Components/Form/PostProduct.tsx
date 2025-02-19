@@ -1,4 +1,3 @@
-import React, { FormEvent } from 'react'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { environment } from '../../configuration/environment'
 
@@ -25,15 +24,6 @@ export const PostProductForm = () => {
       return await queryClient.invalidateQueries({ queryKey: ['products'] })
     },
   })
-  const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault()
-    const data = new FormData(event.currentTarget)
-    const formData = Object.fromEntries(data)
-
-    productMutation.mutate(formData)
-    event.currentTarget.reset()
-  }
-
   const handleActionSubmit = async (formData: FormData) => {
     const postsData = {
       productName: formData.get('productName'),
@@ -49,6 +39,7 @@ export const PostProductForm = () => {
       <input id="product" type="text" name="productName" placeholder="product" required />
       <input id="from" type="text" name="from" placeholder="from" required />
       <input id="description" type="text" name="description" placeholder="description" required />
+
       <button className="btn btn-submit" type="submit" disabled={productMutation.isPending}>
         {productMutation.isPending ? 'Submitting' : 'Submit'}
       </button>

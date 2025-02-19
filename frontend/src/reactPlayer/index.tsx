@@ -33,6 +33,9 @@ export default function ReactPlayerPage() {
 
   return (
     <div style={styles.cover}>
+      <title>ReactPlayer - all about</title>
+      <meta name="author" content="Josh" />
+      <meta name="keywords" content="video, react" />
       <Link to="/" style={{ textDecoration: 'none' }}>
         &larr;
       </Link>
@@ -50,12 +53,8 @@ export default function ReactPlayerPage() {
             Total videos: <mark>{data.playlistTotal}</mark>
           </h4>
         )}
-        {data?.playlist?.map((item) => <Playlist {...item} key={item.id} />)}
 
-        {/* data?.playlist?.map((item) => {
-          return <>{item.isCompleted && <Playlist {...item} key={item.id} />}</>
-        }) 
-        */}
+        {data?.playlist?.map((item) => <Playlist {...item} key={item.id} />)}
       </section>
     </div>
   )

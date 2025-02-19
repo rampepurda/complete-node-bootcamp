@@ -1,0 +1,19 @@
+@import "../../styles/variables";
+@import "../../styles/spacing";
+
+.cover {
+  margin: $spacer-5;
+
+  h4 {
+    margin-top: - $spacer-4;
+    color: $gray;
+  }
+}
+
+.isRed {
+  color: $red;
+}
+
+.isSub {
+  margin-top: - $spacer-4;
+}

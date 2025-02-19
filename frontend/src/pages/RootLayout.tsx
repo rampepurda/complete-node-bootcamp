@@ -3,6 +3,7 @@ import DocsPage from './docs'
 import '../i18n/config'
 import { useLocation } from 'react-router-dom'
 import ReactPlayerPage from '../reactPlayer'
+import React from 'react'
 
 export default function RootLayout() {
   const { pathname } = useLocation()
