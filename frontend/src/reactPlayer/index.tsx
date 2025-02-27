@@ -26,6 +26,12 @@ export default function ReactPlayerPage() {
   })
 
   const styles = {
+    link: {
+      backgroundColor: '#000',
+      padding: '.4rem 1rem',
+      color: '#fff',
+      textDecoration: 'none',
+    },
     cover: {
       margin: '1rem',
     },
@@ -36,8 +42,8 @@ export default function ReactPlayerPage() {
       <title>ReactPlayer - all about</title>
       <meta name="author" content="Josh" />
       <meta name="keywords" content="video, react" />
-      <Link to="/" style={{ textDecoration: 'none' }}>
-        &larr;
+      <Link to="/" style={styles.link}>
+        &larr; Home
       </Link>
 
       <h2>ReactPlayer</h2>
