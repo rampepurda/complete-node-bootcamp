@@ -1,7 +1,6 @@
 const express = require("express");
 const { v4: generateId } = require("uuid");
 const { getAll, replacePlaylist } = require("../dataEvent/event");
-const { writeData } = require("../util/getData");
 const router = express.Router();
 
 router.get("/playlist", async (req, res) => {
@@ -18,21 +17,23 @@ router.get("/playlist", async (req, res) => {
 router.patch('/playlist/:id', async (req, res, next) => {
   const { title, isCompleted } = req.body
   const dataApi = await getAll()
-  const index = dataApi.playlist.findIndex((item) => item.id === req.params.id)
+  const paramsId = Number(req.params.id)
+  const index = dataApi.playlist.findIndex((item) => item.id === paramsId)
   const selectedPlaylist = dataApi.playlist[index]
 
-  try {
-    await replacePlaylist(req.params.id, {
-      title,
-      url: selectedPlaylist.url,
-      isCompleted,
-    })
+  if(selectedPlaylist) {
+    try {
+      await replacePlaylist(paramsId, {
+        title,
+        url: selectedPlaylist.url,
+        isCompleted
+      })
 
-    res.json({ message: 'Status was updated.' })
-  } catch (error) {
-    next(error)
+      res.json({ message: 'Status was updated.' })
+    } catch (error) {
+      next(error)
+    }
   }
 })
-
 
 module.exports = router;

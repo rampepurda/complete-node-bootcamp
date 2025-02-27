@@ -12,11 +12,10 @@ async function getAll() {
 
 async function replacePlaylist(id, data) {
   const storedData = await readData()
-  const index = storedData.playlist.findIndex((item) => item.id === id.toString())
+  const index = storedData.playlist.findIndex((item) => item.id === id)
 
 
   storedData.playlist[index] = { ...data, id }
-  console.log(storedData)
   await writeData(storedData)
 }
 

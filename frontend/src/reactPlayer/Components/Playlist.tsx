@@ -1,12 +1,11 @@
 import React, { FormEvent, useState } from 'react'
-import ReactPlayer from 'react-player'
 import { PlaylistT } from '../../types'
 import { useMutation } from '@tanstack/react-query'
 import { environment } from '../../configuration/environment'
-import { Button, Loader } from '../../Components'
+import { Button } from '../../Components'
+import { ReactPlayerCard } from './ReactPlayerCard'
 
 export const Playlist = ({ url, title, id, isCompleted }: PlaylistT) => {
-  const [onEnded, setOnEnded] = useState<boolean>(false)
   const [toggleEditForm, setToggleEditForm] = useState<boolean>(false)
 
   /**
@@ -36,12 +35,13 @@ export const Playlist = ({ url, title, id, isCompleted }: PlaylistT) => {
       })
     },
     onError: (err) => alert(err),
+    onSuccess: () => alert('Title changed'),
   })
   const handleSubmitStatus = async (event: FormEvent<HTMLFormElement>) => {
     const data = new FormData(event.currentTarget)
     const formData = Object.fromEntries(data)
     const finalData = {
-      formData,
+      title: formData.title,
       isCompleted: true,
     }
 
@@ -75,12 +75,7 @@ export const Playlist = ({ url, title, id, isCompleted }: PlaylistT) => {
         )}
       </div>
 
-      <ReactPlayer
-        url={`${url}`}
-        controls={true}
-        fallback={<Loader />}
-        onEnded={() => setOnEnded(true)}
-      />
+      <ReactPlayerCard url={`${url}`} />
     </div>
   )
 }
