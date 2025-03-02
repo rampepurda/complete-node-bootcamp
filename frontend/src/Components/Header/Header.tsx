@@ -9,7 +9,7 @@ export const Header = () => {
       <h1 className="color-is-white">Complete Node Bootcamp</h1>
 
       <Link to="/reactPlayer" title="reactPlayer">
-        <img src="/ico-internal.svg" width={32} height={32} aria-hidden={true} />
+        <img src="/ico-internal.svg" width={32} height={32} aria-hidden={true} alt="externallink" />
       </Link>
 
       <LngSwitcher />

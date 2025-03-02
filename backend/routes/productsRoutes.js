@@ -38,6 +38,8 @@ router.post("/products", async (req, res) => {
     message: "Data successfully posted",
     newProduct: newProduct,
   });
+
+  res.cookie('product', dataForm.productName, cOption)
 });
 
 router.delete("/products/:id", async (req, res) => {

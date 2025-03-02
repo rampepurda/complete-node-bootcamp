@@ -66,7 +66,7 @@ export const Playlist = ({ url, title, id, isCompleted }: PlaylistT) => {
         />
 
         {toggleEditForm && (
-          <form method="patch" onSubmit={handleSubmitStatus} aria-expanded={toggleEditForm}>
+          <form method="patch" onSubmit={handleSubmitStatus}>
             <input name="title" type="text" placeholder={title} required={true} />
             <button className="btn btn-submit" type="submit">
               Submit

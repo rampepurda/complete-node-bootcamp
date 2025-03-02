@@ -1,6 +1,5 @@
 import classes from './LngSwitcher.module.scss'
 import { Button } from '../UI'
-import '../../i18n/config'
 import i18next from 'i18next'
 
 export const LngSwitcher = () => {
@@ -17,14 +16,13 @@ export const LngSwitcher = () => {
             <Button
               classesName={classes.btn}
               OnClick={() => i18next.changeLanguage(lng)}
+              title={`${lng}`}
               rest={{
-                type: 'button',
+                type: 'submit',
                 disabled: i18next.resolvedLanguage === lng,
                 lang: i18next.resolvedLanguage,
               }}
-            >
-              {lng}
-            </Button>
+            />
           )}
         </div>
       ))}

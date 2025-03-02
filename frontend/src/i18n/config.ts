@@ -35,9 +35,9 @@ i18next
   .init({
     fallbackLng: 'en',
     fallbackNS: 'cz', // If can not find fallbackLng use NS(NameSpaces)
-    debug: false, // If true is Visible in console
+    debug: true, // If true is Visible in console
     /*
-    if .use(Backend) RESOURCES CAN BE REMOVED
+    //if .use(Backend) RESOURCES CAN BE REMOVED
         resources: {
       en: {
         translation: en, // without translation DOS NOT WORK!
@@ -54,3 +54,4 @@ i18next
       suffix: '}}',
     },
   })
+  .then()

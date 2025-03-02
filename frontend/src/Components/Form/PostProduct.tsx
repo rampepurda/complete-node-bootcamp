@@ -5,7 +5,7 @@ export const PostProductForm = () => {
   const queryClient = useQueryClient()
   const productMutation = useMutation({
     mutationKey: ['product'],
-    mutationFn: async (dataForm: Record<string, any>) => {
+    mutationFn: async (dataForm: Record<string, any> | undefined) => {
       try {
         const response = await fetch(`${environment.localProductsURL}`, {
           method: 'POST',
