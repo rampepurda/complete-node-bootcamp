@@ -10,6 +10,14 @@ async function getAll() {
   return storedData;
 }
 
+async function addProduct(data) {
+  const { productName, from, description } = data
+  const storedData = await readData()
+
+  storedData.products.unshift({ productName, from, description, id:  Math.floor(Math.random() * 1000), })
+  await writeData(storedData)
+}
+
 async function replacePlaylist(id, data) {
   const storedData = await readData()
   const index = storedData.playlist.findIndex((item) => item.id === id)
@@ -47,5 +55,6 @@ async function deleteProduct(id) {
 
 exports.getAll = getAll;
 exports.getProduct = getProduct;
+exports.addProduct = addProduct;
 exports.deleteProduct = deleteProduct;
 exports.replacePlaylist = replacePlaylist;

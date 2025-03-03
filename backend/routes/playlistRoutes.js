@@ -34,6 +34,9 @@ router.patch('/playlist/:id', async (req, res, next) => {
       next(error)
     }
   }
+  if(res.status(400)) {
+    res.json({message: 'Wrong Id'})
+  }
 })
 
 module.exports = router;
