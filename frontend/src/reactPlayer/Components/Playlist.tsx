@@ -3,9 +3,9 @@ import { PlaylistT } from '../../types'
 import { useMutation } from '@tanstack/react-query'
 import { environment } from '../../configuration/environment'
 import { Button, Loader } from '../../Components'
-//import { ReactPlayerCard } from './ReactPlayerCard'
 
-const ReactPlayerCard = lazy(() => import('./ReactPlayerCard'))
+const ReactPlayerCard = lazy((): Promise<any> => import('./ReactPlayerCard'))
+
 export const Playlist = ({ url, title, id, isCompleted }: PlaylistT) => {
   const [toggleEditForm, setToggleEditForm] = useState<boolean>(false)
   const patchPlaylistTitleMutation = useMutation({
