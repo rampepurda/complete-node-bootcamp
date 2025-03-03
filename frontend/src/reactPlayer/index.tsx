@@ -47,6 +47,9 @@ export default function ReactPlayerPage() {
       </Link>
 
       <h2>ReactPlayer</h2>
+      <h4 className="color-is-red">
+        If video is completed - works, only refresh page. Next in progress
+      </h4>
       <h5>npm install react-player # or yarn add react-player</h5>
       <Link to="https://www.npmjs.com/package/react-player" rel="external" target="_blank">
         See more

@@ -1,8 +1,10 @@
 const express = require("express");
 const { v4: generateId } = require("uuid");
-const { getAll, deleteProduct, getProduct } = require("../dataEvent/event");
-const { writeData } = require("../util/getData");
+const { getAll, deleteProduct, getProduct, addProduct } = require("../dataEvent/event");
 const router = express.Router();
+const cOption = {
+  httpOnly: true
+}
 
 router.get("/products", async (req, res) => {
   const storedData = await getAll();
@@ -20,26 +22,21 @@ router.get("/products/:productName", async (req, res) => {
   res.status(200).send({ product: product });
 });
 
-router.post("/products", async (req, res) => {
+router.post("/products", async (req, res, next) => {
   const dataForm = req.body;
-  const newProduct = {
-    productName: dataForm.productName,
-    from: dataForm.from,
-    description: dataForm.description,
-    //id: generateId(),
-    id: Math.floor(Math.random() * 1000),
-  };
-  const storedData = await getAll();
 
-  storedData.products.unshift(newProduct);
-  await writeData(storedData);
+  try {
+    await addProduct(dataForm)
+    res.cookie('product', dataForm.productName, cOption)
+    res.status(201).json({ message: 'Data successfully posted', newProduct: {
+      productName: dataForm.productName,
+      from: dataForm.from,
+      description: dataForm.description,
+    } })
 
-  res.json({
-    message: "Data successfully posted",
-    newProduct: newProduct,
-  });
-
-  res.cookie('product', dataForm.productName, cOption)
+  } catch (error) {
+    next(error)
+  }
 });
 
 router.delete("/products/:id", async (req, res) => {
