@@ -1,5 +1,4 @@
 import ReactPlayer from 'react-player'
-import { Loader } from '../../Components'
 import { useMutation } from '@tanstack/react-query'
 import { environment } from '../../configuration/environment'
 
