@@ -1,6 +1,7 @@
 import classes from './LngSwitcher.module.scss'
 import { Button } from '../UI'
 import i18next from 'i18next'
+import { useState } from 'react'
 
 /**
  * @function changeLanguage - After React was updated to v19, looks that changeLanguage does not work properly.
@@ -9,6 +10,7 @@ import i18next from 'i18next'
  */
 
 export const LngSwitcher = () => {
+  const [actLng] = useState<string>(`${i18next.resolvedLanguage}`)
   const lngs: { en: { nativeName: string }; cz: { nativeName: string } } = {
     en: { nativeName: 'English' },
     cz: { nativeName: 'Czech' },
@@ -22,7 +24,7 @@ export const LngSwitcher = () => {
             <Button
               classesName={classes.btn}
               OnClick={() => i18next.changeLanguage(lng).then(() => window.location.reload())}
-              title={lng}
+              title={actLng === 'en' ? 'cz' : 'en'}
               rest={{
                 type: 'submit',
                 disabled: i18next.resolvedLanguage === lng,
