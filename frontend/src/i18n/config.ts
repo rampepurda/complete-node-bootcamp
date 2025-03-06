@@ -9,7 +9,7 @@ import Backend from 'i18next-http-backend'
   Tutorial URL:
   - https://www.youtube.com/watch?v=SA_9i4TtxLQ
 
-  Installations:
+  Install langDetector:
   - langDetector: yarn add i18next-browser-languagedetector
 
   Install backend plugin:
