@@ -3,12 +3,6 @@ import { Button } from '../UI'
 import i18next from 'i18next'
 import { useState } from 'react'
 
-/**
- * @function changeLanguage - After React was updated to v19, looks that changeLanguage does not work properly.
- * window.location.reload() is ONLY FIRST HELP. Another solution must be used instead
- * @constructor
- */
-
 export const LngSwitcher = () => {
   const [actLng] = useState<string>(`${i18next.resolvedLanguage}`)
   const lngs: { en: { nativeName: string }; cz: { nativeName: string } } = {
