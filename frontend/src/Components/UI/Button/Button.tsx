@@ -5,6 +5,7 @@ type Props = {
   classesName?: string
   OnClick?: MouseEventHandler<HTMLButtonElement>
   title?: string
+  ariaLabel?: string
   rest: Record<string, any>
 }
 /**
@@ -16,10 +17,16 @@ export const Button = ({
   classesName,
   OnClick,
   title,
+  ariaLabel,
   rest,
 }: PropsWithChildren<Props>) => {
   return (
-    <button className={classNames('btn', classesName)} onClick={OnClick} {...rest}>
+    <button
+      className={classNames('btn', classesName)}
+      onClick={OnClick}
+      aria-label={ariaLabel}
+      {...rest}
+    >
       {title}
       {children}
     </button>

@@ -1,6 +1,7 @@
 import ReactPlayer from 'react-player'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { environment } from '../../configuration/environment'
+import { PlaylistT } from '../../types'
 
 type Props = {
   url: string
@@ -9,6 +10,7 @@ type Props = {
 }
 
 const ReactPlayerCard = ({ url, id, title }: Props) => {
+  const queryClient = useQueryClient()
   const { mutate } = useMutation({
     mutationKey: [`video-${id}`],
     mutationFn: async (arg: { title: string; isCompleted: boolean }) => {
@@ -18,8 +20,22 @@ const ReactPlayerCard = ({ url, id, title }: Props) => {
         body: JSON.stringify(arg),
       })
     },
-    onSuccess: () => alert('Video is Completed'),
+    onMutate: async (
+      newPlaylist
+    ): Promise<
+      { playlist: PlaylistT; message: string; playlistTotal: number | undefined } | unknown
+    > => {
+      await queryClient.cancelQueries({ queryKey: ['playlist'] })
+      const previousPlaylist = queryClient.getQueryData(['playlist'])
+      queryClient.setQueryData(['playlist'], (playlistOldData) => [playlistOldData, newPlaylist])
+
+      return { previousPlaylist }
+    },
     onError: (error) => alert(error),
+    onSuccess: () => alert('Video is Completed'),
+    onSettled: async () => {
+      return await queryClient.invalidateQueries({ queryKey: ['playlist'] })
+    },
   })
 
   return (

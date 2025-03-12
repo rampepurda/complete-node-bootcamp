@@ -1,5 +1,6 @@
 {
   "title": "Vítejte {{demoTxt}}",
+  "lngSwitcher": "Přepnout do Angličtiny",
   "sections": {
     "section1": {
       "title": "Kapitola  1: Vítejte v NodeJS",
