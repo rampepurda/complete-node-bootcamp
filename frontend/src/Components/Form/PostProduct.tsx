@@ -16,7 +16,8 @@ export const PostProductForm = () => {
         })
 
         if (response.ok) {
-          alert('Successful posted')
+          const data = await response.json()
+          alert(data.message)
         }
       } catch (err) {
         alert(err)
@@ -48,44 +49,3 @@ export const PostProductForm = () => {
     </form>
   )
 }
-
-type DataFormT = {
-  productName: string
-  from: string
-  description: string
-}
-
-/*
-export const PostProductuseActionForm = () => {
-  const [error, submitAction, isPending] = useActionState(
-    async (previousState, formData: FormData): Promise<DataFormT> => {
-      try {
-        const response = await fetch(`${environment.localProductsURL}`, {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData.get('productName')),
-        })
-
-        if (response.ok) {
-          alert('Successful posted')
-        }
-      } catch (err) {
-        alert(err)
-      }
-    }
-  )
-
-  return (
-    <form className="width-is-5" name="products" method="post" action={submitAction}>
-      <input id="product" type="text" name="productName" placeholder="product" required />
-      <input id="from" type="text" name="from" placeholder="from" required />
-      <input id="description" type="text" name="description" placeholder="description" required />
-
-      <button className="btn btn-submit" type="submit" disabled={isPending}>
-        {isPending ? 'Submitting' : 'Submit'}
-      </button>
-      {error && <p>{error}</p>}
-    </form>
-  )
-}
- */
