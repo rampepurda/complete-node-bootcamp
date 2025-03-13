@@ -1,5 +1,6 @@
 {
   "title": "Welcome to react using react-i18next fully type-safe {{demoTxt}}",
+  "lngSwitcher": "Switch to Czech",
   "sections": {
     "section1": {
       "title": "Section 1: Welcome",

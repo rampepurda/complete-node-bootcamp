@@ -1,8 +1,46 @@
-import React from 'react'
+import React, { useActionState } from 'react'
+import { environment } from '../../../configuration/environment'
+
+export async function postProduct(prevState: unknown, formData: FormData) {
+  const postsData = {
+    productName: formData.get('productName'),
+    from: formData.get('from'),
+    description: formData.get('description'),
+  }
+
+  try {
+    const response = await fetch(`${environment.localProductsURL}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(postsData),
+    })
+
+    if (response.ok) {
+      const data = await response.json()
+
+      alert(data.message)
+    } else {
+      alert('Ops')
+    }
+  } catch (err) {
+    alert(err)
+  }
+}
 
 export default function IntroBackendDevPage() {
+  const [state, formAction, isPending] = useActionState(postProduct, null)
+
   return (
     <>
+      <form className="width-is-5" name="products" method="post" action={formAction}>
+        <input id="product" type="text" name="productName" placeholder="product" required />
+        <input id="from" type="text" name="from" placeholder="from" required />
+        <input id="description" type="text" name="description" placeholder="description" required />
+
+        <button className="btn btn-submit" type="submit" disabled={isPending}>
+          {isPending ? 'Submitting' : 'Submit'}
+        </button>
+      </form>
       <h2>Section 3: Introduction to Backend Web Development</h2>
 
       <h3>Static vs Dynamic vs Api</h3>

@@ -1,5 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { environment } from '../../configuration/environment'
+import { useActionState } from 'react'
+import { redirect } from 'react-router-dom'
 
 export const PostProductForm = () => {
   const queryClient = useQueryClient()
@@ -14,7 +16,8 @@ export const PostProductForm = () => {
         })
 
         if (response.ok) {
-          alert('Successful posted')
+          const data = await response.json()
+          alert(data.message)
         }
       } catch (err) {
         alert(err)
