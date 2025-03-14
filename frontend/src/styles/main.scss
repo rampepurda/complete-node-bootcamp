@@ -185,7 +185,8 @@ a {
     }
   }
 
-  &-link {
+  &-link,
+  &-link-has-ico {
     margin: 0;
     border: 0;
     border-radius: 0;
@@ -195,13 +196,8 @@ a {
   }
 
   &-link-has-ico {
-    margin: 0;
-    border: 0;
-    border-radius: 0;
-    background-color: transparent;
-    padding: 0 1rem;
-    color: $black;
-    text-align: left;
+    padding: 0 .5rem;
+    text-align: center;
   }
 }
 
