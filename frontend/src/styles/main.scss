@@ -193,6 +193,16 @@ a {
     color: $black;
     text-align: left;
   }
+
+  &-link-has-ico {
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+    padding: 0 1rem;
+    color: $black;
+    text-align: left;
+  }
 }
 
 section {
@@ -271,6 +281,12 @@ figure {
   &-flex {
     display: flex;
     justify-content: center;
+  }
+
+  &-flex-start {
+    display: inline-flex;
+    justify-items: start;
+    align-items: center;
   }
 }
 

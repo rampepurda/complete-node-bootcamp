@@ -56,7 +56,7 @@ export default function ReactPlayerPage() {
         {(isLoading && <h3>Loading wait</h3>) || (error && <h3>Ops, something happened</h3>)}
         {data?.playlistTotal && (
           <h4>
-            Total videos: <mark>{data.playlistTotal}</mark>
+            Playlist Total: <mark>{data.playlistTotal}</mark>
           </h4>
         )}
 

@@ -25,8 +25,9 @@ router.patch('/playlist/:id', async (req, res, next) => {
     try {
       await replacePlaylist(paramsId, {
         title,
+        isCompleted,
         url: selectedPlaylist.url,
-        isCompleted
+        like: selectedPlaylist.like,
       })
 
       res.json({ message: 'Status was updated.' })
@@ -34,9 +35,36 @@ router.patch('/playlist/:id', async (req, res, next) => {
       next(error)
     }
   }
+
   if(res.status(400)) {
     res.json({message: 'Wrong Id'})
   }
+})
+
+router.patch('/playlist/vote/:id', async (req, res, next) => {
+  const dataApi = await getAll()
+  const paramsId = Number(req.params.id)
+  const index = dataApi.playlist.findIndex((item) => item.id === paramsId)
+  const selectedPlaylist = dataApi.playlist[index]
+
+  if(selectedPlaylist) {
+    const incLike = selectedPlaylist.like + 1
+
+    try {
+      await replacePlaylist(paramsId, {
+        like: incLike,
+        url: selectedPlaylist.url,
+        title: selectedPlaylist.title,
+        isCompleted: selectedPlaylist.isCompleted,
+      })
+
+      res.status(201).json({ message: 'You voted' })
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  res.json({message: 'Wrong Id'})
 })
 
 module.exports = router;

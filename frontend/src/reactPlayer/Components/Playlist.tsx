@@ -1,12 +1,13 @@
 import React, { FormEvent, lazy, Suspense, useState } from 'react'
 import { PlaylistT } from '../../types'
-import { useMutation } from '@tanstack/react-query'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { environment } from '../../configuration/environment'
 import { Button, Loader } from '../../Components'
 
 const ReactPlayerCard = lazy((): Promise<any> => import('./ReactPlayerCard'))
 
-export const Playlist = ({ url, title, id, isCompleted }: PlaylistT) => {
+export const Playlist = ({ url, title, id, isCompleted, like }: PlaylistT) => {
+  const queryClient = useQueryClient()
   const [toggleEditForm, setToggleEditForm] = useState<boolean>(false)
   const patchPlaylistTitleMutation = useMutation({
     mutationKey: [`video${id}`],
@@ -19,6 +20,30 @@ export const Playlist = ({ url, title, id, isCompleted }: PlaylistT) => {
     },
     onError: (err) => alert(err),
     onSuccess: () => alert('Title changed'),
+  })
+  const patchLikeMutation = useMutation({
+    mutationKey: [`like${id}`],
+    mutationFn: async (arg: { id: string | number }) => {
+      await fetch(`${environment.localPlaylistURL}/vote/${arg.id}`, {
+        method: 'PATCH',
+      })
+    },
+    onMutate: async (
+      newPlaylist
+    ): Promise<
+      { playlist: PlaylistT; message: string; playlistTotal: number | undefined } | unknown
+    > => {
+      await queryClient.cancelQueries({ queryKey: ['playlist'] })
+      const previousPlaylist = queryClient.getQueryData(['playlist'])
+      queryClient.setQueryData(['playlist'], (playlistOldData) => [playlistOldData, newPlaylist])
+
+      return { previousPlaylist }
+    },
+    onError: (err) => alert(err),
+    onSuccess: () => alert('You voted'),
+    onSettled: async () => {
+      return await queryClient.invalidateQueries({ queryKey: ['playlist'] })
+    },
   })
   const handleSubmitStatus = async (event: FormEvent<HTMLFormElement>) => {
     const data = new FormData(event.currentTarget)
@@ -34,32 +59,46 @@ export const Playlist = ({ url, title, id, isCompleted }: PlaylistT) => {
   return (
     <div className="hasOutline width-is-7">
       <h2>{title}</h2>
+
       {isCompleted ? (
-        <p className="color-is-green">video is Completed</p>
+        <>
+          <p className="color-is-green">video is Completed</p>
+
+          <Button
+            classesName={'btn btn-edit'}
+            OnClick={() => setToggleEditForm(!toggleEditForm)}
+            rest={{ type: 'button' }}
+            title={toggleEditForm ? 'Close' : 'Edit'}
+          />
+          {toggleEditForm && (
+            <form method="patch" onSubmit={handleSubmitStatus}>
+              <input name="title" type="text" placeholder={title} required={true} />
+              <button className="btn btn-submit" type="submit">
+                Submit
+              </button>
+            </form>
+          )}
+        </>
       ) : (
         <p className="color-is-red">video is not Completed</p>
       )}
 
-      <div>
-        {isCompleted && (
-          <>
-            <Button
-              classesName={'btn btn-edit'}
-              OnClick={() => setToggleEditForm(!toggleEditForm)}
-              rest={{ type: 'button' }}
-              title={toggleEditForm ? 'Close' : 'Edit'}
-            />
+      <div className="display-flex-start">
+        <Button
+          classesName={'btn-link-has-ico'}
+          OnClick={() => patchLikeMutation.mutate({ id })}
+          rest={{ type: 'submit', disabled: !isCompleted }}
+          ariaLabel={
+            !isCompleted ? 'you can not vote after seeing video' : 'vote if do you like this video'
+          }
+        >
+          <img src="/ico-thumbs-up.svg" width={24} height={24} aria-hidden={true} />
+        </Button>
 
-            {toggleEditForm && (
-              <form method="patch" onSubmit={handleSubmitStatus}>
-                <input name="title" type="text" placeholder={title} required={true} />
-                <button className="btn btn-submit" type="submit">
-                  Submit
-                </button>
-              </form>
-            )}
-          </>
-        )}
+        <span>
+          <mark aria-label="number of likes">{like}</mark>
+          {!isCompleted && <strong>You can vote after seeing video</strong>}
+        </span>
       </div>
 
       <Suspense fallback={<Loader />}>
