@@ -43,6 +43,7 @@ const ReactPlayerCard = ({ url, id, title }: Props) => {
       url={`${url}`}
       controls={true}
       onEnded={() => mutate({ title: title, isCompleted: true })}
+      style={{ marginTop: '1rem' }}
     />
   )
 }

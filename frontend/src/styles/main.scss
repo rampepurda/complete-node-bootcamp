@@ -185,13 +185,19 @@ a {
     }
   }
 
-  &-link {
+  &-link,
+  &-link-has-ico {
     margin: 0;
     border: 0;
     border-radius: 0;
     background-color: transparent;
     color: $black;
     text-align: left;
+  }
+
+  &-link-has-ico {
+    padding: 0 .5rem;
+    text-align: center;
   }
 }
 
@@ -271,6 +277,12 @@ figure {
   &-flex {
     display: flex;
     justify-content: center;
+  }
+
+  &-flex-start {
+    display: inline-flex;
+    justify-items: start;
+    align-items: center;
   }
 }
 
