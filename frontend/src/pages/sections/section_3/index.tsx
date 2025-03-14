@@ -32,15 +32,25 @@ export default function IntroBackendDevPage() {
 
   return (
     <>
-      <form className="width-is-5" name="products" method="post" action={formAction}>
-        <input id="product" type="text" name="productName" placeholder="product" required />
-        <input id="from" type="text" name="from" placeholder="from" required />
-        <input id="description" type="text" name="description" placeholder="description" required />
+      <div className="hasOutline">
+        <h3>This part will be removed</h3>
+        <form className="width-is-5" name="products" method="post" action={formAction}>
+          <input id="product" type="text" name="productName" placeholder="product" required />
+          <input id="from" type="text" name="from" placeholder="from" required />
+          <input
+            id="description"
+            type="text"
+            name="description"
+            placeholder="description"
+            required
+          />
 
-        <button className="btn btn-submit" type="submit" disabled={isPending}>
-          {isPending ? 'Submitting' : 'Submit'}
-        </button>
-      </form>
+          <button className="btn btn-submit" type="submit" disabled={isPending}>
+            {isPending ? 'Submitting' : 'Submit'}
+          </button>
+        </form>
+      </div>
+
       <h2>Section 3: Introduction to Backend Web Development</h2>
 
       <h3>Static vs Dynamic vs Api</h3>
