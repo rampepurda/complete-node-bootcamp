@@ -286,6 +286,24 @@ figure {
   }
 }
 
+.like-box {
+  margin: 0 .3rem;
+  border-radius: .4rem;
+  background-color: $grayLightest;
+  padding: .2rem 1rem;
+
+  .numLike {
+    @include fontSize(1.2rem, 400);
+  }
+
+  .message {
+    @extend .numLike;
+    display: inline-block;
+    margin: 0 0 0 1rem;
+
+  }
+}
+
 .isMediumDevice,
 .isLargeDevice {
   display: none;
