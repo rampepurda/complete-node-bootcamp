@@ -83,22 +83,22 @@ export const Playlist = ({ url, title, id, isCompleted, like }: PlaylistT) => {
         <p className="color-is-red">video is not Completed</p>
       )}
 
-      <div className="display-flex-start">
+      <div className="display-flex-start like-box">
         <Button
           classesName={'btn-link-has-ico'}
           OnClick={() => patchLikeMutation.mutate({ id })}
           rest={{ type: 'submit', disabled: !isCompleted }}
           ariaLabel={
-            !isCompleted ? 'you can not vote after seeing video' : 'vote if do you like this video'
+            !isCompleted ? 'you can not vote after seeing video' : 'vote if you like this video'
           }
         >
           <img src="/ico-thumbs-up.svg" width={24} height={24} aria-hidden={true} />
         </Button>
 
-        <span>
-          <mark aria-label="number of likes">{like}</mark>
-          {!isCompleted && <strong>You can vote after seeing video</strong>}
+        <span className="numLike" aria-label="number of likes">
+          {like}
         </span>
+        {!isCompleted && <span className="message">| You can vote after seeing video</span>}
       </div>
 
       <Suspense fallback={<Loader />}>
