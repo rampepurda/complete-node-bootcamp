@@ -57,7 +57,7 @@ export const Playlist = ({ url, title, id, isCompleted, like }: PlaylistT) => {
   }
 
   return (
-    <div className="hasOutline width-is-7">
+    <div className="hasOutline">
       <h2>{title}</h2>
 
       {isCompleted ? (

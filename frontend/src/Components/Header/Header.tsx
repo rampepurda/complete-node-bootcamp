@@ -1,18 +1,26 @@
 import classes from './Header.module.scss'
-import { LngSwitcher } from '../../Components/index'
-import { Link } from 'react-router-dom'
 import classNames from 'classnames'
+import { PropsWithChildren } from 'react'
+import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
-export const Header = () => {
+type Props = {
+  hasLinkHome?: boolean
+  title: string
+}
+export const Header = ({ hasLinkHome = true, title, children }: PropsWithChildren<Props>) => {
+  const { t } = useTranslation()
+
   return (
-    <header className={classNames('display-flex', classes.wrapper)}>
-      <h1 className="color-is-white">Complete Node Bootcamp</h1>
+    <header className={classNames('display-flex', classes.module)}>
+      {hasLinkHome && (
+        <Link className={classes.hasLinkHome} to="/" aria-label={`${t('ariaLabel.link.home')}`}>
+          &larr;
+        </Link>
+      )}
 
-      <Link to="/reactPlayer" title="reactPlayer">
-        <img src="/ico-internal.svg" width={32} height={32} aria-hidden={true} alt="externallink" />
-      </Link>
-
-      <LngSwitcher />
+      <h1 className="color-is-white">{title}</h1>
+      {children}
     </header>
   )
 }

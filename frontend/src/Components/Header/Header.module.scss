@@ -3,10 +3,18 @@
 @import "../../styles/variables";
 @import "../../styles/mixins";
 
-.wrapper {
+.module {
   position: relative;
   background-color: $darkmagenta;
   padding: .2rem  0;
+
+  .hasLinkHome {
+    @include fontSize(2.3rem, bold);
+    display: inline-block;
+    margin: 0 $spacer-4 0 0;
+    color: $white;
+    text-decoration: none;
+  }
 }
 
 

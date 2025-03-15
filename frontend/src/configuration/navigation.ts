@@ -8,7 +8,7 @@ export const navigation = {
       subNavigation: [
         {
           title: 'sections.section1.subNav.title',
-          link: 'section1',
+          link: 'cnb/section1',
         },
       ],
     },
@@ -17,47 +17,47 @@ export const navigation = {
       subNavigation: [
         {
           title: 'sections.section2.subNav.title',
-          link: 'section2/reading-and-writing-files',
+          link: 'cnb/section2/reading-and-writing-files',
         },
         {
           title: 'sections.section2.subNav.title2',
-          link: 'section2/creating-simple-web-server',
+          link: 'cnb/section2/creating-simple-web-server',
         },
         {
           title: 'sections.section2.subNav.title3',
-          link: 'section2/routing',
+          link: 'cnb/section2/routing',
         },
         {
           title: 'sections.section2.subNav.title4',
-          link: 'section2/templateProducts',
+          link: 'cnb/section2/templateProducts',
         },
         {
           title: 'sections.section2.subNav.title5',
-          link: 'section2/packageJSON',
+          link: 'cnb/section2/packageJSON',
         },
       ],
     },
     {
       title: 'sections.section3.title',
-      link: 'section3/backendDevIntro',
+      link: 'cnb/section3/backendDevIntro',
     },
     {
       title: 'sections.section6.title',
-      link: 'section6/backendDevIntro',
+      link: 'cnb/section6/backendDevIntro',
       subNavigation: [
         {
           title: 'sections.section6.subNav.title',
-          link: 'section6/node_express_intro',
+          link: 'cnb/section6/node_express_intro',
         },
         {
           title: 'sections.section6.subNav.title2',
-          link: 'section6/api_routes_methods',
+          link: 'cnb/section6/api_routes_methods',
         },
       ],
     },
     {
       title: 'R19 - Action: useActionState() | temporarily ',
-      link: 'section3/backendDevIntro',
+      link: 'cnb/section3/backendDevIntro',
     },
   ],
 }

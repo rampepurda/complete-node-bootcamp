@@ -1,6 +1,12 @@
 {
   "title": "Welcome to react using react-i18next fully type-safe {{demoTxt}}",
   "lngSwitcher": "Switch to Czech",
+  "ariaLabel": {
+    "lang": "Přepněte do Angličtiny",
+    "link" : {
+      "home": "Home"
+    }
+  },
   "sections": {
     "section1": {
       "title": "Section 1: Welcome",
@@ -28,8 +34,5 @@
         "title2":"GET, POST, DELETE, PATCH"
       }
     }
-  },
-  "ariaLabel": {
-    "lang": "Switch to Czech"
   }
 }

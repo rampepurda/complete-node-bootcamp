@@ -1,6 +1,12 @@
 {
   "title": "Vítejte {{demoTxt}}",
   "lngSwitcher": "Přepnout do Angličtiny",
+  "ariaLabel": {
+    "lang": "Přepněte do Angličtiny",
+    "link" : {
+      "home": "Domů"
+    }
+  },
   "sections": {
     "section1": {
       "title": "Kapitola  1: Vítejte v NodeJS",
@@ -28,8 +34,5 @@
         "title2":"GET, POST, DELETE, PATCH"
       }
     }
-  },
-  "ariaLabel": {
-    "lang": "Přepněte do Angličtiny"
   }
 }
