@@ -1,6 +1,6 @@
 const express = require("express");
 const { v4: generateId } = require("uuid");
-const { getAll, deleteProduct, getProduct, addProduct, addProductOrder } = require("../dataEvent/event");
+const { getAll, deleteProduct, getProduct, addProduct, addProductOrder, alreadyOrderedProduct } = require("../dataEvent/event");
 const router = express.Router();
 const cOption = {
   httpOnly: true
@@ -62,19 +62,15 @@ router.get("/productsOrdered", async (req, res) => {
 });
 
 router.post("/productsOrdered/:id", async (req, res, next) => {
-  const storedData = await getAll()
   const id = Number(req.params.id)
-  const productOrdered = storedData.productsOrdered.find(product => product.id = id)
+  const isOrderedProduct = await alreadyOrderedProduct(id)
 
-  /*
-    if(!productOrdered) {
-    res.json({ message: "You have already ordered this product" })
+  if(isOrderedProduct) {
+    res.json({ message: "Already ordered"});
+  } else {
+    await addProductOrder(id)
+    res.json({ message: "Ordered successfully"});
   }
-   */
-
-  await addProductOrder(id)
-  res.json({ message: "Ordered successfully"});
-
 });
 
 

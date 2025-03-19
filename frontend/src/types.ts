@@ -1,16 +1,18 @@
 export type HTMLHeadlinesT = 'h1' | 'h2' | 'h3' | 'h4'
 export type HTMLTagT = 'div' | 'section' | 'p' | 'li' | 'span'
 
-type ProdOrderedT = {
+export type ProdOrderedT = {
   id: string | number
   productName: string
   from: string
   description: string
+  price?: string | number
 }
 
 export interface ProductOrderedInt {
   productsOrdered: ProdOrderedT[] | null
   productsOrderTotal: number
+  message: string | null
 }
 
 export type PlaylistT = {

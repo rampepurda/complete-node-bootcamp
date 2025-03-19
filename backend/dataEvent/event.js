@@ -38,6 +38,12 @@ async function addProductOrder(id) {
   await writeData({ playlist: storedData.playlist, products: storedData.products , productsOrdered: orderedProducts});
 }
 
+async function alreadyOrderedProduct(id) {
+  const storedData = await readData();
+
+  return storedData.productsOrdered.find(orderedProduct => orderedProduct.id === id)
+}
+
 async function getProduct(title) {
   const storedData = await readData();
   const product = storedData.products.find(
@@ -68,5 +74,6 @@ exports.getAll = getAll;
 exports.getProduct = getProduct;
 exports.addProduct = addProduct;
 exports.addProductOrder = addProductOrder;
+exports.alreadyOrderedProduct = alreadyOrderedProduct;
 exports.deleteProduct = deleteProduct;
 exports.replacePlaylist = replacePlaylist;

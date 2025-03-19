@@ -8,7 +8,8 @@
     }
   },
   "form": {
-    "submitting": "Odesílám"
+    "submitting": "Odesílám",
+    "delete": "Odebrat"
   },
   "eShop": {
     "addToCart": "Přidat do košíku"

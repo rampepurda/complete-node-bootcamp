@@ -8,7 +8,8 @@
     }
   },
   "form": {
-    "submitting": "Submitting"
+    "submitting": "Submitting",
+    "delete": "Delete"
   },
   "eShop": {
     "addToCart": "Add To Cart"
