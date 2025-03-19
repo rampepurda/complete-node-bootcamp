@@ -22,9 +22,20 @@ async function replacePlaylist(id, data) {
   const storedData = await readData()
   const index = storedData.playlist.findIndex((item) => item.id === id)
 
-
   storedData.playlist[index] = { ...data, id }
   await writeData(storedData)
+}
+
+async function addProductOrder(id) {
+  const storedData = await readData();
+  const products = storedData.products
+  const orderedProducts = storedData.productsOrdered
+  const newOrderedProduct = products.find(
+    (product) => product.id === id,
+  );
+
+  orderedProducts.unshift({ ...newOrderedProduct })
+  await writeData({ playlist: storedData.playlist, products: storedData.products , productsOrdered: orderedProducts});
 }
 
 async function getProduct(title) {
@@ -56,5 +67,6 @@ async function deleteProduct(id) {
 exports.getAll = getAll;
 exports.getProduct = getProduct;
 exports.addProduct = addProduct;
+exports.addProductOrder = addProductOrder;
 exports.deleteProduct = deleteProduct;
 exports.replacePlaylist = replacePlaylist;

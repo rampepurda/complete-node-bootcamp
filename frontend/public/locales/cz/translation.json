@@ -7,6 +7,12 @@
       "home": "Domů"
     }
   },
+  "form": {
+    "submitting": "Odesílám"
+  },
+  "eShop": {
+    "addToCart": "Přidat do košíku"
+  },
   "sections": {
     "section1": {
       "title": "Kapitola  1: Vítejte v NodeJS",

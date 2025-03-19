@@ -1,6 +1,6 @@
 const express = require("express");
 const { v4: generateId } = require("uuid");
-const { getAll, deleteProduct, getProduct, addProduct } = require("../dataEvent/event");
+const { getAll, deleteProduct, getProduct, addProduct, addProductOrder } = require("../dataEvent/event");
 const router = express.Router();
 const cOption = {
   httpOnly: true
@@ -45,5 +45,37 @@ router.delete("/products/:id", async (req, res) => {
 
   res.json({ message: "Deleted successfully" });
 });
+
+router.get("/productsOrdered", async (req, res) => {
+  const storedData = await getAll();
+  const productOrdered = storedData.productsOrdered
+
+  if(!productOrdered) {
+    return res.json({message: 'Any order yet'});
+  }
+
+  return res.status(200).json({
+    productsOrdered: productOrdered,
+    productsOrderTotal: storedData.productsOrdered.length,
+    //priceTotal: storedData.orderedProducts.length,
+  });
+});
+
+router.post("/productsOrdered/:id", async (req, res, next) => {
+  const storedData = await getAll()
+  const id = Number(req.params.id)
+  const productOrdered = storedData.productsOrdered.find(product => product.id = id)
+
+  /*
+    if(!productOrdered) {
+    res.json({ message: "You have already ordered this product" })
+  }
+   */
+
+  await addProductOrder(id)
+  res.json({ message: "Ordered successfully"});
+
+});
+
 
 module.exports = router;

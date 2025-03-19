@@ -7,6 +7,12 @@
       "home": "Home"
     }
   },
+  "form": {
+    "submitting": "Submitting"
+  },
+  "eShop": {
+    "addToCart": "Add To Cart"
+  },
   "sections": {
     "section1": {
       "title": "Section 1: Welcome",

@@ -63,7 +63,12 @@ export default function ApiRoutesMethodsPage() {
             Products total: <mark>{data.productsTotal}</mark>
           </h4>
           {data?.products.map((product: ProductInt) => (
-            <Product tagElement={'section'} product={product} key={product.id}>
+            <Product
+              tagElement={'section'}
+              product={product}
+              key={product.id}
+              detailURL={'/cnb/section6/api_routes_methods'}
+            >
               <Button
                 classesName={'btn btn-remove'}
                 OnClick={() => deleteProductMutation.mutate(`${product.id}`)}

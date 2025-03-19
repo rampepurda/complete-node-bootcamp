@@ -1,7 +1,18 @@
-import { HTMLAttributes } from 'react'
-
 export type HTMLHeadlinesT = 'h1' | 'h2' | 'h3' | 'h4'
 export type HTMLTagT = 'div' | 'section' | 'p' | 'li' | 'span'
+
+type ProdOrderedT = {
+  id: string | number
+  productName: string
+  from: string
+  description: string
+}
+
+export interface ProductOrderedInt {
+  productsOrdered: ProdOrderedT[] | null
+  productsOrderTotal: number
+}
+
 export type PlaylistT = {
   id: string | number
   url: string

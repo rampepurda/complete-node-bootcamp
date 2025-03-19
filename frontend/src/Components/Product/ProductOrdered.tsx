@@ -7,45 +7,26 @@ interface PropsInt extends HTMLAttributes<HTMLBodyElement> {
   classes?: string
   product: ProductInt | undefined
   detailURL?: string
-  isDetail?: boolean
 }
 
-export const Product = ({
+export const ProductOrdered = ({
   product,
   classes,
   tagElement,
-  isDetail = false,
   detailURL,
   children,
 }: PropsWithChildren<PropsInt>) => {
   const HTMLAttr = tagElement
   return (
     <HTMLAttr className={classes}>
-      <label>Product:</label>
       <h4>{product?.productName}</h4>
-
-      {isDetail ? (
-        <>
-          <label>From:</label>
-          <h4>{product?.from}</h4>
-
-          {product?.price && (
-            <>
-              <label>Price:</label>
-              <h4>{product.price}</h4>
-            </>
-          )}
-
-          <label>Description:</label>
-          <p>{product?.description}</p>
-        </>
-      ) : (
-        <div>
-          <Link to={`${detailURL}/${product?.productName}`}>See detail</Link>
-        </div>
-      )}
-
+      <p>Description: {product?.description}</p>
+      <p>Price: {product?.price}</p>
+      <div>
+        <Link to={`${detailURL}/${product?.productName}`}>See detail</Link>
+      </div>
       {children}
+      <hr />
     </HTMLAttr>
   )
 }
