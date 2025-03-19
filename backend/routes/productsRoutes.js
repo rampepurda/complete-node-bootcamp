@@ -46,22 +46,22 @@ router.delete("/products/:id", async (req, res) => {
   res.json({ message: "Deleted successfully" });
 });
 
-router.get("/productsOrdered", async (req, res) => {
+router.get("/cart", async (req, res) => {
   const storedData = await getAll();
-  const productOrdered = storedData.productsOrdered
+  const cart = storedData.cart
 
-  if(!productOrdered) {
+  if(!cart) {
     return res.json({message: 'Any order yet'});
   }
 
   return res.status(200).json({
-    productsOrdered: productOrdered,
-    productsOrderTotal: storedData.productsOrdered.length,
+    productsOrdered: cart,
+    productsOrderTotal: storedData.cart.length,
     //priceTotal: storedData.orderedProducts.length,
   });
 });
 
-router.post("/productsOrdered/:id", async (req, res, next) => {
+router.post("/cart/:id", async (req, res, next) => {
   const id = Number(req.params.id)
   const isOrderedProduct = await alreadyOrderedProduct(id)
 

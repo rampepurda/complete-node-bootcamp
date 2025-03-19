@@ -29,19 +29,19 @@ async function replacePlaylist(id, data) {
 async function addProductOrder(id) {
   const storedData = await readData();
   const products = storedData.products
-  const orderedProducts = storedData.productsOrdered
+  const orderedProducts = storedData.cart
   const newOrderedProduct = products.find(
     (product) => product.id === id,
   );
 
   orderedProducts.unshift({ ...newOrderedProduct })
-  await writeData({ playlist: storedData.playlist, products: storedData.products , productsOrdered: orderedProducts});
+  await writeData({ playlist: storedData.playlist, products: storedData.products , cart: orderedProducts});
 }
 
 async function alreadyOrderedProduct(id) {
   const storedData = await readData();
 
-  return storedData.productsOrdered.find(orderedProduct => orderedProduct.id === id)
+  return storedData.cart.find(order => order.id === id)
 }
 
 async function getProduct(title) {

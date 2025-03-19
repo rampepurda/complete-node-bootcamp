@@ -9,7 +9,7 @@ export type ProdOrderedT = {
   price?: string | number
 }
 
-export interface ProductOrderedInt {
+export interface CartInt {
   productsOrdered: ProdOrderedT[] | null
   productsOrderTotal: number
   message: string | null
