@@ -4,6 +4,7 @@ import i18next from 'i18next'
 import { useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import classNames from 'classnames'
+import { Link } from 'react-router-dom'
 
 export const LngSwitcher = () => {
   const { t } = useTranslation()
@@ -36,7 +37,7 @@ export const LngSwitcher = () => {
   )
 }
 
-export const CartSwitcher = () => {
+export const CartSwitcher = ({ pageURL, itemTotal }: { pageURL: string; itemTotal?: number }) => {
   const { t } = useTranslation()
 
   return (
@@ -50,9 +51,11 @@ export const CartSwitcher = () => {
           //disabled: i18next.resolvedLanguage === lng,
         }}
       >
-        <div className={classes.wrapper}>
-          <img src="/ico-cart.svg" width={22} height={22} aria-hidden={true} />
-          <span>2</span>
+        <div>
+          <Link className={classes.link} to={`${pageURL}`}>
+            <img src="/ico-cart.svg" width={22} height={22} aria-hidden={true} />
+            <span className="display-inline-block">2{itemTotal}</span>
+          </Link>
         </div>
       </Button>
     </div>

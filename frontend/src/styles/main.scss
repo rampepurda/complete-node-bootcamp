@@ -274,6 +274,10 @@ figure {
 .display {
   margin: 0;
 
+  &-inline-block {
+    display: inline-block;
+  }
+
   &-flex {
     display: flex;
     justify-content: center;

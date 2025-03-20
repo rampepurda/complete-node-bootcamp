@@ -1,8 +1,8 @@
 import { createBrowserRouter } from 'react-router-dom'
 import RootLayout from '../pages/RootLayout'
 import ReactPlayerPage from '../reactPlayer'
-import EShopPage from '../pages/eShop'
 import CNBLayout from '../pages/sections/CNBLayout'
+import * as RouteEshop from '../pages/eShop/routes'
 import * as RouteSection1 from '../pages/sections/section_1/routes'
 import * as RouteSection2 from '../pages/sections/section_2/routes'
 import * as RouteSection3 from '../pages/sections/section_3/routes'
@@ -69,7 +69,17 @@ export const router = createBrowserRouter([
       },
       {
         path: 'eShop',
-        element: <EShopPage />,
+        element: <RouteEshop.EshopLayout />,
+        children: [
+          {
+            path: 'products',
+            element: <RouteEshop.EShopPage />,
+          },
+          {
+            path: 'cart',
+            element: <RouteEshop.CartPage />,
+          },
+        ],
       },
     ],
   },

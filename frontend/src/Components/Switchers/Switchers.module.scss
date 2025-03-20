@@ -7,11 +7,16 @@
   right: 1rem;
 
   &.cart {
-    top: .1rem;
+    top: .25rem;
 
-    .wrapper {
+    .link {
       display: flex;
       align-items: center;
+      color: $black;
+
+      span {
+        margin-left: $spacer-1;
+      }
     }
   }
 

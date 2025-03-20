@@ -21,7 +21,7 @@ export const ProductOrdered = ({
     <HTMLAttr className={classes}>
       <h4>{product?.productName}</h4>
       <p>Description: {product?.description}</p>
-      <p>Price: {product?.price}</p>
+      <p>Price: {product?.price} BGP</p>
       <div>
         <Link to={`${detailURL}/${product?.productName}`}>See detail</Link>
       </div>

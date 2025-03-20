@@ -4,8 +4,9 @@ import { ProductInt } from '../../types'
 import { environment } from '../../configuration/environment'
 import { useTranslation } from 'react-i18next'
 import React from 'react'
+import { CartPage } from './cartPage'
 
-export default function EShopPage() {
+export function EShopPage() {
   const { t } = useTranslation()
   const { data, isLoading } = useQuery({
     queryKey: ['products'],
@@ -48,38 +49,26 @@ export default function EShopPage() {
   })
 
   return (
-    <>
-      <>
-        <title>eShop-Welcome</title>
-        <meta name="author" content="michal" />
-        <meta name="keywords" content="book, shop, eshop" />
-      </>
-
-      <Header title={'eShop - Welcome'}>
-        <CartSwitcher />
-      </Header>
-
-      <section style={{ margin: '1rem 5rem' }}>
-        <div>
-          {isLoading && <h3>...loading, wait</h3>}
-          {data?.products?.map((product: ProductInt) => (
-            <Product
-              classes={'hasOutline'}
-              tagElement={'section'}
-              product={product}
-              key={product.id}
-              isDetail={true}
-            >
-              <Button
-                classesName={'btn-edit'}
-                OnClick={() => mutate({ id: product.id, formData: product })}
-                title={t('eShop.addToCart')}
-                rest={{ type: 'button' }}
-              />
-            </Product>
-          ))}
-        </div>
-      </section>
-    </>
+    <section style={{ margin: '1rem 5rem' }}>
+      <div>
+        {isLoading && <h3>...loading, wait</h3>}
+        {data?.products?.map((product: ProductInt) => (
+          <Product
+            classes={'hasOutline'}
+            tagElement={'section'}
+            product={product}
+            key={product.id}
+            isDetail={true}
+          >
+            <Button
+              classesName={'btn-edit'}
+              OnClick={() => mutate({ id: product.id, formData: product })}
+              title={t('eShop.addToCart')}
+              rest={{ type: 'button' }}
+            />
+          </Product>
+        ))}
+      </div>
+    </section>
   )
 }

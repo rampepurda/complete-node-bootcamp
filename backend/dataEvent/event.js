@@ -18,12 +18,38 @@ async function addProduct(data) {
   await writeData(storedData)
 }
 
+async function getProduct(title) {
+  const storedData = await readData();
+  const product = storedData.products.find(
+    (product) => product.productName === title,
+  );
+
+  if (!storedData.products || storedData.products.length === 0) {
+    throw Response.json("Could not find any events.");
+  }
+
+  if (!product) {
+    throw Response.json("Could not find event for id " + title);
+  }
+
+  return product;
+}
+
 async function replacePlaylist(id, data) {
   const storedData = await readData()
   const index = storedData.playlist.findIndex((item) => item.id === id)
 
   storedData.playlist[index] = { ...data, id }
   await writeData(storedData)
+}
+
+async function deleteProduct(id) {
+  const storedData = await readData();
+  const updatedData = storedData.products.filter(
+    (product) => product.id !== id,
+  );
+
+  await writeData({ playlist: storedData.playlist, products: updatedData, cart:storedData.cart });
 }
 
 async function addProductOrder(id) {
@@ -44,36 +70,20 @@ async function alreadyOrderedProduct(id) {
   return storedData.cart.find(order => order.id === id)
 }
 
-async function getProduct(title) {
+async function deleteProductCart(id) {
   const storedData = await readData();
-  const product = storedData.products.find(
-    (product) => product.productName === title,
-  );
-
-  if (!storedData.products || storedData.products.length === 0) {
-    throw Response.json("Could not find any events.");
-  }
-
-  if (!product) {
-    throw Response.json("Could not find event for id " + title);
-  }
-
-  return product;
-}
-
-async function deleteProduct(id) {
-  const storedData = await readData();
-  const updatedData = storedData.products.filter(
+  const updatedCart = storedData.cart.filter(
     (product) => product.id !== id,
   );
 
-  await writeData({ playlist: storedData.playlist, products: updatedData });
+  await writeData({ playlist: storedData.playlist, products: storedData.products, cart: updatedCart });
 }
 
 exports.getAll = getAll;
 exports.getProduct = getProduct;
 exports.addProduct = addProduct;
+exports.deleteProduct = deleteProduct;
 exports.addProductOrder = addProductOrder;
 exports.alreadyOrderedProduct = alreadyOrderedProduct;
-exports.deleteProduct = deleteProduct;
+exports.deleteProductCart = deleteProductCart;
 exports.replacePlaylist = replacePlaylist;

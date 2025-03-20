@@ -1,6 +1,6 @@
 const express = require("express");
 const { v4: generateId } = require("uuid");
-const { getAll, deleteProduct, getProduct, addProduct, addProductOrder, alreadyOrderedProduct } = require("../dataEvent/event");
+const { getAll, deleteProduct, getProduct, addProduct, addProductOrder, alreadyOrderedProduct, deleteProductCart } = require("../dataEvent/event");
 const router = express.Router();
 const cOption = {
   httpOnly: true
@@ -73,5 +73,11 @@ router.post("/cart/:id", async (req, res, next) => {
   }
 });
 
+router.delete("/cart/:id", async (req, res) => {
+  const id = req.params.id * 1;
+  await deleteProductCart(id);
+
+  res.json({ message: "Deleted successfully" });
+});
 
 module.exports = router;

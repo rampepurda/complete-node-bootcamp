@@ -1,5 +1,6 @@
 import classes from './Dashboard.module.scss'
 import { Link } from 'react-router-dom'
+import { navigation } from '../../configuration'
 
 export const Dashboard = () => {
   return (
@@ -8,13 +9,13 @@ export const Dashboard = () => {
         <h1>
           <Link to="/cnb">Complete Node Bootcamp</Link>
         </h1>
+
         <ul className="hasVerticalPadding-5">
-          <li>
-            <Link to="/reactplayer">ReactPlayer</Link>
-          </li>
-          <li>
-            <Link to="/eShop">eShop</Link>
-          </li>
+          {navigation.dashboard.map((item, idx: number) => (
+            <li key={idx}>
+              <Link to={`${item.link}`}>{item.title}</Link>
+            </li>
+          ))}
         </ul>
       </section>
     </div>
