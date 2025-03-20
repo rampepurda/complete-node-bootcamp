@@ -6,6 +6,15 @@
   top: .3rem;
   right: 1rem;
 
+  &.cart {
+    top: .1rem;
+
+    .wrapper {
+      display: flex;
+      align-items: center;
+    }
+  }
+
   .btn {
     border-radius: .8rem;
     background-color: $white;

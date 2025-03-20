@@ -1,8 +1,9 @@
-import { Button, Header, Product, ProductOrdered } from '../../Components'
+import { Button, Header, CartSwitcher, Product } from '../../Components'
 import { useMutation, useQuery } from '@tanstack/react-query'
-import { ProductInt, ProductOrderedInt } from '../../types'
+import { ProductInt } from '../../types'
 import { environment } from '../../configuration/environment'
 import { useTranslation } from 'react-i18next'
+import React from 'react'
 
 export default function EShopPage() {
   const { t } = useTranslation()
@@ -21,18 +22,6 @@ export default function EShopPage() {
           response.json()
         )
       } catch (err: any) {
-        alert(err)
-      }
-    },
-  })
-  const orderedProductsQuery = useQuery({
-    queryKey: ['orderedProducts'],
-    queryFn: async (): Promise<ProductOrderedInt | undefined> => {
-      try {
-        return await fetch(`${environment.localProductsOrderedURL}`, { method: 'GET' }).then(
-          (response) => response.json()
-        )
-      } catch (err) {
         alert(err)
       }
     },
@@ -66,18 +55,11 @@ export default function EShopPage() {
         <meta name="keywords" content="book, shop, eshop" />
       </>
 
-      <Header title={'eShop - Welcome'} />
+      <Header title={'eShop - Welcome'}>
+        <CartSwitcher />
+      </Header>
 
       <section style={{ margin: '1rem 5rem' }}>
-        {orderedProductsQuery.data && (
-          <>
-            <p>{orderedProductsQuery.data.productsOrderTotal}</p>
-            {orderedProductsQuery.data.productsOrdered?.map((order: any) => (
-              <ProductOrdered tagElement={'section'} product={order} />
-            ))}
-          </>
-        )}
-
         <div>
           {isLoading && <h3>...loading, wait</h3>}
           {data?.products?.map((product: ProductInt) => (
