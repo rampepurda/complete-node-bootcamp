@@ -12,7 +12,10 @@
     "delete": "Delete"
   },
   "eShop": {
-    "addToCart": "Add To Cart"
+    "addToCart": "Add To Cart",
+    "ariaLabel": {
+      "cart": "Cart"
+    }
   },
   "sections": {
     "section1": {

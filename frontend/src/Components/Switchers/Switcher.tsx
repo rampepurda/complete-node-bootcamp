@@ -44,19 +44,16 @@ export const CartSwitcher = ({ pageURL, itemTotal }: { pageURL: string; itemTota
     <div className={classNames(classes.btnWrapper, classes.cart)}>
       <Button
         classesName={classes.btn}
-        //OnClick={() => i18next.changeLanguage(lng).then(() => window.location.reload())}
-        //ariaLabel={`${t('lngSwitcher')}`}
+        ariaLabel={`${t('eShop.ariaLabel.cart')}`}
         rest={{
           type: 'button',
-          //disabled: i18next.resolvedLanguage === lng,
+          // disabled: if items in Cart = 0 (RTK),
         }}
       >
-        <div>
-          <Link className={classes.link} to={`${pageURL}`}>
-            <img src="/ico-cart.svg" width={22} height={22} aria-hidden={true} />
-            <span className="display-inline-block">2{itemTotal}</span>
-          </Link>
-        </div>
+        <Link className={classes.link} to={`${pageURL}`}>
+          <img src="/ico-cart.svg" width={22} height={22} aria-hidden={true} />
+          <span className="display-inline-block">2{itemTotal}</span>
+        </Link>
       </Button>
     </div>
   )

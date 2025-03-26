@@ -12,7 +12,10 @@
     "delete": "Odebrat"
   },
   "eShop": {
-    "addToCart": "Vložit do košíku"
+    "addToCart": "Vložit do košíku",
+    "ariaLabel": {
+      "cart": "Košík"
+    }
   },
   "sections": {
     "section1": {
