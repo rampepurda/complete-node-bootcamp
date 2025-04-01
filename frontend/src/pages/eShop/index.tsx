@@ -4,7 +4,6 @@ import { ProductInt } from '../../types'
 import { environment } from '../../configuration/environment'
 import { useTranslation } from 'react-i18next'
 import React from 'react'
-import { CartPage } from './cartPage'
 
 export function EShopPage() {
   const { t } = useTranslation()
@@ -31,7 +30,7 @@ export function EShopPage() {
     mutationKey: ['cart'],
     mutationFn: async (args: { id: string | number; formData: Record<string, any> }) => {
       try {
-        const response = await fetch(`${environment.localProductsOrderedURL}/${args.id}`, {
+        const response = await fetch(`${environment.localProductsCartURL}/${args.id}`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(args.formData),

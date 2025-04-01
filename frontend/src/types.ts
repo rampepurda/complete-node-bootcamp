@@ -10,9 +10,9 @@ export type ProdOrderedT = {
 }
 
 export interface CartInt {
-  productsOrdered: ProdOrderedT[] | null
+  productsOrdered: ProdOrderedT[] | undefined
   productsOrderTotal: number
-  message: string | null
+  //message: string | null
 }
 
 export type PlaylistT = {

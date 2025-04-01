@@ -47,12 +47,11 @@ export const CartSwitcher = ({ pageURL, itemTotal }: { pageURL: string; itemTota
         ariaLabel={`${t('eShop.ariaLabel.cart')}`}
         rest={{
           type: 'button',
-          // disabled: if items in Cart = 0 (RTK),
         }}
       >
         <Link className={classes.link} to={`${pageURL}`}>
           <img src="/ico-cart.svg" width={22} height={22} aria-hidden={true} />
-          <span className="display-inline-block">2{itemTotal}</span>
+          <span className="display-inline-block">{itemTotal}</span>
         </Link>
       </Button>
     </div>
