@@ -12,6 +12,8 @@
     "delete": "Odebrat"
   },
   "eShop": {
+    "title": "eShop - vítejte ",
+    "cartTitle": "eShop / košík",
     "addToCart": "Vložit do košíku",
     "ariaLabel": {
       "cart": "Košík"

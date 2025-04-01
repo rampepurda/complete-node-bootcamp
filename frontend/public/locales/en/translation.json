@@ -12,6 +12,8 @@
     "delete": "Delete"
   },
   "eShop": {
+    "title": "eShop - Welcome",
+    "cartTitle": "eShop / Cart",
     "addToCart": "Add To Cart",
     "ariaLabel": {
       "cart": "Cart"

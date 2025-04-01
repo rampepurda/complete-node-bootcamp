@@ -9,13 +9,28 @@
   &.cart {
     top: .25rem;
 
-    .link {
-      display: flex;
-      align-items: center;
-      color: $black;
+    .hasLink {
+      &_cart {
+        display: flex;
+        align-items: center;
+        color: $black;
 
-      span {
-        margin-left: $spacer-1;
+        span {
+          margin-left: $spacer-1;
+        }
+      }
+
+      &_eShopPage {
+        position: relative;
+        top: -.3rem;
+        margin-right: $spacer-3;
+
+
+        a {
+          display: inline-block;
+          color: $white;
+          text-decoration: none;
+        }
       }
     }
   }
