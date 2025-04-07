@@ -3,6 +3,7 @@ import { Playlist } from './Components/Playlist'
 import { useQuery } from '@tanstack/react-query'
 import { PlaylistT } from '../types'
 import { environment } from '../configuration/environment'
+import { Header } from '../Components'
 
 export default function ReactPlayerPage() {
   const { data, error, isLoading } = useQuery({
@@ -33,35 +34,37 @@ export default function ReactPlayerPage() {
       textDecoration: 'none',
     },
     cover: {
-      margin: '1rem',
+      margin: '1rem 20%',
     },
   }
 
   return (
-    <div style={styles.cover}>
-      <title>ReactPlayer - all about</title>
-      <meta name="author" content="Josh" />
-      <meta name="keywords" content="video, react" />
-      <Link to="/" style={styles.link}>
-        &larr; Home
-      </Link>
+    <>
+      <>
+        <title>ReactPlayer - all about</title>
+        <meta name="author" content="Josh" />
+        <meta name="keywords" content="video, react" />
+      </>
 
-      <h2>ReactPlayer</h2>
-      <h5>npm install react-player # or yarn add react-player</h5>
-      <Link to="https://www.npmjs.com/package/react-player" rel="external" target="_blank">
-        See more
-      </Link>
+      <Header title={'ReactPlayer'} />
 
-      <section>
-        {(isLoading && <h3>Loading wait</h3>) || (error && <h3>Ops, something happened</h3>)}
-        {data?.playlistTotal && (
-          <h4>
-            Playlist Total: <mark>{data.playlistTotal}</mark>
-          </h4>
-        )}
+      <div style={styles.cover}>
+        <h5>npm install react-player # or yarn add react-player</h5>
+        <Link to="https://www.npmjs.com/package/react-player" rel="external" target="_blank">
+          See more
+        </Link>
 
-        {data?.playlist?.map((item) => <Playlist {...item} key={item.id} />)}
-      </section>
-    </div>
+        <section>
+          {(isLoading && <h3>Loading wait</h3>) || (error && <h3>Ops, something happened</h3>)}
+          {data?.playlistTotal && (
+            <h4>
+              Playlist Total: <mark>{data.playlistTotal}</mark>
+            </h4>
+          )}
+
+          {data?.playlist?.map((item) => <Playlist {...item} key={item.id} />)}
+        </section>
+      </div>
+    </>
   )
 }

@@ -2,6 +2,16 @@ export const navAriaLabel = {
   isMain: 'primary',
 }
 export const navigation = {
+  dashboard: [
+    {
+      title: 'eShop',
+      link: '/eShop',
+    },
+    {
+      title: 'ReactPlayer',
+      link: '/reactplayer',
+    },
+  ],
   sideBarSections: [
     {
       title: 'sections.section1.title',

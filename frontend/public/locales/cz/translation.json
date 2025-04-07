@@ -1,6 +1,28 @@
 {
   "title": "Vítejte {{demoTxt}}",
   "lngSwitcher": "Přepnout do Angličtiny",
+  "ariaLabel": {
+    "lang": "Přepněte do Angličtiny",
+    "link" : {
+      "home": "Domů"
+    }
+  },
+  "form": {
+    "submitting": "Odesílám",
+    "delete": "Odebrat"
+  },
+  "eShop": {
+    "title": "eShop - Vítejte ",
+    "cartTitle": "eShop / Košík",
+    "addToCart": "Vložit do košíku",
+    "incItemInCart": "Počet byl navýšen",
+    "order": "Objednat",
+    "priceTotal": "Cena celkem",
+    "ariaLabel": {
+      "cart": "Košík",
+      "incPiece": "navýšit počet kusů o jeden"
+    }
+  },
   "sections": {
     "section1": {
       "title": "Kapitola  1: Vítejte v NodeJS",
@@ -28,8 +50,5 @@
         "title2":"GET, POST, DELETE, PATCH"
       }
     }
-  },
-  "ariaLabel": {
-    "lang": "Přepněte do Angličtiny"
   }
 }

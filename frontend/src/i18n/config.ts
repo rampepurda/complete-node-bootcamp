@@ -35,7 +35,7 @@ i18next
   .init({
     fallbackLng: 'en',
     fallbackNS: 'cz', // If can not find fallbackLng use NS(NameSpaces)
-    debug: true, // If true is Visible in console
+    debug: false, // If true is Visible in console
     /*
     //if .use(Backend) RESOURCES CAN BE REMOVED
         resources: {

@@ -13,17 +13,9 @@ async function getAll() {
 async function addProduct(data) {
   const { productName, from, description } = data
   const storedData = await readData()
-
-  storedData.products.unshift({ productName, from, description, id:  Math.floor(Math.random() * 1000), })
-  await writeData(storedData)
-}
-
-async function replacePlaylist(id, data) {
-  const storedData = await readData()
-  const index = storedData.playlist.findIndex((item) => item.id === id)
-
-
-  storedData.playlist[index] = { ...data, id }
+  // Form onSubmit Product does not send price. That is the reason price is fix set up.
+  storedData.products.unshift({ productName, from, description, id:  Math.floor(Math.random() * 1000), price: "3.00",
+    priceTotal: 3.00, })
   await writeData(storedData)
 }
 
@@ -44,17 +36,64 @@ async function getProduct(title) {
   return product;
 }
 
+async function replacePlaylist(id, data) {
+  const storedData = await readData()
+  const index = storedData.playlist.findIndex((item) => item.id === id)
+
+  storedData.playlist[index] = { ...data, id }
+  await writeData(storedData)
+}
+
 async function deleteProduct(id) {
   const storedData = await readData();
   const updatedData = storedData.products.filter(
     (product) => product.id !== id,
   );
 
-  await writeData({ playlist: storedData.playlist, products: updatedData });
+  await writeData({ playlist: storedData.playlist, products: updatedData, cart:storedData.cart });
+}
+
+async function addProductOrder(id) {
+  const storedData = await readData();
+  const products = storedData.products
+  const orderedProducts = storedData.cart
+  const newOrderedProduct = products.find(
+    (product) => product.id === id,
+  );
+
+  orderedProducts.unshift({ ...newOrderedProduct, piece: 1 })
+  await writeData({ playlist: storedData.playlist, products: storedData.products , cart: orderedProducts});
+}
+
+async function alreadyOrderedProduct(id) {
+  const storedData = await readData();
+
+  return storedData.cart.find(order => order.id === id)
+}
+
+async function deleteProductCart(id) {
+  const storedData = await readData();
+  const updatedCart = storedData.cart.filter(
+    (product) => product.id !== id,
+  );
+
+  await writeData({ playlist: storedData.playlist, products: storedData.products, cart: updatedCart });
+}
+
+async function replaceProductCart(id, data) {
+  const storedData = await readData()
+  const index = storedData.cart.findIndex((item) => item.id === id)
+
+  storedData.cart[index] = { ...data, id }
+  await writeData(storedData)
 }
 
 exports.getAll = getAll;
 exports.getProduct = getProduct;
 exports.addProduct = addProduct;
 exports.deleteProduct = deleteProduct;
+exports.addProductOrder = addProductOrder;
+exports.alreadyOrderedProduct = alreadyOrderedProduct;
+exports.deleteProductCart = deleteProductCart;
+exports.replaceProductCart = replaceProductCart;
 exports.replacePlaylist = replacePlaylist;

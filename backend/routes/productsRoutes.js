@@ -28,11 +28,7 @@ router.post("/products", async (req, res, next) => {
   try {
     await addProduct(dataForm)
     res.cookie('product', dataForm.productName, cOption)
-    res.status(201).json({ message: 'Data successfully posted', newProduct: {
-      productName: dataForm.productName,
-      from: dataForm.from,
-      description: dataForm.description,
-    } })
+    res.status(201).json({ message: 'Data successfully posted'})
 
   } catch (error) {
     next(error)
@@ -43,7 +39,7 @@ router.delete("/products/:id", async (req, res) => {
   const id = req.params.id * 1;
   await deleteProduct(id);
 
-  res.json({ message: "Deleted successfully" });
+  res.json({ message: "Deleted successfully"});
 });
 
 module.exports = router;

@@ -1,25 +1,17 @@
-import { Header } from '../Components'
-import DocsPage from './docs'
-import { useLocation } from 'react-router-dom'
-import ReactPlayerPage from '../reactPlayer'
 import React from 'react'
+import { Outlet, useLocation } from 'react-router-dom'
+import { Dashboard } from '../Components'
 
 export default function RootLayout() {
   const { pathname } = useLocation()
-
   return (
     <>
-      {pathname === '/reactPlayer' ? (
-        <ReactPlayerPage />
-      ) : (
-        <>
-          <Header />
+      <title>Complete Node Bootcamp</title>
+      <meta name="author" content="michal" />
+      <meta name="keywords" content="node" />
 
-          <main>
-            <DocsPage />
-          </main>
-        </>
-      )}
+      {pathname === '/' && <Dashboard />}
+      <Outlet />
     </>
   )
 }

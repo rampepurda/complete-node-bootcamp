@@ -6,6 +6,7 @@ interface PropsInt extends HTMLAttributes<HTMLBodyElement> {
   tagElement: HTMLTagT
   classes?: string
   product: ProductInt | undefined
+  detailURL?: string
   isDetail?: boolean
 }
 
@@ -14,6 +15,7 @@ export const Product = ({
   classes,
   tagElement,
   isDetail = false,
+  detailURL,
   children,
 }: PropsWithChildren<PropsInt>) => {
   const HTMLAttr = tagElement
@@ -39,7 +41,7 @@ export const Product = ({
         </>
       ) : (
         <div>
-          <Link to={`/section6/api_routes_methods/${product?.productName}`}>See detail</Link>
+          <Link to={`${detailURL}/${product?.productName}`}>See detail</Link>
         </div>
       )}
 
