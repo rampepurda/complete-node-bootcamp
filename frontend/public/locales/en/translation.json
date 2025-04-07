@@ -19,7 +19,8 @@
     "order": "Order",
     "priceTotal": "Total Price",
     "ariaLabel": {
-      "cart": "Cart"
+      "cart": "Cart",
+      "incPiece": "increase piece plus one"
     }
   },
   "sections": {

@@ -19,7 +19,8 @@
     "order": "Objednat",
     "priceTotal": "Cena celkem",
     "ariaLabel": {
-      "cart": "Košík"
+      "cart": "Košík",
+      "incPiece": "navýšit počet kusů o jeden"
     }
   },
   "sections": {

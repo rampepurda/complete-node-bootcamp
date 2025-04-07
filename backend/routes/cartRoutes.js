@@ -1,12 +1,8 @@
 const express = require("express");
 const { v4: generateId } = require("uuid");
-const { getAll, addProductOrder, alreadyOrderedProduct, deleteProductCart,
-  replacePlaylist, replaceProductCart
+const { getAll, addProductOrder, alreadyOrderedProduct, deleteProductCart, replaceProductCart
 } = require("../dataEvent/event");
 const router = express.Router();
-const cOption = {
-  httpOnly: true
-}
 
 router.get("/cart", async (req, res) => {
   const storedData = await getAll();
@@ -44,7 +40,7 @@ router.delete("/cart/:id", async (req, res) => {
   res.json({ message: "Deleted successfully" });
 });
 
-router.patch('/cart/:id', async (req, res, next) => {
+router.patch('/cart/incr/:id', async (req, res, next) => {
   const paramsId = Number(req.params.id)
   const dataApi = await getAll()
 
@@ -54,7 +50,6 @@ router.patch('/cart/:id', async (req, res, next) => {
 
   if(selectedCart) {
     const itemTotalPrice = (selectedCart.piece + 1) * Number(selectedCart.price)
-    //const itemTotalPrice = itemTotalPrice - Number(selectedCart.price)
 
     try {
       await replaceProductCart(paramsId, {
@@ -65,8 +60,6 @@ router.patch('/cart/:id', async (req, res, next) => {
         piece: selectedCart.piece + 1,
         priceTotal: itemTotalPrice.toString()
       })
-
-      res.json({ priceTotal: itemTotalPrice })
     } catch (error) {
       next(error)
     }
@@ -77,5 +70,33 @@ router.patch('/cart/:id', async (req, res, next) => {
   }
 })
 
+router.patch('/cart/decr/:id', async (req, res, next) => {
+  const paramsId = Number(req.params.id)
+  const dataApi = await getAll()
+
+  const index = dataApi.cart.findIndex((item) => item.id === paramsId)
+  const selectedCart = dataApi.cart[index]
+
+  if(selectedCart) {
+    const itemTotalPrice = selectedCart.priceTotal - selectedCart.price
+
+    try {
+      await replaceProductCart(paramsId, {
+        productName: selectedCart.productName,
+        from: selectedCart.from,
+        description: selectedCart.description,
+        price: selectedCart.price,
+        piece: selectedCart.piece - 1,
+        priceTotal: itemTotalPrice.toString()
+      })
+    } catch (error) {
+      next(error)
+    }
+  }
+
+  if(res.status(400)) {
+    res.json({message: 'Wrong Id'})
+  }
+})
 
 module.exports = router;

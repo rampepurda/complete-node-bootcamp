@@ -1,0 +1,42 @@
+@import "../../../styles/breakpoints";
+@import "../../../styles/spacing";
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+
+.orderWrapper {
+  margin: $spacer-4 0;
+  font-size: 1.2rem;
+
+  .mark {
+    @include fontSize(1.3rem, bolder);
+    display: inline-block;
+    margin: 0 $spacer-2;
+    border-radius: .3rem;
+    background-color: $white;
+    padding: .2rem .5rem;
+    text-shadow: 1px 1px 2px #fff;
+  }
+
+  .btn {
+    @include fontSize(2rem, 500);
+    margin: -.2rem 0 -.2rem $spacer-3;
+    background-color: $greenLight;
+    padding: .2rem .8rem;
+    color: $white;
+
+    &.decrease {
+      margin-left: -$spacer-1;
+      border-left: 1px solid $white;
+      background-color: $red;
+    }
+
+    &.hasRadius {
+      margin-right: -$spacer-4;
+      border-top-right-radius: .5rem;
+      border-bottom-right-radius: .5rem;
+    }
+  }
+}
+
+
+
