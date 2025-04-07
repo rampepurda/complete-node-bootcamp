@@ -10,7 +10,7 @@ export function EshopLayout() {
   const { t } = useTranslation()
   const { pathname } = useLocation()
   const dispatch = useAppDispatch()
-  const productInCart = useAppSelector((state) => state.cart.productInCart)
+  const cart = useAppSelector((state) => state.cartSlice.cart)
 
   useEffect(() => {
     dispatch(fetchCart())
@@ -18,11 +18,11 @@ export function EshopLayout() {
 
   return (
     <>
-      <title>eShop - Welcome</title>
+      <title>{t('eShop.title')}</title>
       <meta name="keywords" content="shop, product, eshop" />
 
       <Header title={pathname === '/eShop' ? `${t('eShop.title')}` : `${t('eShop.cartTitle')}`}>
-        <CartSwitcher pageURL={'/eShop/cart'} itemTotal={productInCart?.productsOrderTotal} />
+        <CartSwitcher pageURL={'/eShop/cart'} itemTotal={cart?.productsOrderTotal} />
       </Header>
 
       {pathname === '/eShop' && <EShopPage />}

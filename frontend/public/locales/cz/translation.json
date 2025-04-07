@@ -12,9 +12,12 @@
     "delete": "Odebrat"
   },
   "eShop": {
-    "title": "eShop - vítejte ",
-    "cartTitle": "eShop / košík",
+    "title": "eShop - Vítejte ",
+    "cartTitle": "eShop / Košík",
     "addToCart": "Vložit do košíku",
+    "incItemInCart": "Počet byl navýšen",
+    "order": "Objednat",
+    "priceTotal": "Cena celkem",
     "ariaLabel": {
       "cart": "Košík"
     }

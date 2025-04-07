@@ -308,6 +308,12 @@ figure {
   }
 }
 
+.txt-ellipsis {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .isMediumDevice,
 .isLargeDevice {
   display: none;

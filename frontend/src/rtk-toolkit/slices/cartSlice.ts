@@ -1,11 +1,12 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
-import type { RootState } from '../store'
 import { environment } from '../../configuration/environment'
-import { CartInt, ProdOrderedT } from '../../types'
+import { CartInt } from '../../types'
 
 /**
  * usage with TS:
  * https://redux-toolkit.js.org/usage/usage-with-typescript
+ * createAsyncThunk with TS:
+ * https://redux-toolkit.js.org/api/createAsyncThunk
  *
  * Installation:
  * yarn add @reduxjs/toolkit
@@ -30,11 +31,11 @@ export type StatusT = {
   error: string
 }
 export type InitValuesT = {
-  productInCart: CartInt | undefined
+  cart: CartInt | undefined
   status: StatusT
 }
 const initialState: InitValuesT = {
-  productInCart: undefined,
+  cart: undefined,
   status: {
     isLoading: false,
     error: '',
@@ -58,7 +59,7 @@ export const fetchCart = createAsyncThunk<CartInt>(
 )
 
 export const cartSlice = createSlice({
-  name: 'cart',
+  name: 'cartSlice',
   initialState,
   reducers: {},
   extraReducers: (builder) => {
@@ -71,7 +72,7 @@ export const cartSlice = createSlice({
     })
     // Payload is redundant when fetchFn includes types
     builder.addCase(fetchCart.fulfilled, (state, action) => {
-      state.productInCart = action.payload
+      state.cart = action.payload
       state.status.isLoading = false
     })
   },

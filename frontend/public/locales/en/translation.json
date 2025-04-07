@@ -15,6 +15,9 @@
     "title": "eShop - Welcome",
     "cartTitle": "eShop / Cart",
     "addToCart": "Add To Cart",
+    "incItemInCart": "Item was increased successfully",
+    "order": "Order",
+    "priceTotal": "Total Price",
     "ariaLabel": {
       "cart": "Cart"
     }

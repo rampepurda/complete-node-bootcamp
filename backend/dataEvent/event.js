@@ -13,8 +13,9 @@ async function getAll() {
 async function addProduct(data) {
   const { productName, from, description } = data
   const storedData = await readData()
-
-  storedData.products.unshift({ productName, from, description, id:  Math.floor(Math.random() * 1000), })
+  // Form onSubmit Product does not send price. That is the reason price is fix set up.
+  storedData.products.unshift({ productName, from, description, id:  Math.floor(Math.random() * 1000), price: "3.00",
+    priceTotal: 3.00, })
   await writeData(storedData)
 }
 
@@ -60,7 +61,7 @@ async function addProductOrder(id) {
     (product) => product.id === id,
   );
 
-  orderedProducts.unshift({ ...newOrderedProduct })
+  orderedProducts.unshift({ ...newOrderedProduct, piece: 1 })
   await writeData({ playlist: storedData.playlist, products: storedData.products , cart: orderedProducts});
 }
 
@@ -79,6 +80,14 @@ async function deleteProductCart(id) {
   await writeData({ playlist: storedData.playlist, products: storedData.products, cart: updatedCart });
 }
 
+async function replaceProductCart(id, data) {
+  const storedData = await readData()
+  const index = storedData.cart.findIndex((item) => item.id === id)
+
+  storedData.cart[index] = { ...data, id }
+  await writeData(storedData)
+}
+
 exports.getAll = getAll;
 exports.getProduct = getProduct;
 exports.addProduct = addProduct;
@@ -86,4 +95,5 @@ exports.deleteProduct = deleteProduct;
 exports.addProductOrder = addProductOrder;
 exports.alreadyOrderedProduct = alreadyOrderedProduct;
 exports.deleteProductCart = deleteProductCart;
+exports.replaceProductCart = replaceProductCart;
 exports.replacePlaylist = replacePlaylist;

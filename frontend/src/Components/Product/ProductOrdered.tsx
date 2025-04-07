@@ -1,11 +1,11 @@
 import React, { HTMLAttributes, PropsWithChildren } from 'react'
-import { HTMLTagT, ProductInt } from '../../types'
+import { HTMLTagT, ProdOrderedT } from '../../types'
 import { Link } from 'react-router-dom'
 
 interface PropsInt extends HTMLAttributes<HTMLBodyElement> {
   tagElement: HTMLTagT
   classes?: string
-  product: ProductInt | undefined
+  product: ProdOrderedT | undefined
   detailURL?: string
 }
 
@@ -17,16 +17,21 @@ export const ProductOrdered = ({
   children,
 }: PropsWithChildren<PropsInt>) => {
   const HTMLAttr = tagElement
+
   return (
     <HTMLAttr className={classes}>
-      <h4>{product?.productName}</h4>
-      <p>Description: {product?.description}</p>
-      <p>Price: {product?.price} BGP</p>
-      <div>
-        <Link to={`${detailURL}/${product?.productName}`}>See detail</Link>
-      </div>
+      <h3>{product?.productName}</h3>
+      <label>Description:</label>
+      <p className="txt-ellipsis">{product?.description}</p>
+      <Link to={`${detailURL}/${product?.productName}`}>
+        <strong>See detail</strong>
+      </Link>
+
+      <h5>
+        Price: <strong>{product?.price}</strong> GBP/piece
+      </h5>
+
       {children}
-      <hr />
     </HTMLAttr>
   )
 }

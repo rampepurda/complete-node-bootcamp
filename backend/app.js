@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 const routerProducts = require("./routes/productsRoutes");
+const routerCart = require("./routes/cartRoutes");
 const routerPlaylist = require("./routes/playlistRoutes");
 const { json } = require("express");
 
@@ -12,6 +13,7 @@ app.use((req, res, next) => {
 });
 app.use(json());
 app.use(routerProducts);
+app.use(routerCart);
 app.use(routerPlaylist);
 
 const port = process.env.PORT || 4040;

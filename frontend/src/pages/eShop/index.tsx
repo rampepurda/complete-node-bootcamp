@@ -1,14 +1,17 @@
-import { Button, Header, CartSwitcher, Product } from '../../Components'
+import { Button, Product } from '../../Components'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { ProductInt } from '../../types'
 import { environment } from '../../configuration/environment'
 import { useTranslation } from 'react-i18next'
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useAppDispatch } from '../../rtk-toolkit/hooks'
+import { fetchCart } from '../../rtk-toolkit/slices/cartSlice'
 
 export function EShopPage() {
   const { t } = useTranslation()
+  const dispatch = useAppDispatch()
   const { data, isLoading } = useQuery({
-    queryKey: ['products'],
+    queryKey: ['productsOrdered'],
     queryFn: async (): Promise<
       | {
           products: ProductInt[] | undefined
@@ -61,7 +64,10 @@ export function EShopPage() {
           >
             <Button
               classesName={'btn-edit'}
-              OnClick={() => mutate({ id: product.id, formData: product })}
+              OnClick={() => {
+                mutate({ id: product.id, formData: product })
+                dispatch(fetchCart())
+              }}
               title={t('eShop.addToCart')}
               rest={{ type: 'button' }}
             />

@@ -7,11 +7,14 @@ export type ProdOrderedT = {
   from: string
   description: string
   price?: string | number
+  priceTotal?: string | number
+  piece?: number
 }
 
 export interface CartInt {
   productsOrdered: ProdOrderedT[] | undefined
   productsOrderTotal: number
+  priceTotal?: number
   //message: string | null
 }
 
