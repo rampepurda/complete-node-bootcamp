@@ -18,7 +18,7 @@ export const OrderBox = ({ piece, priceTotal, incHandler, decHandler }: Props) =
     <>
       <div className={classNames('display-flex-start like-box', classes.orderWrapper)}>
         <h5 className="display-inline-block">Ordered pieces:</h5>
-        <span className={classes.mark}>{piece}</span>
+        <span className={classes.mark}>{piece}</span> &nbsp;| &nbsp;
         <h5 className="display-inline-block">Price Total:</h5>
         <span className={classes.mark}>{priceTotal && priceTotal}</span>
         GBP
