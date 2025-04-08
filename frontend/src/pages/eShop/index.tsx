@@ -3,7 +3,7 @@ import { useMutation, useQuery } from '@tanstack/react-query'
 import { ProductInt } from '../../types'
 import { environment } from '../../configuration/environment'
 import { useTranslation } from 'react-i18next'
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useAppDispatch } from '../../rtk-toolkit/hooks'
 import { fetchCart } from '../../rtk-toolkit/slices/cartSlice'
 
