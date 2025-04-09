@@ -14,13 +14,17 @@
   "eShop": {
     "title": "eShop - Vítejte ",
     "cartTitle": "eShop / Košík",
+    "cartStatus": "Košík je prázdný. Zkuste si vybrat jiný produkt.",
     "addToCart": "Vložit do košíku",
     "incItemInCart": "Počet byl navýšen",
     "order": "Objednat",
-    "priceTotal": "Cena celkem",
+    "priceTotal": "Cena celkem:",
+    "orderedTotal": "Objednáno celkem:",
+    "orderMaxMessage": "Můžete objednat maximálně 6ks",
     "ariaLabel": {
       "cart": "Košík",
-      "incPiece": "navýšit počet kusů o jeden"
+      "incPiece": "navýšit počet kusů o jeden",
+      "decPiece": "odebrat o jeden"
     }
   },
   "sections": {

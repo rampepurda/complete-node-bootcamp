@@ -14,13 +14,17 @@
   "eShop": {
     "title": "eShop - Welcome",
     "cartTitle": "eShop / Cart",
+    "cartStatus": "Cart is empty, go back in to the Shop",
     "addToCart": "Add To Cart",
     "incItemInCart": "Item was increased successfully",
     "order": "Order",
-    "priceTotal": "Total Price",
+    "orderedTotal": "Ordered pieces:",
+    "priceTotal": "Total Price:",
+    "orderMaxMessage": "You can order only 6 items per product",
     "ariaLabel": {
       "cart": "Cart",
-      "incPiece": "increase piece plus one"
+      "incPiece": "increase piece plus one",
+      "decPiece": "remove one"
     }
   },
   "sections": {

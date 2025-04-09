@@ -3,6 +3,21 @@
 @import "../../../styles/variables";
 @import "../../../styles/mixins";
 
+.cart {
+  margin: $spacer-5 10%;
+
+  .orderBox {
+    background-color: $grayLightest;
+
+    .priceBox {
+      border-radius: 2em;
+      border: 1px solid $grayLighter;
+      background-color: $white;
+      padding: .5rem 1rem;
+    }
+  }
+}
+
 .orderWrapper {
   margin: $spacer-4 0;
   border: 1px solid $grayLighter;

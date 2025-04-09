@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next'
 import React from 'react'
 import { useAppDispatch } from '../../rtk-toolkit/hooks'
 import { fetchCart } from '../../rtk-toolkit/slices/cartSlice'
+import { fetcher } from '../../utils/fetcher'
 
 export function EShopPage() {
   const { t } = useTranslation()
@@ -19,15 +20,7 @@ export function EShopPage() {
           productsTotal: number
         }
       | undefined
-    > => {
-      try {
-        return await fetch(`${environment.localProductsURL}`, { method: 'GET' }).then((response) =>
-          response.json()
-        )
-      } catch (err: any) {
-        alert(err)
-      }
-    },
+    > => await fetcher(`${environment.localProductsURL}`, { method: 'GET' }),
   })
   const { mutate } = useMutation({
     mutationKey: ['cart'],
@@ -42,6 +35,7 @@ export function EShopPage() {
         if (response.ok) {
           const data = await response.json()
 
+          dispatch(fetchCart())
           alert(data.message)
         }
       } catch (err) {
@@ -66,7 +60,6 @@ export function EShopPage() {
               classesName={'btn-edit'}
               OnClick={() => {
                 mutate({ id: product.id, formData: product })
-                dispatch(fetchCart())
               }}
               title={t('eShop.addToCart')}
               rest={{ type: 'button' }}
