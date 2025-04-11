@@ -22,12 +22,12 @@ export const Product = ({
   return (
     <HTMLAttr className={classes}>
       <label>Product:</label>
-      <h4>{product?.productName}</h4>
+      <h2>{product?.productName}</h2>
 
       {isDetail ? (
         <>
           <label>From:</label>
-          <h4>{product?.from}</h4>
+          <h3>{product?.from}</h3>
 
           {product?.price && (
             <>

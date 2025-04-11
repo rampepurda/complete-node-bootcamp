@@ -12,10 +12,17 @@
     "delete": "Delete"
   },
   "eShop": {
-    "title": "eShop - Welcome",
-    "cartTitle": "eShop / Cart",
-    "cartStatus": "Cart is empty, go back in to the Shop",
+    "headline": "eShop - Welcome",
     "addToCart": "Add To Cart",
+    "ariaLabel": {
+      "cart": "Cart",
+      "incPiece": "increase piece plus one",
+      "decPiece": "remove one"
+    }
+  },
+  "cart": {
+    "headline": "eShop / Cart",
+    "cartStatus": "Cart is empty, go back in to the Shop",
     "incItemInCart": "Item was increased successfully",
     "order": "Order",
     "orderedTotal": "Ordered pieces:",
@@ -26,6 +33,9 @@
       "incPiece": "increase piece plus one",
       "decPiece": "remove one"
     }
+  },
+  "cartOrder": {
+    "headline": "Cart/Order"
   },
   "sections": {
     "section1": {
@@ -45,7 +55,7 @@
       }
     },
     "section3": {
-      "title": "Section 3: Introduction to Backend Web Development"
+      "title": "Section 3: Introduction to Backend Web Development including SSR vs CSR explanation"
     },
     "section6": {
       "title": "Section 6: Node Express",

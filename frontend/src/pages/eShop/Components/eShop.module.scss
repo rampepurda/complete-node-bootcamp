@@ -10,7 +10,7 @@
     background-color: $grayLightest;
 
     .priceBox {
-      border-radius: 2em;
+      border-radius: 2rem;
       border: 1px solid $grayLighter;
       background-color: $white;
       padding: .5rem 1rem;
@@ -37,7 +37,7 @@
     @include fontSize(2rem, 500);
     margin: -.2rem 0 -.2rem $spacer-3;
     background-color: $greenLight;
-    padding: .2rem .8rem;
+    padding: .2rem 1rem;
     color: $white;
 
     &.decrease {
@@ -48,9 +48,15 @@
 
     &.hasRadius {
       margin-right: -$spacer-4;
-      border-top-right-radius: .5rem;
-      border-bottom-right-radius: .5rem;
+      border-top-right-radius: 1rem;
+      border-bottom-right-radius: 1rem;
     }
+  }
+}
+
+.breadCrumb {
+  li {
+    padding: 0 .3rem 0 0;
   }
 }
 

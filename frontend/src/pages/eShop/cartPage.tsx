@@ -10,6 +10,7 @@ import { OrderBox } from './Components/OrderBox'
 import { useAppDispatch } from '../../rtk-toolkit/hooks'
 import { fetchCart } from '../../rtk-toolkit/slices/cartSlice'
 import classNames from 'classnames'
+import { Link } from 'react-router-dom'
 
 export function CartPage() {
   const { t } = useTranslation()
@@ -73,12 +74,12 @@ export function CartPage() {
 
   return (
     <>
-      <title>{t('eShop.cartTitle')}</title>
+      <title>{t('cart.headline')}</title>
       <meta name="keywords" content="book, shop, eshop" />
 
       <div className={classes.cart}>
         {data?.productsOrderTotal === 0 ? (
-          <h2>{t('eShop.cartStatus')}</h2>
+          <h2>{t('cart.cartStatus')}</h2>
         ) : (
           <>
             {(isLoading && <h3>...loading, wait</h3>) || (error && <h3>Ops, error</h3>)}
@@ -110,14 +111,12 @@ export function CartPage() {
 
             <section className={classNames(classes.orderBox, 'hasOutline')}>
               <h2>
-                {t('eShop.priceTotal')}{' '}
+                {t('cart.priceTotal')}{' '}
                 <span className={classes.priceBox}>{data?.priceTotal} GBP</span>
               </h2>
-              <Button
-                classesName={'btn-submit'}
-                title={t('eShop.order')}
-                rest={{ type: 'button' }}
-              />
+              <Button classesName={'btn-submit'} rest={{ type: 'button' }}>
+                <Link to="/eShop/cart/order">{t('cart.order')}</Link>
+              </Button>
             </section>
           </>
         )}

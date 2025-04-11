@@ -1,10 +1,15 @@
 const express = require("express");
 const { v4: generateId } = require("uuid");
-const { getAll, deleteProduct, getProduct, addProduct } = require("../dataEvent/event");
+const {
+  getAll,
+  deleteProduct,
+  getProduct,
+  addProduct,
+} = require("../dataEvent/event");
 const router = express.Router();
 const cOption = {
-  httpOnly: true
-}
+  httpOnly: true,
+};
 
 router.get("/products", async (req, res) => {
   const storedData = await getAll();
@@ -26,12 +31,11 @@ router.post("/products", async (req, res, next) => {
   const dataForm = req.body;
 
   try {
-    await addProduct(dataForm)
-    res.cookie('product', dataForm.productName, cOption)
-    res.status(201).json({ message: 'Data successfully posted'})
-
+    await addProduct(dataForm);
+    res.cookie("product", dataForm.productName, cOption);
+    res.status(201).json({ message: "Data successfully posted" });
   } catch (error) {
-    next(error)
+    next(error);
   }
 });
 
@@ -39,7 +43,7 @@ router.delete("/products/:id", async (req, res) => {
   const id = req.params.id * 1;
   await deleteProduct(id);
 
-  res.json({ message: "Deleted successfully"});
+  res.json({ message: "Deleted successfully" });
 });
 
 module.exports = router;

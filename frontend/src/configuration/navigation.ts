@@ -11,6 +11,10 @@ export const navigation = {
       title: 'ReactPlayer',
       link: '/reactplayer',
     },
+    {
+      title: 'R19 useActionState hook(temporarily)',
+      link: '/r18_useActionState',
+    },
   ],
   sideBarSections: [
     {
@@ -64,10 +68,6 @@ export const navigation = {
           link: 'section6/api_routes_methods',
         },
       ],
-    },
-    {
-      title: 'R19 - Action: useActionState() | temporarily ',
-      link: 'section3/backendDevIntro',
     },
   ],
 }

@@ -17,9 +17,9 @@ export const OrderBox = ({ piece, priceTotal, incHandler, decHandler }: Props) =
   return (
     <>
       <div className={classNames('display-flex-start like-box', classes.orderWrapper)}>
-        <h5 className="display-inline-block">{t('eShop.orderedTotal')}</h5>
+        <h5 className="display-inline-block">{t('cart.orderedTotal')}</h5>
         <span className={classes.mark}>{piece}</span> &nbsp;| &nbsp;
-        <h5 className="display-inline-block">{t('eShop.priceTotal')}</h5>
+        <h5 className="display-inline-block">{t('cart.priceTotal')}</h5>
         <span className={classes.mark}>{priceTotal && priceTotal}</span>
         GBP
         <Button
@@ -31,7 +31,7 @@ export const OrderBox = ({ piece, priceTotal, incHandler, decHandler }: Props) =
           title={'+'}
           OnClick={incHandler}
           rest={{ type: 'submit', disabled: piece && piece === 6 }}
-          ariaLabel={`${t('eShop.ariaLabel.incPiece')}`}
+          ariaLabel={`${t('cart.ariaLabel.incPiece')}`}
         />
         {piece && piece > 1 && (
           <Button
@@ -44,12 +44,12 @@ export const OrderBox = ({ piece, priceTotal, incHandler, decHandler }: Props) =
             title={'-'}
             OnClick={decHandler}
             rest={{ type: 'submit', disabled: piece === 1 }}
-            ariaLabel={`${t('eShop.ariaLabel.decPiece')}`}
+            ariaLabel={`${t('cart..ariaLabel.decPiece')}`}
           />
         )}
       </div>
 
-      {piece === 6 && <p className="color-is-red">{t('eShop.orderMaxMessage')}</p>}
+      {piece === 6 && <p className="color-is-red">{t('cart..orderMaxMessage')}</p>}
     </>
   )
 }
