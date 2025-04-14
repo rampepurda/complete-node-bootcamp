@@ -13,29 +13,46 @@
   },
   "eShop": {
     "headline": "eShop - Welcome",
+    "backToEshop": "Back to  eShop",
     "addToCart": "Add To Cart",
     "ariaLabel": {
       "cart": "Cart",
       "incPiece": "increase piece plus one",
       "decPiece": "remove one"
+    },
+    "cart": {
+      "headline": "eShop / Cart",
+      "cartStatus": "Cart is empty, go back in to the Shop",
+      "incItemInCart": "Item was increased successfully",
+      "order": "Order",
+      "orderedTotal": "Pieces",
+      "priceTotal": "Total Price",
+      "orderMaxMessage": "You can order only 6 items per product",
+      "ariaLabel": {
+        "cart": "Cart",
+        "incPiece": "increase piece plus one",
+        "decPiece": "remove one"
+      }
+    },
+    "cartOrder": {
+      "headline": "Cart/Order",
+      "resume": "You ordered",
+      "paymentTotal": "You pay in total",
+      "orderedSuccessfully": "Successful send. Thanks for your order.",
+      "form": {
+        "headline": "Order data",
+        "fullName": "Full name",
+        "phone": "Phone number",
+        "payment": "Type of Payment",
+        "byCard": "Card",
+        "byCash": "Cash at the branch",
+        "submit": "Submit Order"
+      },
+      "breadcrumb": {
+        "cart": "Cart",
+        "order": "Order"
+      }
     }
-  },
-  "cart": {
-    "headline": "eShop / Cart",
-    "cartStatus": "Cart is empty, go back in to the Shop",
-    "incItemInCart": "Item was increased successfully",
-    "order": "Order",
-    "orderedTotal": "Ordered pieces:",
-    "priceTotal": "Total Price:",
-    "orderMaxMessage": "You can order only 6 items per product",
-    "ariaLabel": {
-      "cart": "Cart",
-      "incPiece": "increase piece plus one",
-      "decPiece": "remove one"
-    }
-  },
-  "cartOrder": {
-    "headline": "Cart/Order"
   },
   "sections": {
     "section1": {

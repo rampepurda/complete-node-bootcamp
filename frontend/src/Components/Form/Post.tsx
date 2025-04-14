@@ -1,9 +1,8 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { environment } from '../../configuration/environment'
-import { useActionState } from 'react'
-import { redirect } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
-export const PostProductForm = () => {
+export const FormPostProduct = () => {
   const queryClient = useQueryClient()
   const productMutation = useMutation({
     mutationKey: ['product'],
@@ -45,6 +44,53 @@ export const PostProductForm = () => {
 
       <button className="btn btn-submit" type="submit" disabled={productMutation.isPending}>
         {productMutation.isPending ? 'Submitting' : 'Submit'}
+      </button>
+    </form>
+  )
+}
+
+export const FormPostOrder = ({ onSubmit, status }: { onSubmit: any; status: boolean }) => {
+  const { t } = useTranslation()
+
+  return (
+    <form className="width-is-5" method="post" action={onSubmit}>
+      <label htmlFor="fullName"> {t('eShop.cartOrder.form.fullName')}:</label>
+      <input id="fullName" type="text" name="fullName" placeholder="full name" required />
+
+      <label htmlFor="email">Email:</label>
+      <input id="email" type="email" name="email" placeholder="@" required />
+
+      <label htmlFor="phone"> {t('eShop.cartOrder.form.phone')}:</label>
+      <input type="tel" id="phone" name="phone" />
+
+      <div>
+        <label> {t('eShop.cartOrder.form.payment')}:</label>
+        <label htmlFor="card">
+          <input
+            id="card"
+            className="width-is-1"
+            type="radio"
+            value="card"
+            name="payment"
+            defaultChecked={false}
+          />
+          {t('eShop.cartOrder.form.byCard')}
+        </label>
+        <label htmlFor="cash">
+          <input
+            id="casch"
+            className="width-is-1"
+            type="radio"
+            value="cash"
+            name="payment"
+            defaultChecked={false}
+          />
+          {t('eShop.cartOrder.form.byCash')}
+        </label>
+      </div>
+
+      <button className="btn btn-info" type="submit">
+        {status ? 'Submitting' : t('eShop.cartOrder.form.submit')}
       </button>
     </form>
   )

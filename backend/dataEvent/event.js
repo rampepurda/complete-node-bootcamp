@@ -71,8 +71,7 @@ async function addProductOrder(id) {
 
   orderedProducts.unshift({ ...newOrderedProduct, piece: 1 });
   await writeData({
-    playlist: storedData.playlist,
-    products: storedData.products,
+    ...storedData,
     cart: orderedProducts,
   });
 }
@@ -88,8 +87,7 @@ async function deleteProductCart(id) {
   const updatedCart = storedData.cart.filter((product) => product.id !== id);
 
   await writeData({
-    playlist: storedData.playlist,
-    products: storedData.products,
+    ...storedData,
     cart: updatedCart,
   });
 }
@@ -102,6 +100,18 @@ async function replaceProductCart(id, data) {
   await writeData(storedData);
 }
 
+async function addOrder(data) {
+  const { client, ordered } = data;
+  const storedData = await readData();
+
+  storedData.order.unshift({
+    client,
+    ordered,
+  });
+
+  await writeData({ ...storedData, order: storedData.order });
+}
+
 exports.getAll = getAll;
 exports.getProduct = getProduct;
 exports.addProduct = addProduct;
@@ -110,4 +120,5 @@ exports.addProductOrder = addProductOrder;
 exports.alreadyOrderedProduct = alreadyOrderedProduct;
 exports.deleteProductCart = deleteProductCart;
 exports.replaceProductCart = replaceProductCart;
+exports.addOrder = addOrder;
 exports.replacePlaylist = replacePlaylist;

@@ -1,18 +1,29 @@
 const express = require("express");
 const { v4: generateId } = require("uuid");
-const { getAll, addProductOrder, alreadyOrderedProduct, deleteProductCart, replaceProductCart
+const {
+  getAll,
+  addProductOrder,
+  alreadyOrderedProduct,
+  deleteProductCart,
+  replaceProductCart,
+  addOrder,
 } = require("../dataEvent/event");
+const { writeData } = require("../util/getData");
 const router = express.Router();
 
 router.get("/cart", async (req, res) => {
   const storedData = await getAll();
-  const cart = storedData.cart
+  const cart = storedData.cart;
 
-  if(!cart) {
-    return res.json({message: 'Any order yet'});
+  if (!cart) {
+    return res.json({ message: "Any order yet" });
   }
 
-  const itemPriceTotal = cart.reduce((accumulator, currentValue) => accumulator + Number(currentValue.priceTotal), 0)
+  const itemPriceTotal = cart.reduce(
+    (accumulator, currentValue) =>
+      accumulator + Number(currentValue.priceTotal),
+    0,
+  );
 
   return res.status(200).json({
     productsOrdered: cart,
@@ -22,14 +33,14 @@ router.get("/cart", async (req, res) => {
 });
 
 router.post("/cart/:id", async (req, res, next) => {
-  const id = Number(req.params.id)
-  const isOrderedProduct = await alreadyOrderedProduct(id)
+  const id = Number(req.params.id);
+  const isOrderedProduct = await alreadyOrderedProduct(id);
 
-  if(isOrderedProduct) {
-    res.json({ message: "Already ordered"});
+  if (isOrderedProduct) {
+    res.json({ message: "Already ordered" });
   } else {
-    await addProductOrder(id)
-    res.json({ message: "Ordered successfully"});
+    await addProductOrder(id);
+    res.json({ message: "Ordered successfully" });
   }
 });
 
@@ -40,16 +51,16 @@ router.delete("/cart/:id", async (req, res) => {
   res.json({ message: "Deleted successfully" });
 });
 
-router.patch('/cart/incr/:id', async (req, res, next) => {
-  const paramsId = Number(req.params.id)
-  const dataApi = await getAll()
+router.patch("/cart/incr/:id", async (req, res, next) => {
+  const paramsId = Number(req.params.id);
+  const dataApi = await getAll();
 
-  const index = dataApi.cart.findIndex((item) => item.id === paramsId)
-  const selectedCart = dataApi.cart[index]
+  const index = dataApi.cart.findIndex((item) => item.id === paramsId);
+  const selectedCart = dataApi.cart[index];
 
-
-  if(selectedCart) {
-    const itemTotalPrice = (selectedCart.piece + 1) * Number(selectedCart.price)
+  if (selectedCart) {
+    const itemTotalPrice =
+      (selectedCart.piece + 1) * Number(selectedCart.price);
 
     try {
       await replaceProductCart(paramsId, {
@@ -58,27 +69,27 @@ router.patch('/cart/incr/:id', async (req, res, next) => {
         description: selectedCart.description,
         price: selectedCart.price,
         piece: selectedCart.piece + 1,
-        priceTotal: itemTotalPrice.toString()
-      })
+        priceTotal: itemTotalPrice.toString(),
+      });
     } catch (error) {
-      next(error)
+      next(error);
     }
   }
 
-  if(res.status(400)) {
-    res.json({message: 'Wrong Id'})
+  if (res.status(400)) {
+    res.json({ message: "Wrong Id" });
   }
-})
+});
 
-router.patch('/cart/decr/:id', async (req, res, next) => {
-  const paramsId = Number(req.params.id)
-  const dataApi = await getAll()
+router.patch("/cart/decr/:id", async (req, res, next) => {
+  const paramsId = Number(req.params.id);
+  const dataApi = await getAll();
 
-  const index = dataApi.cart.findIndex((item) => item.id === paramsId)
-  const selectedCart = dataApi.cart[index]
+  const index = dataApi.cart.findIndex((item) => item.id === paramsId);
+  const selectedCart = dataApi.cart[index];
 
-  if(selectedCart) {
-    const itemTotalPrice = selectedCart.priceTotal - selectedCart.price
+  if (selectedCart) {
+    const itemTotalPrice = selectedCart.priceTotal - selectedCart.price;
 
     try {
       await replaceProductCart(paramsId, {
@@ -87,16 +98,28 @@ router.patch('/cart/decr/:id', async (req, res, next) => {
         description: selectedCart.description,
         price: selectedCart.price,
         piece: selectedCart.piece - 1,
-        priceTotal: itemTotalPrice.toString()
-      })
+        priceTotal: itemTotalPrice.toString(),
+      });
     } catch (error) {
-      next(error)
+      next(error);
     }
   }
 
-  if(res.status(400)) {
-    res.json({message: 'Wrong Id'})
+  if (res.status(400)) {
+    res.json({ message: "Wrong Id" });
   }
-})
+});
+
+router.post("/order", async (req, res, next) => {
+  const { client, ordered } = req.body;
+  const storedData = await getAll();
+
+  await addOrder({ client, ordered });
+
+  if (res.status(200)) {
+    await writeData({ ...storedData, cart: [] });
+    res.json({ message: "Successful ordered" });
+  }
+});
 
 module.exports = router;

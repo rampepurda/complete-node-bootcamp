@@ -20,7 +20,9 @@ export const ProductOrdered = ({
 
   return (
     <HTMLAttr className={classes}>
+      <label>Product:</label>
       <h2>{product?.productName}</h2>
+
       <label>Description:</label>
       <p className="txt-ellipsis">{product?.description}</p>
       <Link to={`${detailURL}/${product?.productName}`}>

@@ -1,1 +1,1 @@
-export * from './PostProduct'
+export * from './Post'

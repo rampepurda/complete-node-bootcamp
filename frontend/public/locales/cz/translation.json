@@ -14,27 +14,44 @@
   "eShop": {
     "headline": "eShop - Vítejte",
     "addToCart": "Vložit do košíku",
-    "ariaLabel": {
-      "cart": "Košík",
-      "incPiece": "navýšit počet kusů o jeden",
-      "decPiece": "odebrat o jeden"
-    }
-  },
-  "cart": {
-    "headline": "eShop / Košík",
-    "cartStatus": "Košík je prázdný. Zkuste si vybrat jiný produkt.",
-    "incItemInCart": "Počet byl navýšen",
-    "order": "Objednat",
-    "priceTotal": "Cena celkem:",
-    "orderedTotal": "Objednáno celkem:",
-    "orderMaxMessage": "Můžete objednat maximálně 6ks",
+    "backToEshop": "Zpátky do eShopu",
     "ariaLabel": {
       "cart": "Košík",
       "incPiece": "navýšit počet kusů o jeden",
       "decPiece": "odebrat o jeden"
     },
+    "cart": {
+      "headline": "eShop / Košík",
+      "cartStatus": "Košík je prázdný. Zkuste si vybrat jiný produkt.",
+      "incItemInCart": "Počet byl navýšen",
+      "order": "Objednat",
+      "priceTotal": "Cena celkem",
+      "orderedTotal": "Počet kusů",
+      "orderMaxMessage": "Můžete objednat maximálně 6ks",
+      "ariaLabel": {
+        "cart": "Košík",
+        "incPiece": "navýšit počet kusů o jeden",
+        "decPiece": "odebrat o jeden"
+      }
+    },
     "cartOrder": {
-      "headline": "Košík/Objednávka"
+      "headline": "Košík/Objednávka",
+      "resume": "Máte objednáno",
+      "paymentTotal": "Celkem k úhradě",
+      "orderedSuccessfully": "Vše proběhlo v pořádku. Máte objednáno.",
+      "form": {
+        "headline": "Údaje k objednávce",
+        "fullName": "Celé jméno",
+        "phone": "Telefon",
+        "payment": "Typ platby",
+        "byCard": "Kartou",
+        "byCash": "hotově na pobočce",
+        "submit": "Odeslat objednávku"
+      },
+      "breadcrumb": {
+        "cart": "Košík",
+        "order": "Objednávka"
+      }
     }
   },
   "sections": {

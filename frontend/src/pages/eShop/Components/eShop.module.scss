@@ -10,7 +10,9 @@
     background-color: $grayLightest;
 
     .priceBox {
-      border-radius: 2rem;
+      display: inline-block;
+      margin-left: $spacer-2;
+      border-radius: 1rem;
       border: 1px solid $grayLighter;
       background-color: $white;
       padding: .5rem 1rem;
@@ -24,13 +26,14 @@
   font-size: 1.2rem;
 
   .mark {
-    @include fontSize(1.3rem, bolder);
+    @include fontSize(1.3rem, 500);
     display: inline-block;
     margin: 0 $spacer-2;
     border-radius: .3rem;
-    background-color: $white;
-    padding: .2rem .5rem;
-    text-shadow: 1px 1px 2px #fff;
+    background-color: $gray;
+    padding: .1rem .5rem;
+    color: $white;
+    text-shadow: 1px 1px 1px $blackLight;
   }
 
   .btn {

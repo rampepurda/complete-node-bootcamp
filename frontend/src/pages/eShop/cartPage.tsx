@@ -56,7 +56,10 @@ export function CartPage() {
       await fetcher(`${environment.localProductsCartURL}/incr/${id}`, {
         method: 'PATCH',
       }),
-    onSuccess: () => alert(t('eShop.incItemInCart')),
+    onSuccess: () => {
+      alert(t('eShop.cart.incItemInCart'))
+      dispatch(fetchCart())
+    },
     onSettled: async () => {
       return await queryClient.invalidateQueries({ queryKey: ['productsInCart'] })
     },
@@ -67,6 +70,7 @@ export function CartPage() {
       await fetcher(`${environment.localProductsCartURL}/decr/${id}`, {
         method: 'PATCH',
       }),
+    onSuccess: () => dispatch(fetchCart()),
     onSettled: async () => {
       return await queryClient.invalidateQueries({ queryKey: ['productsInCart'] })
     },
@@ -74,12 +78,12 @@ export function CartPage() {
 
   return (
     <>
-      <title>{t('cart.headline')}</title>
+      <title>{t('eShop.cart.headline')}</title>
       <meta name="keywords" content="book, shop, eshop" />
 
       <div className={classes.cart}>
         {data?.productsOrderTotal === 0 ? (
-          <h2>{t('cart.cartStatus')}</h2>
+          <h2>{t('eShop.cart.cartStatus')}</h2>
         ) : (
           <>
             {(isLoading && <h3>...loading, wait</h3>) || (error && <h3>Ops, error</h3>)}
@@ -111,11 +115,11 @@ export function CartPage() {
 
             <section className={classNames(classes.orderBox, 'hasOutline')}>
               <h2>
-                {t('cart.priceTotal')}{' '}
+                {t('eShop.cart.priceTotal')}
                 <span className={classes.priceBox}>{data?.priceTotal} GBP</span>
               </h2>
               <Button classesName={'btn-submit'} rest={{ type: 'button' }}>
-                <Link to="/eShop/cart/order">{t('cart.order')}</Link>
+                <Link to="/eShop/cart/order">{t('eShop.cart.order')}</Link>
               </Button>
             </section>
           </>
