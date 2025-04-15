@@ -2,12 +2,13 @@ import { createBrowserRouter } from 'react-router-dom'
 import RootLayout from '../pages/RootLayout'
 import ReactPlayerPage from '../reactPlayer'
 import CNBLayout from '../pages/sections/CNBLayout'
+import R19useActionState from '../pages/react19-useActionState'
 import * as RouteEshop from '../pages/eShop/routes'
 import * as RouteSection1 from '../pages/sections/section_1/routes'
 import * as RouteSection2 from '../pages/sections/section_2/routes'
 import * as RouteSection3 from '../pages/sections/section_3/routes'
 import * as RouteSection6 from '../pages/sections/section_6/routes'
-import { Loader } from '../Components/Loader/Loader'
+import * as RouteSection13 from '../pages/sections/section_13/routes'
 import ErrorBoundary from '../pages/ErrorPage'
 
 export const router = createBrowserRouter([
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
             path: 'section6/api_routes_methods/:productName',
             element: <RouteSection6.ProductDetailPage />,
           },
+          {
+            path: 'section13/set_git',
+            element: <RouteSection13.SetGitPage />,
+          },
         ],
       },
       {
@@ -79,7 +84,15 @@ export const router = createBrowserRouter([
             path: 'cart',
             element: <RouteEshop.CartPage />,
           },
+          {
+            path: 'cart/order',
+            element: <RouteEshop.OrderPage />,
+          },
         ],
+      },
+      {
+        path: 'r18_useActionState',
+        element: <R19useActionState />,
       },
     ],
   },

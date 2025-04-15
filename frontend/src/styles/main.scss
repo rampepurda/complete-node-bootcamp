@@ -31,7 +31,7 @@ h1 {
 
 h2 {
   @include fontSize(2.1rem, 500);
-  margin: $spacer-4 0;
+  margin: $spacer-3 0;
   color: $blackLighter;
 }
 
@@ -109,6 +109,11 @@ ul {
   }
 }
 
+img {
+  display: inline-block;
+  max-width: 100%;
+}
+
 hr {
   border: 0;
   background-color: transparentize($gray, .8);
@@ -129,12 +134,72 @@ a {
   &.active {
     @include fontSize(1.2rem, bolder);
   }
+
+  &.link-ico-external {
+    display: inline-flex;
+    align-items: center;
+  }
+}
+
+section {
+  display: block;
+  margin: $spacer-6 0;
+}
+
+select {
+  margin: $spacer-2 0;
+  border: 1px solid transparentize($black, .8);
+  padding: .5rem;
+  font-size: 1.3rem;
+
+  &:focus {
+    outline: 0 none;
+  }
+}
+
+form {
+  margin: $spacer-3 0;
+}
+
+input {
+  @include fontSize(1.1rem, normal);
+  width: 100%;
+  margin: $spacer-2 0;
+  outline: none;
+  border-radius: .4rem;
+  border: 1px solid transparentize($grayLight, .4);
+  padding: .7rem 1rem;
+}
+
+label {
+  @include fontSize(1.2rem, 500);
+  margin: $spacer-2 0 $spacer-1 0;
+  display: block;
+}
+
+mark {
+  @include fontSize(1.12rem, 500);
+  display: inline-block;
+  margin: $spacer-1 $spacer-1 $spacer-1 0;
+  border-radius: .6rem;
+  background-color: transparentize($grayLighter, 0.5);
+  padding: .2rem 1rem;
+  color: $blackLight;
+
+  &.hasBorder {
+    border: 1px solid $gray;
+    background-color: transparent;
+  }
+}
+
+figure {
+  margin: 0;
 }
 
 .btn {
   cursor: pointer;
   margin: $spacer-2 $spacer-1 $spacer-2 0;
-  border-radius: .5rem;
+  border-radius: 1.3rem;
   border: 0 none;
   padding: .7rem 1.7rem;
   color: $white;
@@ -201,61 +266,6 @@ a {
   }
 }
 
-section {
-  display: block;
-  margin: $spacer-6 0;
-}
-
-select {
-  margin: $spacer-2 0;
-  border: 1px solid transparentize($black, .8);
-  padding: .5rem;
-  font-size: 1.3rem;
-
-  &:focus {
-    outline: 0 none;
-  }
-}
-
-form {
-  margin: $spacer-3 0;
-}
-
-input {
-  @include fontSize(1.1rem, normal);
-  width: 100%;
-  margin: $spacer-2 0;
-  outline: none;
-  border-radius: .4rem;
-  border: 1px solid transparentize($grayLight, .4);
-  padding: .7rem 1rem;
-}
-
-label {
-  @include fontSize(1.2rem, 500);
-  margin: $spacer-2 0 $spacer-1 0;
-  display: block;
-}
-
-mark {
-  @include fontSize(1.12rem, 500);
-  display: inline-block;
-  margin: $spacer-1 $spacer-1 $spacer-1 0;
-  border-radius: .6rem;
-  background-color: transparentize($grayLighter, 0.5);
-  padding: .2rem 1rem;
-  color: $blackLight;
-
-  &.hasBorder {
-    border: 1px solid $gray;
-    background-color: transparent;
-  }
-}
-
-figure {
-  margin: 0;
-}
-
 .active {
   color: $blueLighter!important;
 }
@@ -292,7 +302,7 @@ figure {
 
 .like-box {
   margin: $spacer-3 $spacer-1;
-  border-radius: .5rem;
+  border-radius: 1rem;
   background-color: $grayLightest;
   padding: .2rem 1rem;
 

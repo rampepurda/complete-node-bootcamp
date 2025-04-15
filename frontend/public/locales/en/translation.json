@@ -12,15 +12,46 @@
     "delete": "Delete"
   },
   "eShop": {
-    "title": "eShop - Welcome",
-    "cartTitle": "eShop / Cart",
+    "headline": "eShop - Welcome",
+    "backToEshop": "Back to  eShop",
     "addToCart": "Add To Cart",
-    "incItemInCart": "Item was increased successfully",
-    "order": "Order",
-    "priceTotal": "Total Price",
     "ariaLabel": {
       "cart": "Cart",
-      "incPiece": "increase piece plus one"
+      "incPiece": "increase piece plus one",
+      "decPiece": "remove one"
+    },
+    "cart": {
+      "headline": "eShop / Cart",
+      "cartStatus": "Cart is empty, go back in to the Shop",
+      "incItemInCart": "Item was increased successfully",
+      "order": "Order",
+      "orderedTotal": "Pieces",
+      "priceTotal": "Total Price",
+      "orderMaxMessage": "You can order only 6 items per product",
+      "ariaLabel": {
+        "cart": "Cart",
+        "incPiece": "increase piece plus one",
+        "decPiece": "remove one"
+      }
+    },
+    "cartOrder": {
+      "headline": "Cart/Order",
+      "resume": "You ordered",
+      "paymentTotal": "You pay in total",
+      "orderedSuccessfully": "Successful send. Thanks for your order.",
+      "form": {
+        "headline": "Order data",
+        "fullName": "Full name",
+        "phone": "Phone number",
+        "payment": "Type of Payment",
+        "byCard": "Card",
+        "byCash": "Cash at the branch",
+        "submit": "Submit Order"
+      },
+      "breadcrumb": {
+        "cart": "Cart",
+        "order": "Order"
+      }
     }
   },
   "sections": {
@@ -41,7 +72,7 @@
       }
     },
     "section3": {
-      "title": "Section 3: Introduction to Backend Web Development"
+      "title": "Section 3: Introduction to Backend Web Development including SSR vs CSR explanation"
     },
     "section6": {
       "title": "Section 6: Node Express",
@@ -49,6 +80,9 @@
         "title":"Intro",
         "title2":"GET, POST, DELETE, PATCH"
       }
+    },
+    "section13": {
+      "title": "Section 13: Setting Up Git and Deployment"
     }
   }
 }

@@ -1,6 +1,12 @@
 export type HTMLHeadlinesT = 'h1' | 'h2' | 'h3' | 'h4'
 export type HTMLTagT = 'div' | 'section' | 'p' | 'li' | 'span'
 
+export enum PathNameE {
+  eShop = '/eShop',
+  cart = '/eShop/cart',
+  order = '/eShop/cart/order',
+}
+
 export type ProdOrderedT = {
   id: string | number
   productName: string
@@ -15,7 +21,16 @@ export interface CartInt {
   productsOrdered: ProdOrderedT[] | undefined
   productsOrderTotal: number
   priceTotal?: number
-  //message: string | null
+}
+
+export type OrderT = {
+  client: {
+    fullName: string
+    email: string
+    phone: string | number
+    payment: string
+  }
+  ordered: CartInt
 }
 
 export type PlaylistT = {

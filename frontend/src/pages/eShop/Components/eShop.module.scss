@@ -3,26 +3,44 @@
 @import "../../../styles/variables";
 @import "../../../styles/mixins";
 
+.cart {
+  margin: $spacer-5 10%;
+
+  .orderBox {
+    background-color: $grayLightest;
+
+    .priceBox {
+      display: inline-block;
+      margin-left: $spacer-2;
+      border-radius: 1rem;
+      border: 1px solid $grayLighter;
+      background-color: $white;
+      padding: .5rem 1rem;
+    }
+  }
+}
+
 .orderWrapper {
   margin: $spacer-4 0;
   border: 1px solid $grayLighter;
   font-size: 1.2rem;
 
   .mark {
-    @include fontSize(1.3rem, bolder);
+    @include fontSize(1.3rem, 500);
     display: inline-block;
     margin: 0 $spacer-2;
     border-radius: .3rem;
-    background-color: $white;
-    padding: .2rem .5rem;
-    text-shadow: 1px 1px 2px #fff;
+    background-color: $gray;
+    padding: .1rem .5rem;
+    color: $white;
+    text-shadow: 1px 1px 1px $blackLight;
   }
 
   .btn {
     @include fontSize(2rem, 500);
     margin: -.2rem 0 -.2rem $spacer-3;
     background-color: $greenLight;
-    padding: .2rem .8rem;
+    padding: .2rem 1rem;
     color: $white;
 
     &.decrease {
@@ -33,9 +51,15 @@
 
     &.hasRadius {
       margin-right: -$spacer-4;
-      border-top-right-radius: .5rem;
-      border-bottom-right-radius: .5rem;
+      border-top-right-radius: 1rem;
+      border-bottom-right-radius: 1rem;
     }
+  }
+}
+
+.breadCrumb {
+  li {
+    padding: 0 .3rem 0 0;
   }
 }
 

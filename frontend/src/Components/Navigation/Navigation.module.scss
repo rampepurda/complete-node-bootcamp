@@ -26,7 +26,7 @@
 
 a {
   &.isLink {
-    @include fontSize(1.35rem,400);
+    @include fontSize(1.35rem,500);
     color: $black;
 
     &:hover {

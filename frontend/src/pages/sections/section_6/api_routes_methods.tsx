@@ -1,7 +1,7 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { environment } from '../../../configuration/environment'
 import { ProductInt } from '../../../types'
-import { Button, PostProductForm, Product } from '../../../Components'
+import { Button, FormPostProduct, Product } from '../../../Components'
 
 export default function ApiRoutesMethodsPage() {
   const queryClient = useQueryClient()
@@ -54,7 +54,7 @@ export default function ApiRoutesMethodsPage() {
         ApiServer - set Number simple trick: const num = req.param.id * 1
       </h5>
 
-      <PostProductForm />
+      <FormPostProduct />
 
       {(isLoading && <h3>Loading wait</h3>) || (error && <h3>Ops, something happened</h3>)}
       {data?.products && (
