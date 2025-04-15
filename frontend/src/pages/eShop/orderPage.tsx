@@ -6,6 +6,7 @@ import classNames from 'classnames'
 import { FormPostOrder } from '../../Components'
 import { environment } from '../../configuration/environment'
 import { fetchCart, InitValuesT } from '../../rtk-toolkit/slices/cartSlice'
+import { NavTypeE } from '../../types'
 
 export function OrderPage() {
   const { t } = useTranslation()
@@ -59,7 +60,7 @@ export function OrderPage() {
           </>
         ) : (
           <>
-            <nav>
+            <nav aria-label={NavTypeE.breadCrumb}>
               <ul className={classNames('isHorizontal', classes.breadCrumb)}>
                 <li>
                   <Link to="/eShop">eShop</Link> /
@@ -67,7 +68,7 @@ export function OrderPage() {
                 <li>
                   <Link to="/eShop/cart">{t('eShop.cartOrder.breadcrumb.cart')}</Link> /
                 </li>
-                <li>
+                <li aria-current="page">
                   <strong className="color-is-darkmagenta">
                     {t('eShop.cartOrder.breadcrumb.order')}
                   </strong>

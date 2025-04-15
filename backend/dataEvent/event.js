@@ -109,7 +109,7 @@ async function addOrder(data) {
     ordered,
   });
 
-  await writeData({ ...storedData, order: storedData.order });
+  await writeData({ ...storedData, cart: [], order: storedData.order });
 }
 
 exports.getAll = getAll;

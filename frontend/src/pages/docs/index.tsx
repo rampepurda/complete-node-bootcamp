@@ -2,6 +2,7 @@ import { Outlet, useLocation } from 'react-router-dom'
 import { SideBarNav } from '../../Components'
 import React from 'react'
 import { navigation } from '../../configuration'
+import { NavTypeE } from '../../types'
 
 type SideBarNavT = {
   title: string
@@ -20,20 +21,22 @@ export default function DocsPage() {
   return (
     <div className="cols">
       <div className="col-4">
-        <ul>
-          {sideBarSectionsData.map((item, idx) => {
-            return (
-              <SideBarNav
-                key={idx}
-                tagAttr={'li'}
-                Id={idx}
-                title={item.title}
-                link={item.link}
-                subNavigation={item.subNavigation}
-              />
-            )
-          })}
-        </ul>
+        <nav aria-label={NavTypeE.sideBar}>
+          <ul>
+            {sideBarSectionsData.map((item, idx) => {
+              return (
+                <SideBarNav
+                  key={idx}
+                  tagAttr={'li'}
+                  Id={idx}
+                  title={item.title}
+                  link={item.link}
+                  subNavigation={item.subNavigation}
+                />
+              )
+            })}
+          </ul>
+        </nav>
       </div>
 
       <div className="col-8">

@@ -1,6 +1,12 @@
 export type HTMLHeadlinesT = 'h1' | 'h2' | 'h3' | 'h4'
 export type HTMLTagT = 'div' | 'section' | 'p' | 'li' | 'span'
 
+export enum NavTypeE {
+  breadCrumb = 'Breadcrumb',
+  primary = 'Primary',
+  sideBar = 'sideBar',
+}
+
 export enum PathNameE {
   eShop = '/eShop',
   cart = '/eShop/cart',
