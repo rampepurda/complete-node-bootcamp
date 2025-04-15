@@ -80,6 +80,9 @@
         "title":"Představení",
         "title2":"GET, POST, DELETE, PATCH"
       }
+    },
+    "section13": {
+      "title": "Kapitola 13: Nastavení Git a Deployment"
     }
   }
 }

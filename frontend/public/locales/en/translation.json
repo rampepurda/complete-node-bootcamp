@@ -80,6 +80,9 @@
         "title":"Intro",
         "title2":"GET, POST, DELETE, PATCH"
       }
+    },
+    "section13": {
+      "title": "Section 13: Setting Up Git and Deployment"
     }
   }
 }

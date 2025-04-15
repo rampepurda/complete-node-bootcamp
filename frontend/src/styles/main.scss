@@ -111,7 +111,7 @@ ul {
 
 img {
   display: inline-block;
-  width: 100%;
+  max-width: 100%;
 }
 
 hr {
@@ -133,6 +133,11 @@ a {
 
   &.active {
     @include fontSize(1.2rem, bolder);
+  }
+
+  &.link-ico-external {
+    display: inline-flex;
+    align-items: center;
   }
 }
 
