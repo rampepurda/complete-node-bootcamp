@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 
-export default function IntroPage() {
+export default function IntroNodeExpressPage() {
   return (
     <>
       <h2>Node Express - Intro</h2>

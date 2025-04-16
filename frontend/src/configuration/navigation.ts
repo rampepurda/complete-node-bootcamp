@@ -69,5 +69,9 @@ export const navigation = {
         },
       ],
     },
+    {
+      title: 'sections.section13.title',
+      link: 'section13/deploy_with_heroku',
+    },
   ],
 }

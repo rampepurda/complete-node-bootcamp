@@ -2,13 +2,10 @@ import { createBrowserRouter } from 'react-router-dom'
 import RootLayout from '../pages/RootLayout'
 import ReactPlayerPage from '../reactPlayer'
 import CNBLayout from '../pages/sections/CNBLayout'
+import ErrorBoundary from '../pages/ErrorPage'
 import R19useActionState from '../pages/react19-useActionState'
 import * as RouteEshop from '../pages/eShop/routes'
-import * as RouteSection1 from '../pages/sections/section_1/routes'
-import * as RouteSection2 from '../pages/sections/section_2/routes'
-import * as RouteSection3 from '../pages/sections/section_3/routes'
-import * as RouteSection6 from '../pages/sections/section_6/routes'
-import ErrorBoundary from '../pages/ErrorPage'
+import * as RouteSection from '../pages/sections/routes'
 
 export const router = createBrowserRouter([
   {
@@ -23,47 +20,47 @@ export const router = createBrowserRouter([
         children: [
           {
             path: 'section1',
-            element: <RouteSection1.IntroPage />,
+            element: <RouteSection.IntroPage />,
           },
           {
             path: 'section2/reading-and-writing-files',
-            element: <RouteSection2.ReadingWritingFilePage />,
+            element: <RouteSection.ReadingWritingFilePage />,
           },
           {
             path: 'section2/creating-simple-web-server',
-            element: <RouteSection2.CreatingSimpleWebServerPage />,
+            element: <RouteSection.CreatingSimpleWebServerPage />,
           },
           {
             path: 'section2/routing',
-            element: <RouteSection2.RoutingPage />,
+            element: <RouteSection.RoutingPage />,
           },
           {
             path: 'section2/templateProducts',
-            element: <RouteSection2.TempProductsPage />,
+            element: <RouteSection.TempProductsPage />,
           },
           {
             path: 'section2/packageJSON',
-            element: <RouteSection2.PackageJSONPage />,
+            element: <RouteSection.PackageJSONPage />,
           },
           {
             path: 'section3/backendDevIntro',
-            element: <RouteSection3.IntroBackendDevPage />,
+            element: <RouteSection.IntroBackendDevPage />,
           },
           {
             path: 'section6/node_express_intro',
-            element: <RouteSection6.IntroPage />,
+            element: <RouteSection.IntroNodeExpressPage />,
           },
           {
             path: 'section6/api_routes_methods',
-            element: <RouteSection6.ApiRoutesMethodsPage />,
+            element: <RouteSection.ApiRoutesMethodsPage />,
           },
           {
             path: 'section6/api_routes_methods/:productName',
-            element: <RouteSection6.ProductDetailPage />,
+            element: <RouteSection.ProductDetailPage />,
           },
           {
-            path: 'section13/set_git',
-            element: <RouteSection13.SetGitPage />,
+            path: 'section13/deploy_with_heroku',
+            element: <RouteSection.SetGitPage />,
           },
         ],
       },
