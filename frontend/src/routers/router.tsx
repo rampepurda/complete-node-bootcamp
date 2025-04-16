@@ -61,6 +61,10 @@ export const router = createBrowserRouter([
             path: 'section6/api_routes_methods/:productName',
             element: <RouteSection6.ProductDetailPage />,
           },
+          {
+            path: 'section13/set_git',
+            element: <RouteSection13.SetGitPage />,
+          },
         ],
       },
       {
