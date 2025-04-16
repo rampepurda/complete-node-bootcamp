@@ -6,13 +6,20 @@ import classNames from 'classnames'
 import { FormPostOrder } from '../../Components'
 import { environment } from '../../configuration/environment'
 import { fetchCart, InitValuesT } from '../../rtk-toolkit/slices/cartSlice'
-import { NavTypeE } from '../../types'
+import { FormOrderErrorT, NavTypeE } from '../../types'
+import { schema } from '../../ZOD-schema/zodSchema'
+import { useState } from 'react'
 
 export function OrderPage() {
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
   const { cart, status } = useAppSelector((state: { cartSlice: InitValuesT }) => state.cartSlice)
-
+  const [error, setError] = useState<FormOrderErrorT | undefined>({
+    fullName: '',
+    email: '',
+    phone: '',
+    payment: '',
+  })
   const actionSubmit = async (formData: FormData) => {
     const dataOrder = {
       client: {
@@ -26,24 +33,38 @@ export function OrderPage() {
         priceTotal: cart?.priceTotal,
       },
     }
+    const formValidation = schema.OrderPost.safeParse(dataOrder.client)
 
-    try {
-      const response = await fetch(`${environment.localProductsOrderURL}`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(dataOrder),
-      })
+    if (formValidation.success) {
+      try {
+        const response = await fetch(`${environment.localProductsOrderURL}`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(dataOrder),
+        })
 
-      if (response.ok) {
-        const data = await response.json()
+        if (response.ok) {
+          const data = await response.json()
 
-        alert(data.message)
-        dispatch(fetchCart())
-      } else {
-        alert('Ops')
+          alert(data.message)
+          dispatch(fetchCart())
+        } else {
+          alert('Ops')
+        }
+
+        if (error) {
+          setError({ fullName: '', payment: '', email: '', phone: '' })
+        }
+      } catch (err) {
+        alert(err)
       }
-    } catch (err) {
-      alert(err)
+    } else {
+      setError({
+        fullName: `${formValidation.error.flatten().fieldErrors.fullName}`,
+        email: `${formValidation.error.flatten().fieldErrors.email}`,
+        phone: `${formValidation.error.flatten().fieldErrors.phone}`,
+        payment: `${formValidation.error.flatten().fieldErrors.payment}`,
+      })
     }
   }
 
@@ -98,8 +119,18 @@ export function OrderPage() {
 
             <section className="hasOutline">
               <h3>{t('eShop.cartOrder.form.headline')}:</h3>
+              <h3>{error && error.fullName !== 'undefined' && error.fullName}</h3>
 
-              <FormPostOrder onSubmit={actionSubmit} status={status.isLoading} />
+              <FormPostOrder
+                onSubmit={actionSubmit}
+                status={status.isLoading}
+                error={{
+                  fullName: `${error?.fullName}`,
+                  email: `${error?.email}`,
+                  phone: `${error?.phone}`,
+                  payment: `${error?.payment}`,
+                }}
+              />
             </section>
           </>
         )}

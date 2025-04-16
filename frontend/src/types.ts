@@ -29,6 +29,13 @@ export interface CartInt {
   priceTotal?: number
 }
 
+export type FormOrderErrorT = {
+  fullName: string
+  email: string
+  phone: string
+  payment: string
+}
+
 export type OrderT = {
   client: {
     fullName: string
