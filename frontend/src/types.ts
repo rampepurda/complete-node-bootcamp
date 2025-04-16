@@ -52,6 +52,7 @@ export type PlaylistT = {
   title: string
   isCompleted?: boolean
   like?: number
+  views?: number
 }
 
 export interface ProductInt {

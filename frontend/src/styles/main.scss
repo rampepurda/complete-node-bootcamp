@@ -130,6 +130,11 @@ code {
 a {
   color: $blueLighter;
   font-size: 1.2rem;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 
   &.active {
     @include fontSize(1.2rem, bolder);

@@ -1,9 +1,12 @@
 import { Link } from 'react-router-dom'
-import { Playlist } from './Components/Playlist'
+//import { Playlist } from './Components/Playlist'
 import { useQuery } from '@tanstack/react-query'
 import { PlaylistT } from '../types'
 import { environment } from '../configuration/environment'
-import { Header } from '../Components'
+import { Header, Loader } from '../Components'
+import React, { lazy, Suspense } from 'react'
+
+const Playlist = lazy(() => import('./Components/Playlist'))
 
 export default function ReactPlayerPage() {
   const { data, error, isLoading } = useQuery({
@@ -49,20 +52,29 @@ export default function ReactPlayerPage() {
       <Header title={'ReactPlayer'} />
 
       <div style={styles.cover}>
-        <h5>npm install react-player # or yarn add react-player</h5>
-        <Link to="https://www.npmjs.com/package/react-player" rel="external" target="_blank">
-          See more
-        </Link>
-
         <section>
           {(isLoading && <h3>Loading wait</h3>) || (error && <h3>Ops, something happened</h3>)}
           {data?.playlistTotal && (
-            <h4>
-              Playlist Total: <mark>{data.playlistTotal}</mark>
-            </h4>
+            <h2>
+              Playlist Total: <span className="color-is-darkmagenta">{data.playlistTotal}</span>
+            </h2>
           )}
+          <code>npm install react-player | yarn add react-player</code>
+          <Link
+            className="link-ico-external"
+            to="https://www.npmjs.com/package/react-player"
+            rel="external"
+            target="_blank"
+          >
+            React Player - see more{' '}
+            <img src="/ico-internal.svg" width={24} height={24} aria-hidden={true} />
+          </Link>
 
-          {data?.playlist?.map((item) => <Playlist {...item} key={item.id} />)}
+          {data?.playlist?.map((item) => (
+            <Suspense fallback={<Loader />}>
+              <Playlist {...item} key={item.id} />
+            </Suspense>
+          ))}
         </section>
       </div>
     </>

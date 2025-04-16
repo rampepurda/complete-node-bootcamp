@@ -3,10 +3,9 @@ import { PlaylistT } from '../../types'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { environment } from '../../configuration/environment'
 import { Button, Loader } from '../../Components'
+import ReactPlayerCard from './ReactPlayerCard'
 
-const ReactPlayerCard = lazy((): Promise<any> => import('./ReactPlayerCard'))
-
-export const Playlist = ({ url, title, id, isCompleted, like }: PlaylistT) => {
+const Playlist = ({ url, title, id, isCompleted, like, views }: PlaylistT) => {
   const queryClient = useQueryClient()
   const [toggleEditForm, setToggleEditForm] = useState<boolean>(false)
   const patchPlaylistTitleMutation = useMutation({
@@ -62,7 +61,7 @@ export const Playlist = ({ url, title, id, isCompleted, like }: PlaylistT) => {
 
       {isCompleted ? (
         <>
-          <p className="color-is-green">video is Completed</p>
+          <p className="color-is-green">Video has been viewed</p>
 
           <Button
             classesName={'btn btn-edit'}
@@ -80,10 +79,10 @@ export const Playlist = ({ url, title, id, isCompleted, like }: PlaylistT) => {
           )}
         </>
       ) : (
-        <p className="color-is-red">video is not Completed</p>
+        <p className="color-is-red">Video not viewed yet.</p>
       )}
 
-      <div className="display-flex-start like-box">
+      <div className="display-flex-start like-box hasOutline">
         <Button
           classesName={'btn-link-has-ico'}
           OnClick={() => patchLikeMutation.mutate({ id })}
@@ -94,16 +93,17 @@ export const Playlist = ({ url, title, id, isCompleted, like }: PlaylistT) => {
         >
           <img src="/ico-thumbs-up.svg" width={24} height={24} aria-hidden={true} />
         </Button>
-
-        <span className="numLike" aria-label="number of likes">
-          {like}
+        <span className="numLike" aria-label="number of likes" style={{ padding: '.3rem 0' }}>
+          <strong>{like}</strong>
         </span>
-        {!isCompleted && <span className="message">| You can vote after seeing video</span>}
+        {!isCompleted && <span className="message">| You can vote after seeing video</span>}&nbsp; |
+        &nbsp;Number of views:&nbsp;
+        <strong>{views}</strong>
       </div>
 
-      <Suspense fallback={<Loader />}>
-        <ReactPlayerCard url={`${url}`} id={id} title={title} />
-      </Suspense>
+      <ReactPlayerCard url={`${url}`} id={id} title={title} />
     </div>
   )
 }
+
+export default Playlist
