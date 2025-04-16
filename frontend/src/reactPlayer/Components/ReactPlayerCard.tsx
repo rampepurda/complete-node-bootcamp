@@ -11,7 +11,7 @@ type Props = {
 
 const ReactPlayerCard = ({ url, id, title }: Props) => {
   const queryClient = useQueryClient()
-  const { mutate } = useMutation({
+  const { mutate, data } = useMutation({
     mutationKey: [`video-${id}`],
     mutationFn: async (arg: { title: string; isCompleted: boolean }) => {
       await fetch(`${environment.localPlaylistURL}/${id}`, {
@@ -32,7 +32,6 @@ const ReactPlayerCard = ({ url, id, title }: Props) => {
       return { previousPlaylist }
     },
     onError: (error) => alert(error),
-    onSuccess: () => alert('Video is Completed'),
     onSettled: async () => {
       return await queryClient.invalidateQueries({ queryKey: ['playlist'] })
     },
@@ -47,4 +46,5 @@ const ReactPlayerCard = ({ url, id, title }: Props) => {
     />
   )
 }
+
 export default ReactPlayerCard
