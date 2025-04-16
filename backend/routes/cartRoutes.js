@@ -112,14 +112,13 @@ router.patch("/cart/decr/:id", async (req, res, next) => {
 
 router.post("/order", async (req, res, next) => {
   const { client, ordered } = req.body;
-  const storedData = await getAll();
 
   await addOrder({ client, ordered });
 
   if (res.status(200)) {
-    await writeData({ ...storedData, cart: [] });
     res.json({ message: "Successful ordered" });
   }
 });
+
 
 module.exports = router;

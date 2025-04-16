@@ -8,7 +8,6 @@ import * as RouteSection1 from '../pages/sections/section_1/routes'
 import * as RouteSection2 from '../pages/sections/section_2/routes'
 import * as RouteSection3 from '../pages/sections/section_3/routes'
 import * as RouteSection6 from '../pages/sections/section_6/routes'
-import * as RouteSection13 from '../pages/sections/section_13/routes'
 import ErrorBoundary from '../pages/ErrorPage'
 
 export const router = createBrowserRouter([

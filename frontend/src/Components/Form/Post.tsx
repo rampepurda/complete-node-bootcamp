@@ -1,6 +1,8 @@
+import classes from './Form.module.scss'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { environment } from '../../configuration/environment'
 import { useTranslation } from 'react-i18next'
+import { FormOrderErrorT } from '../../types'
 
 export const FormPostProduct = () => {
   const queryClient = useQueryClient()
@@ -49,44 +51,75 @@ export const FormPostProduct = () => {
   )
 }
 
-export const FormPostOrder = ({ onSubmit, status }: { onSubmit: any; status: boolean }) => {
+export const FormPostOrder = ({
+  onSubmit,
+  status,
+  error,
+}: {
+  onSubmit: any
+  status: boolean
+  error: FormOrderErrorT
+}) => {
   const { t } = useTranslation()
 
   return (
     <form className="width-is-5" method="post" action={onSubmit}>
-      <label htmlFor="fullName"> {t('eShop.cartOrder.form.fullName')}:</label>
-      <input id="fullName" type="text" name="fullName" placeholder="full name" required />
+      <label htmlFor="fullName">
+        {t('eShop.cartOrder.form.fullName')}:<span className="color-is-red">*</span>
+      </label>
+      <input id="fullName" type="text" name="fullName" autoFocus={true} aria-required={true} />
+      {error && error.fullName !== 'undefined' && (
+        <p className={classes.errMessage}>{error?.fullName}</p>
+      )}
 
-      <label htmlFor="email">Email:</label>
-      <input id="email" type="email" name="email" placeholder="@" required />
+      <label htmlFor="email">
+        Email:<span className="color-is-red">*</span>
+      </label>
+      <input id="email" type="email" name="email" placeholder="@" aria-required={true} />
+      {error && error.email !== 'undefined' && <p className={classes.errMessage}>{error?.email}</p>}
 
-      <label htmlFor="phone"> {t('eShop.cartOrder.form.phone')}:</label>
-      <input type="tel" id="phone" name="phone" />
+      <label htmlFor="phone">
+        {t('eShop.cartOrder.form.phone')}:<span className="color-is-red">*</span>
+      </label>
+      <input
+        type="tel"
+        id="phone"
+        name="phone"
+        placeholder="111222333"
+        pattern="[0-9]{3}[0-9]{3}[0-9]{3}"
+        aria-required={true}
+      />
+      {error && error.phone !== 'undefined' && <p className={classes.errMessage}>{error?.phone}</p>}
 
       <div>
-        <label> {t('eShop.cartOrder.form.payment')}:</label>
-        <label htmlFor="card">
+        <h5>
+          {t('eShop.cartOrder.form.payment')}:<span className="color-is-red">*</span>
+        </h5>
+        <label role="button" tabIndex={0}>
           <input
-            id="card"
             className="width-is-1"
             type="radio"
             value="card"
             name="payment"
             defaultChecked={false}
+            aria-checked={false}
           />
           {t('eShop.cartOrder.form.byCard')}
         </label>
-        <label htmlFor="cash">
+        <label tabIndex={0}>
           <input
-            id="casch"
             className="width-is-1"
             type="radio"
             value="cash"
             name="payment"
             defaultChecked={false}
+            aria-checked={false}
           />
           {t('eShop.cartOrder.form.byCash')}
         </label>
+        {error && error.payment !== 'undefined' && (
+          <p className={classes.errMessage}>{error?.payment}</p>
+        )}
       </div>
 
       <button className="btn btn-info" type="submit">

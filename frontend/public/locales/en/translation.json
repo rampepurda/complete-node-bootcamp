@@ -16,7 +16,10 @@
     "backToEshop": "Back to  eShop",
     "addToCart": "Add To Cart",
     "ariaLabel": {
-      "cart": "Cart",
+      "cartStatus": {
+        "isFull": "in the cart is min one item",
+        "isEmpty": "Cart is empty"
+      },
       "incPiece": "increase piece plus one",
       "decPiece": "remove one"
     },

@@ -37,9 +37,9 @@ export const LngSwitcher = () => {
   )
 }
 
-type CartPropsT = { itemTotal?: number; pageURL: string }
+type CartPropsT = { itemTotal?: number; pageURL: string; ariaCartStatus: boolean }
 
-export const CartSwitcher = ({ itemTotal, pageURL }: CartPropsT) => {
+export const CartSwitcher = ({ ariaCartStatus, itemTotal, pageURL }: CartPropsT) => {
   const { t } = useTranslation()
   const { pathname } = useLocation()
 
@@ -55,7 +55,11 @@ export const CartSwitcher = ({ itemTotal, pageURL }: CartPropsT) => {
 
       <Button
         classesName={classes.btn}
-        ariaLabel={`${t('eShop.ariaLabel.cart')}`}
+        ariaLabel={
+          ariaCartStatus
+            ? `${t('eShop.ariaLabel.cartStatus.isEmpty')}`
+            : `${t('eShop.ariaLabel.cartStatus.isFull')}`
+        }
         rest={{
           type: 'button',
         }}

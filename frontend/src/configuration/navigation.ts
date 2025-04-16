@@ -69,9 +69,5 @@ export const navigation = {
         },
       ],
     },
-    {
-      title: 'sections.section13.title',
-      link: 'section13/set_git',
-    },
   ],
 }

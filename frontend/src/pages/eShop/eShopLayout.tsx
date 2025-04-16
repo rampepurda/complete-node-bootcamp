@@ -35,11 +35,15 @@ export function EshopLayout() {
 
   return (
     <>
-      <title>{t('eShop.title')}</title>
+      <title>{t('eShop.headline')}</title>
       <meta name="keywords" content="shop, product, eshop" />
 
       <Header title={`${getPathName(pathname)}`}>
-        <CartSwitcher pageURL={'/eShop/cart'} itemTotal={cart?.productsOrderTotal} />
+        <CartSwitcher
+          pageURL={'/eShop/cart'}
+          itemTotal={cart?.productsOrderTotal}
+          ariaCartStatus={cart?.productsOrdered?.length === 0}
+        />
       </Header>
 
       {pathname === '/eShop' && <EShopPage />}
