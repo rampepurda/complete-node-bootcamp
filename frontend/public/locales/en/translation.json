@@ -17,9 +17,10 @@
     "addToCart": "Add To Cart",
     "ariaLabel": {
       "cartStatus": {
-        "isFull": "in the cart is min one item",
+        "isFull": "{{counting}} item in the cart",
         "isEmpty": "Cart is empty"
       },
+      "linkCart": "goto the cart",
       "incPiece": "increase piece plus one",
       "decPiece": "remove one"
     },

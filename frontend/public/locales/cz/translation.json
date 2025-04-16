@@ -17,9 +17,10 @@
     "backToEshop": "Zpátky do eShopu",
     "ariaLabel": {
       "cartStatus": {
-        "isFull": "V Košíku je alespon jedna položka",
+        "isFull": "V Košíku je {{counting}} položka",
         "isEmpty": "Košík je prázdný"
       },
+      "linkCart": "jít do košíku",
       "incPiece": "navýšit počet kusů o jeden",
       "decPiece": "odebrat o jeden"
     },
