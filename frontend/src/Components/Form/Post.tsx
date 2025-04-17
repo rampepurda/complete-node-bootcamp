@@ -56,7 +56,7 @@ export const FormPostOrder = ({
   status,
   error,
 }: {
-  onSubmit: any
+  onSubmit: ((formData: FormData) => void | Promise<void>) | undefined
   status: boolean
   error: FormOrderErrorT
 }) => {
