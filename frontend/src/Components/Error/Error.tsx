@@ -1,5 +1,5 @@
 import classes from './Error.module.scss'
-import { useRouteError } from 'react-router-dom'
+import { useRouteError } from 'react-router'
 
 export const message: string = 'Sorry an unexpected error has occurred'
 

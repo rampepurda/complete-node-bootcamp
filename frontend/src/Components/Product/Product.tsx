@@ -1,6 +1,6 @@
 import React, { HTMLAttributes, PropsWithChildren } from 'react'
 import { HTMLTagT, ProductInt } from '../../types'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 interface PropsInt extends HTMLAttributes<HTMLBodyElement> {
   tagElement: HTMLTagT

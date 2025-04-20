@@ -1,7 +1,7 @@
 import classes from './Components/eShop.module.scss'
 import { useTranslation } from 'react-i18next'
 import { useAppDispatch, useAppSelector } from '../../rtk-toolkit/hooks'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import classNames from 'classnames'
 import { FormPostOrder } from '../../Components'
 import { environment } from '../../configuration/environment'

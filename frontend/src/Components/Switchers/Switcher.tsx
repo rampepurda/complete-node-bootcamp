@@ -4,7 +4,7 @@ import i18next from 'i18next'
 import React from 'react'
 import { useTranslation } from 'react-i18next'
 import classNames from 'classnames'
-import { Link, useLocation } from 'react-router-dom'
+import { Link, useLocation } from 'react-router'
 
 export const LngSwitcher = () => {
   const { t } = useTranslation()

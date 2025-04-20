@@ -10,7 +10,7 @@ import { OrderBox } from './Components/OrderBox'
 import { useAppDispatch } from '../../rtk-toolkit/hooks'
 import { fetchCart } from '../../rtk-toolkit/slices/cartSlice'
 import classNames from 'classnames'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 export function CartPage() {
   const { t } = useTranslation()
