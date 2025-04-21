@@ -68,9 +68,10 @@ export const CartSwitcher = ({ ariaCartStatus, itemTotal, pageURL }: CartPropsT)
           className={classes.hasLink_cart}
           to={!itemTotal ? '' : `${pageURL}`}
           aria-label={t('eShop.ariaLabel.linkCart')}
+          data-testid={`${itemTotal !== 0 ? 'cartIsFull' : 'cartIsEmpty'}`}
         >
-          <img src="/ico-cart.svg" width={22} height={22} aria-hidden={true} />
-          <span className="display-inline-block">{!itemTotal ? null : itemTotal}</span>
+          <img src="/ico-cart.svg" width={22} height={22} aria-hidden={true} alt="ico cart" />
+          {itemTotal !== 0 && <span className="display-inline-block">{itemTotal}</span>}
         </Link>
       </Button>
     </div>
