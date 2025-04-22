@@ -55,3 +55,5 @@ i18next
     },
   })
   .then()
+
+export default i18next
