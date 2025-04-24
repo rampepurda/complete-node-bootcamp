@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createBrowserRouter } from 'react-router'
 import RootLayout from '../pages/RootLayout'
 import ReactPlayerPage from '../reactPlayer'
 import CNBLayout from '../pages/sections/CNBLayout'

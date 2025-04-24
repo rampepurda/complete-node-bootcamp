@@ -1,4 +1,4 @@
-import { Outlet, useLocation } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router'
 import { SideBarNav } from '../../Components'
 import React from 'react'
 import { navigation } from '../../configuration'

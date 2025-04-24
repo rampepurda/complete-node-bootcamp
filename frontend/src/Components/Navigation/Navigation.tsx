@@ -1,6 +1,6 @@
 import classes from './Navigation.module.scss'
 import React, { HTMLAttributes, PropsWithChildren, useState } from 'react'
-import { NavLink } from 'react-router-dom'
+import { NavLink } from 'react-router'
 import { Button } from '../UI'
 import classNames from 'classnames'
 import { HTMLTagT } from '../../types'

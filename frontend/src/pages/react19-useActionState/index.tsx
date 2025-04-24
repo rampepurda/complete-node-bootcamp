@@ -1,6 +1,6 @@
 import React, { useActionState } from 'react'
 import { environment } from '../../configuration/environment'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 
 export async function postProduct(prevState: unknown, formData: FormData) {
   const postsData = {

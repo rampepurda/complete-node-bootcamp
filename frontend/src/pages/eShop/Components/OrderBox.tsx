@@ -32,6 +32,7 @@ export const OrderBox = ({ piece, priceTotal, incHandler, decHandler }: Props) =
           OnClick={incHandler}
           rest={{ type: 'submit', disabled: piece && piece === 6 }}
           ariaLabel={`${t('eShop.cart.ariaLabel.incPiece')}`}
+          ariaRole={'spinbutton'}
         />
         {piece && piece > 1 && (
           <Button

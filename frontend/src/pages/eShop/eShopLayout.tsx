@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect } from 'react'
-import { Outlet, useLocation } from 'react-router-dom'
+import { Outlet, useLocation } from 'react-router'
 import { CartSwitcher, Header } from '../../Components'
 import { EShopPage } from './index'
 import { useAppDispatch, useAppSelector } from '../../rtk-toolkit/hooks'

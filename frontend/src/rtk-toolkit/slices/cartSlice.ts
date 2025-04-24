@@ -61,7 +61,12 @@ export const fetchCart = createAsyncThunk<CartInt>(
 export const cartSlice = createSlice({
   name: 'cartSlice',
   initialState,
-  reducers: {},
+  reducers: {
+    // For testing purpose only!!
+    testSetError(state, action) {
+      state.status.error = action.payload
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchCart.pending, (state) => {
       state.status.isLoading = true
@@ -77,6 +82,8 @@ export const cartSlice = createSlice({
     })
   },
 })
+
+export const { testSetError } = cartSlice.actions
 
 /*
   export const { increment, decrement, incrementByAmount } = counterSlice.actions

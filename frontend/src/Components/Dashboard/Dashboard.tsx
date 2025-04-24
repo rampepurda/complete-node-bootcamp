@@ -1,5 +1,5 @@
 import classes from './Dashboard.module.scss'
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router'
 import { navigation } from '../../configuration'
 
 export const Dashboard = () => {
