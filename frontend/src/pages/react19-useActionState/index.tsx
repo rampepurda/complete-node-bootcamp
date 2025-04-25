@@ -1,6 +1,8 @@
 import React, { useActionState } from 'react'
 import { environment } from '../../configuration/environment'
 import { Link } from 'react-router'
+import { useAppDispatch, useAppSelector } from '../../rtk-toolkit/hooks'
+import { setErrorMessage } from '../../rtk-toolkit/slices/counterSlice'
 
 export async function postProduct(prevState: unknown, formData: FormData) {
   const postsData = {
@@ -29,6 +31,8 @@ export async function postProduct(prevState: unknown, formData: FormData) {
 }
 
 export default function R19useActionState() {
+  const dispatch = useAppDispatch()
+  const { count, error } = useAppSelector((state) => state.counterSlice)
   const [state, formAction, isPending] = useActionState(postProduct, null)
   const styles = {
     mPage: {
@@ -38,7 +42,9 @@ export default function R19useActionState() {
 
   return (
     <div className="hasOutline" style={styles.mPage}>
-      <Link to="/">Back</Link>
+      <Link className="btn btn-info" to="/">
+        Back
+      </Link>
       <h2>React19: useActionState</h2>
       <p>This part will be removed and moved in to the ReactGuide after updating to version19</p>
       <form className="width-is-5" name="products" method="post" action={formAction}>
@@ -101,9 +107,22 @@ export default function R19useActionState() {
             <strong className="color-is-darkmagenta">formAction</strong>&#125;&gt;
           </code>
         </li>
-        <li></li>
-        <li></li>
       </ul>
+
+      <section>
+        <h2>RTK listenerMiddleware</h2>
+        <h4>Error message: {error !== '' ? error : 'not setup yet'}</h4>
+        <h4>Count: {count}</h4>
+        <button
+          className="btn btn-edit"
+          type="button"
+          onClick={() =>
+            dispatch(setErrorMessage({ SetErrorMessage: 'any middleware was not set yet' }))
+          }
+        >
+          Create Error Message
+        </button>
+      </section>
     </div>
   )
 }
