@@ -42,9 +42,7 @@ export default function R19useActionState() {
 
   return (
     <div className="hasOutline" style={styles.mPage}>
-      <Link className="btn btn-info" to="/">
-        Back
-      </Link>
+      <Link to="/">← Back</Link>
       <h2>React19: useActionState</h2>
       <p>This part will be removed and moved in to the ReactGuide after updating to version19</p>
       <form className="width-is-5" name="products" method="post" action={formAction}>
