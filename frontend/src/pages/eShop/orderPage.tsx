@@ -48,12 +48,12 @@ export function OrderPage() {
 
           alert(data.message)
           dispatch(fetchCart())
-        } else {
-          alert('Ops')
-        }
 
-        if (error) {
-          setError({ fullName: '', payment: '', email: '', phone: '' })
+          if (error !== undefined && Object.values(error).length > 0) {
+            setError({ fullName: '', payment: '', email: '', phone: '' })
+          }
+        } else {
+          alert('Ops, something happened')
         }
       } catch (err) {
         alert(err)
@@ -122,7 +122,7 @@ export function OrderPage() {
               <h3>{error && error.fullName !== 'undefined' && error.fullName}</h3>
 
               <FormPostOrder
-                onSubmit={actionSubmit}
+                onAction={actionSubmit}
                 status={status.isLoading}
                 error={{
                   fullName: `${error?.fullName}`,

@@ -28,6 +28,7 @@ export const FormPostProduct = () => {
       return await queryClient.invalidateQueries({ queryKey: ['products'] })
     },
   })
+
   const handleActionSubmit = async (formData: FormData) => {
     const postsData = {
       productName: formData.get('productName'),
@@ -52,18 +53,18 @@ export const FormPostProduct = () => {
 }
 
 export const FormPostOrder = ({
-  onSubmit,
+  onAction,
   status,
   error,
 }: {
-  onSubmit: ((formData: FormData) => void | Promise<void>) | undefined
+  onAction: ((formData: FormData) => void | Promise<void>) | undefined
   status: boolean
   error: FormOrderErrorT
 }) => {
   const { t } = useTranslation()
 
   return (
-    <form className="width-is-5" method="post" action={onSubmit}>
+    <form className="width-is-5" method="post" action={onAction}>
       <label htmlFor="fullName">
         {t('eShop.cartOrder.form.fullName')}:<span className="color-is-red">*</span>
       </label>

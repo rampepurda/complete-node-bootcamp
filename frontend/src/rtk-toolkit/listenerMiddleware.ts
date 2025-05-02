@@ -2,6 +2,11 @@ import { createListenerMiddleware } from '@reduxjs/toolkit'
 import { fetchCart } from './slices/cartSlice'
 import { increaseCount, setErrorMessage } from './slices/counterSlice'
 
+/**
+ * RTK Middlewares:
+ * https://redux-toolkit.js.org/api/createListenerMiddleware
+ */
+
 // Add one or more listener entries that look for specific actions.
 // They may contain any sync or async logic, similar to thunks.
 

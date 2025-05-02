@@ -12,8 +12,8 @@ export const navigation = {
       link: '/reactplayer',
     },
     {
-      title: 'R19 useActionState hook(temporarily)',
-      link: '/r18_useActionState',
+      title: 'RTK Middleware(temporarily)',
+      link: '/rtk_middleware',
     },
   ],
   sideBarSections: [

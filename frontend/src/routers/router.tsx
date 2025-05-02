@@ -3,7 +3,7 @@ import RootLayout from '../pages/RootLayout'
 import ReactPlayerPage from '../reactPlayer'
 import CNBLayout from '../pages/sections/CNBLayout'
 import ErrorBoundary from '../pages/ErrorPage'
-import R19useActionState from '../pages/react19-useActionState'
+import RTKMiddlewarePage from '../pages/rtk-middleware'
 import * as RouteEshop from '../pages/eShop/routes'
 import * as RouteSection from '../pages/sections/routes'
 
@@ -87,8 +87,8 @@ export const router = createBrowserRouter([
         ],
       },
       {
-        path: 'r18_useActionState',
-        element: <R19useActionState />,
+        path: 'rtk_middleware',
+        element: <RTKMiddlewarePage />,
       },
     ],
   },

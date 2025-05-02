@@ -43,7 +43,6 @@ export default function SetGitPage() {
             <li>&#125;</li>
           </ul>
         </li>
-        <li></li>
       </ul>
     </>
   )
