@@ -4,11 +4,12 @@ import { PropsWithChildren } from 'react'
 import { Link } from 'react-router'
 import { useTranslation } from 'react-i18next'
 
-type Props = {
+type Props = PropsWithChildren<{
   hasLinkHome?: boolean
   title: string
-}
-export const Header = ({ hasLinkHome = true, title, children }: PropsWithChildren<Props>) => {
+}>
+
+export const Header = ({ hasLinkHome = true, title, children }: Props) => {
   const { t } = useTranslation()
 
   return (

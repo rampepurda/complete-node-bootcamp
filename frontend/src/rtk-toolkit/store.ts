@@ -1,4 +1,4 @@
-import { combineReducers, configureStore, createListenerMiddleware } from '@reduxjs/toolkit'
+import { combineReducers, configureStore } from '@reduxjs/toolkit'
 import { cartSlice } from './slices/cartSlice'
 import { counterSlice } from './slices/counterSlice'
 import { listenerMiddleware } from './listenerMiddleware'
