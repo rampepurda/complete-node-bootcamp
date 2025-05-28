@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Product } from '../../Components'
+import { Button, Product, SelectedSort } from '../../Components'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { ProductInt } from '../../types'
 import { environment } from '../../configuration/environment'
@@ -7,8 +7,17 @@ import { useTranslation } from 'react-i18next'
 import { useAppDispatch } from '../../rtk-toolkit/hooks'
 import { fetchCart } from '../../rtk-toolkit/slices/cartSlice'
 import { fetcher } from '../../utils/fetcher'
+import { useSearchParams } from 'react-router'
+
+const options = [
+  { title: 'Sort by:', value: 'undefined' },
+  { title: 'Asc', value: 'asc' },
+  { title: 'Desc', value: 'desc' },
+]
 
 export function EShopPage() {
+  const [searchParams] = useSearchParams()
+  const querySort: string | null = searchParams.get('sort')
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
   const { data, isLoading } = useQuery({
@@ -20,7 +29,10 @@ export function EShopPage() {
           productsTotal: number
         }
       | undefined
-    > => await fetcher(`${environment.localProductsURL}`, { method: 'GET' }),
+    > =>
+      await fetcher(`${environment.localProductsURL}?sort=${querySort}`, {
+        method: 'GET',
+      }),
   })
   const { mutate } = useMutation({
     mutationKey: ['cart'],
@@ -46,6 +58,8 @@ export function EShopPage() {
 
   return (
     <section style={{ margin: '1rem 5rem' }}>
+      <SelectedSort options={options} name={'sort'} btnClass={'btn-primary'} />
+
       <div>
         {isLoading && <h3>...loading, wait</h3>}
         {data?.products?.map((product: ProductInt) => (

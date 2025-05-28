@@ -8,6 +8,7 @@
     }
   },
   "form": {
+    "submit": "Odeslat",
     "submitting": "Odesílám",
     "delete": "Odebrat"
   },
