@@ -32,6 +32,23 @@ router.get("/products", async (req, res) => {
     });
   }
 
+  if (sort === "lowestPrice") {
+    return res.status(200).json({
+      products: storedData.products.sort((a, b) => {
+        const nameA = a.price.toUpperCase();
+        const nameB = b.price.toUpperCase();
+
+        if (nameA < nameB) {
+          return -1;
+        }
+        if (nameA > nameB) {
+          return 1;
+        }
+        return 0;
+      }),
+    });
+  }
+
   return res.status(200).json({
     products: storedData.products,
     message: "Response Successful",

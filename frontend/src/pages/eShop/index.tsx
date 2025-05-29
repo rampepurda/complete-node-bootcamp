@@ -8,12 +8,7 @@ import { useAppDispatch } from '../../rtk-toolkit/hooks'
 import { fetchCart } from '../../rtk-toolkit/slices/cartSlice'
 import { fetcher } from '../../utils/fetcher'
 import { useSearchParams } from 'react-router'
-
-const options = [
-  { title: 'Sort by:', value: 'undefined' },
-  { title: 'Asc', value: 'asc' },
-  { title: 'Desc', value: 'desc' },
-]
+import { optionsEshop } from '../../__mock__/mock_data'
 
 export function EShopPage() {
   const [searchParams] = useSearchParams()
@@ -58,10 +53,10 @@ export function EShopPage() {
 
   return (
     <section style={{ margin: '1rem 5rem' }}>
-      <SelectedSort options={options} name={'sort'} btnClass={'btn-primary'} />
+      <SelectedSort options={optionsEshop} name={'sort'} btnClass={'btn-primary'} />
 
-      <div>
-        {isLoading && <h3>...loading, wait</h3>}
+      {isLoading && <h3>...loading, wait</h3>}
+      <div className="display-grid display-grid-temp-columns-three">
         {data?.products?.map((product: ProductInt) => (
           <Product
             classes={'hasOutline'}

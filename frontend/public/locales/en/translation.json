@@ -16,6 +16,12 @@
     "headline": "eShop - Welcome",
     "backToEshop": "Back to  eShop",
     "addToCart": "Add To Cart",
+    "select": {
+      "orderBy": "Order by:",
+      "asc": "A-Z",
+      "desc": "Z-A",
+      "price": "Price ascending"
+    },
     "ariaLabel": {
       "cartStatus": {
         "isFull": "{{counting}} item in the cart",
