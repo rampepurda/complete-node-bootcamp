@@ -20,7 +20,7 @@
       "orderBy": "Order by:",
       "asc": "A-Z",
       "desc": "Z-A",
-      "price": "Price ascending"
+      "price": "Price Asc"
     },
     "ariaLabel": {
       "cartStatus": {
