@@ -1,5 +1,4 @@
 import { Link } from 'react-router'
-//import { Playlist } from './Components/Playlist'
 import { useQuery } from '@tanstack/react-query'
 import { PlaylistT } from '../types'
 import { environment } from '../configuration/environment'
@@ -70,10 +69,12 @@ export default function ReactPlayerPage() {
             <img src="/ico-internal.svg" width={24} height={24} aria-hidden={true} />
           </Link>
 
-          {data?.playlist?.map((item) => (
-            <Suspense fallback={<Loader />}>
-              <Playlist {...item} key={item.id} />
-            </Suspense>
+          {data?.playlist?.map((item, idx: number) => (
+            <div key={idx}>
+              <Suspense fallback={<Loader />}>
+                <Playlist {...item} key={item.id} />
+              </Suspense>
+            </div>
           ))}
         </section>
       </div>

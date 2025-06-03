@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router'
 import { useAppDispatch, useAppSelector } from '../../rtk-toolkit/hooks'
-import { setErrorMessage } from '../../rtk-toolkit/slices/counterSlice'
+import { increaseCount, setErrorMessage } from '../../rtk-toolkit/slices/counterSlice'
 
 export default function RTKMiddlewarePage() {
   const dispatch = useAppDispatch()
-  const { count, error } = useAppSelector((state) => state.counterSlice)
+  const { count, isError } = useAppSelector((state) => state.counterSlice)
 
   const styles = {
     mPage: {
@@ -29,7 +29,7 @@ export default function RTKMiddlewarePage() {
         >
           RTK Middlewares read more here
         </Link>
-        <h4>Error message: {error !== '' ? error : 'not setup yet'}</h4>
+        <h4>Error message: {isError !== '' ? isError : 'not setup yet'}</h4>
         <h4>Count: {count}</h4>
         <button
           className="btn btn-edit"
