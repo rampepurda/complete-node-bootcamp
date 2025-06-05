@@ -13,8 +13,8 @@ export const store = configureStore({
   // During testing, I got this Error message: 'A non-serializable value'. Must add Middleware and set serializableCheck to false will solve it.
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
-      // serializableCheck read more: https://redux-toolkit.js.org/api/serializabilityMiddleware
-      //serializableCheck: false,
+      // https://redux-toolkit.js.org/api/serializabilityMiddleware
+      serializableCheck: false,
     }).prepend(listenerMiddleware.middleware),
 })
 

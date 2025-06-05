@@ -29,6 +29,7 @@ router.get("/products", async (req, res) => {
         }
         return 0;
       }),
+      productsTotal: storedData.products.length,
     });
   }
 
@@ -46,6 +47,7 @@ router.get("/products", async (req, res) => {
         }
         return 0;
       }),
+      productsTotal: storedData.products.length,
     });
   }
 

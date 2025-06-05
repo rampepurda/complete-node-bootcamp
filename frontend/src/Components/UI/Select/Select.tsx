@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, PropsWithChildren } from 'react'
+import React, { ChangeEventHandler, PropsWithChildren } from 'react'
 import { useTranslation } from 'react-i18next'
 
 /**
@@ -6,8 +6,9 @@ import { useTranslation } from 'react-i18next'
  */
 
 type Props = PropsWithChildren<{
+  id?: string
   classesNames?: string
-  OnClick?: MouseEventHandler<HTMLSelectElement>
+  onChange?: ChangeEventHandler<HTMLSelectElement>
   options: {
     value: string
     title: string
@@ -16,11 +17,11 @@ type Props = PropsWithChildren<{
   rest?: Record<string, any>
 }>
 
-export const Select = ({ options, name, classesNames, OnClick, rest, children }: Props) => {
+export const Select = ({ id, options, name, classesNames, onChange, rest, children }: Props) => {
   const { t } = useTranslation()
 
   return (
-    <select className={classesNames} onClick={OnClick} name={name} {...rest}>
+    <select id={id} className={classesNames} onChange={onChange} name={name} {...rest}>
       {options.map((option, idx: number) => (
         <option key={idx} value={option.value}>
           {t(option.title)}
