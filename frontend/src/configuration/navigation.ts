@@ -11,10 +11,6 @@ export const navigation = {
       title: 'ReactPlayer',
       link: '/reactplayer',
     },
-    {
-      title: 'RTK Middleware(temporarily)',
-      link: '/rtk_middleware',
-    },
   ],
   sideBarSections: [
     {
