@@ -331,7 +331,7 @@ figure {
 }
 
 .hasOutline {
-  margin: $spacer-4 0;
+  margin: $spacer-3 0;
   border-radius: .4rem;
   outline: 1px solid transparentize($grayLight, .7);
   padding: 1rem;
@@ -355,8 +355,17 @@ figure {
 
   &-flex-start {
     display: inline-flex;
-    justify-items: start;
+    justify-content: start;
     align-items: center;
+  }
+
+  &-grid {
+    display: grid;
+    gap: 1rem;
+  }
+
+  &-grid-temp-columns-three {
+    grid-template-columns: auto auto auto;
   }
 }
 

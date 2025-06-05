@@ -13,10 +13,10 @@ describe('Count', () => {
 
     expect(btnInc).toBeInTheDocument()
     expect(btnSetError).toBeInTheDocument()
-    expect(screen.getByLabelText('0')).toBeInTheDocument()
+    expect(screen.getByLabelText('10')).toBeInTheDocument()
 
     await user.click(btnInc)
-    expect(await screen.findByLabelText('20')).toBeInTheDocument()
+    expect(await screen.findByLabelText('30')).toBeInTheDocument()
 
     await user.click(btnSetError)
     expect(await screen.findByText('test setup error message')).toBeInTheDocument()

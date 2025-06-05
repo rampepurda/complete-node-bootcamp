@@ -1,26 +1,40 @@
-import React from 'react'
-import { Button, Product } from '../../Components'
+import React, { ChangeEvent, useEffect } from 'react'
+import { Button, Product, Select } from '../../Components'
 import { useMutation, useQuery } from '@tanstack/react-query'
 import { ProductInt } from '../../types'
 import { environment } from '../../configuration/environment'
 import { useTranslation } from 'react-i18next'
 import { useAppDispatch } from '../../rtk-toolkit/hooks'
 import { fetchCart } from '../../rtk-toolkit/slices/cartSlice'
-import { fetcher } from '../../utils/fetcher'
+import { useSearchParams } from 'react-router'
+import { options } from '../../configuration/common'
 
 export function EShopPage() {
+  const [searchParams, setSearchParams] = useSearchParams()
+  const paramSort: string | null = searchParams.get('sort')
   const { t } = useTranslation()
   const dispatch = useAppDispatch()
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, error, refetch, status } = useQuery({
     queryKey: ['productsOrdered'],
     queryFn: async (): Promise<
       | {
           products: ProductInt[] | undefined
           message: string
-          productsTotal: number
         }
       | undefined
-    > => await fetcher(`${environment.localProductsURL}`, { method: 'GET' }),
+    > => {
+      try {
+        const response = await fetch(`${environment.localProductsURL}?sort=${paramSort}`, {
+          method: 'GET',
+        })
+
+        if (response.ok) {
+          return response.json()
+        }
+      } catch (err: any) {
+        alert(err)
+      }
+    },
   })
   const { mutate } = useMutation({
     mutationKey: ['cart'],
@@ -44,10 +58,28 @@ export function EShopPage() {
     },
   })
 
+  useEffect(() => {
+    if (paramSort) {
+      refetch().then(() => status === 'success')
+    }
+  }, [paramSort])
+
   return (
     <section style={{ margin: '1rem 5rem' }}>
-      <div>
-        {isLoading && <h3>...loading, wait</h3>}
+      <Select
+        id={'products'}
+        onChange={(ev: ChangeEvent<HTMLSelectElement>) =>
+          setSearchParams((prev) => {
+            prev.set('sort', `${ev.target.value}`)
+            return prev
+          })
+        }
+        options={options.eShop}
+        name={'sort'}
+      />
+
+      {(isLoading && <h3>...loading, wait</h3>) || (error && <h3>Ops, something happened</h3>)}
+      <div className="display-grid display-grid-temp-columns-three">
         {data?.products?.map((product: ProductInt) => (
           <Product
             classes={'hasOutline'}

@@ -1,0 +1,15 @@
+@import "../../styles/spacing";
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.selectSortList {
+  cursor: pointer;
+  margin-right: calc(-1px - $spacer-4);
+  border: 1px solid $grayDarker;
+  border-top-left-radius: 1.3rem;
+  border-bottom-left-radius: 1.3rem;
+  padding: .55rem 0 .55rem .9rem;
+}
+
+
+

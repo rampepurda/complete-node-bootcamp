@@ -8,6 +8,7 @@
     }
   },
   "form": {
+    "submit": "Submit",
     "submitting": "Submitting",
     "delete": "Delete"
   },
@@ -15,6 +16,12 @@
     "headline": "eShop - Welcome",
     "backToEshop": "Back to  eShop",
     "addToCart": "Add To Cart",
+    "select": {
+      "orderBy": "Order by:",
+      "asc": "A-Z",
+      "desc": "Z-A",
+      "price": "Price Asc"
+    },
     "ariaLabel": {
       "cartStatus": {
         "isFull": "{{counting}} item in the cart",

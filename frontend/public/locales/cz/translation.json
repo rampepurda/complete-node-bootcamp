@@ -8,6 +8,7 @@
     }
   },
   "form": {
+    "submit": "Odeslat",
     "submitting": "Odesílám",
     "delete": "Odebrat"
   },
@@ -15,6 +16,12 @@
     "headline": "eShop - Vítejte",
     "addToCart": "Vložit do košíku",
     "backToEshop": "Zpátky do eShopu",
+    "select": {
+      "orderBy": "Řadit dle:",
+      "asc": "A-Z",
+      "desc": "Z-A",
+      "price": "Cena vzestupně"
+    },
     "ariaLabel": {
       "cartStatus": {
         "isFull": "V Košíku je {{counting}} položka",

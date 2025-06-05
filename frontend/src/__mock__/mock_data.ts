@@ -1,4 +1,12 @@
 export const dataMock = {
+  options: {
+    eShop: [
+      { title: 'Sort by', value: 'sortBy' },
+      { title: 'A-Z', value: 'asc' },
+      { title: 'Z-A', value: 'desc' },
+      { title: 'Price', value: 'lowestPrice' },
+    ],
+  },
   products: [
     {
       id: 4,

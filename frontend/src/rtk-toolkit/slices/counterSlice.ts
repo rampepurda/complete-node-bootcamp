@@ -6,15 +6,15 @@ import { createSlice } from '@reduxjs/toolkit'
 
 export type InitValuesCounterT = {
   title: string
-  error: string | undefined
+  isError: string | undefined
   count: number
   inCount: () => void
 }
 
 const initialState: InitValuesCounterT = {
   title: 'joha',
-  error: '',
-  count: 0,
+  isError: 'no matches',
+  count: 10,
   inCount: () => {},
 }
 
@@ -23,7 +23,7 @@ export const counterSlice = createSlice({
   initialState,
   reducers: {
     setErrorMessage(state, action) {
-      state.error = action.payload.SetErrorMessage
+      state.isError = action.payload.SetErrorMessage
     },
     increaseCount(state, action) {
       state.count = action.payload
